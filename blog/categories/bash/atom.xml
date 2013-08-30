@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[About Digital]]></title>
-  <link href="http://digitalbot.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: bash | About Digital]]></title>
+  <link href="http://digitalbot.github.io/blog/categories/bash/atom.xml" rel="self"/>
   <link href="http://digitalbot.github.io/"/>
   <updated>2013-08-30T13:57:41+09:00</updated>
   <id>http://digitalbot.github.io/</id>
@@ -22,9 +22,9 @@
 けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
 少しの設定だけど少し便利になったので公開してみる。</p>
 
-<div><script src='https://gist.github.com/6386407.js'></script>
+<p><div><script src='https://gist.github.com/6386407.js'></script>
 <noscript><pre><code></code></pre></noscript></div>
-
+</p>
 
 <p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
 
@@ -32,27 +32,15 @@
 
 <p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="s2">&quot;\C-^&quot;</span>: <span class="s2">&quot;~/&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>なんかは便利だと思う。</p>
 
 <h4>参考</h4>
 
 <p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">.inputrc</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[test-post]]></title>
-    <link href="http://digitalbot.github.io/blog/2013/08/30/test-post/"/>
-    <updated>2013-08-30T11:50:00+09:00</updated>
-    <id>http://digitalbot.github.io/blog/2013/08/30/test-post</id>
-    <content type="html"><![CDATA[<h2>test</h2>
-
-<p>this is a test.</p>
 ]]></content>
   </entry>
   
