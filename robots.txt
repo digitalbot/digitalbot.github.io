@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://digitalbot.github.io/sitemap.xml 

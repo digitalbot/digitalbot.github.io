@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: test | About Digital]]></title>
+  <link href="http://digitalbot.github.io/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://digitalbot.github.io/"/>
+  <updated>2013-08-30T12:48:11+09:00</updated>
+  <id>http://digitalbot.github.io/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[test-post]]></title>
+    <link href="http://digitalbot.github.io/blog/2013/08/30/test-post/"/>
+    <updated>2013-08-30T11:50:00+09:00</updated>
+    <id>http://digitalbot.github.io/blog/2013/08/30/test-post</id>
+    <content type="html"><![CDATA[<h2>test</h2>
+
+<p>this is a test.</p>
+]]></content>
+  </entry>
+  
+</feed>
