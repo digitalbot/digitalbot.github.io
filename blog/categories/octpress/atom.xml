@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octpress | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/categories/octpress/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-08-30T22:41:09+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[さくらインターネットのドメイン設定]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/"/>
+    <updated>2013-08-30T22:36:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/08/30/sakura-domain</id>
+    <content type="html"><![CDATA[<p>これは自分の責任なんだけど、さくらインターネットのドメインサービスで、管理画面から新しいCNAMEの設定をしてから、さらに左カラムにある「変更を反映させる」的なものを押さなきゃ設定が反映されないのに気付かなくて一時間くらいハマってた。<br/>
+ただでさえDNSの設定は即時反映とも行かなくてわけわかんないことになりやすいからもうちょっと目立つ感じにしてくれても良いのにとおもった。<br/>
+まぁ設定間違いとかもあるからああいうUIなこと自体には文句付けないけど。</p>
+
+<h4>ちなみに</h4>
+
+<p>もう一個運用してるほうのサーバではpdns使ってます。<br/>
+これも日本語の情報がそんな多くはないから最初大変だった。<br/>
+時間があれば記事にしたい。</p>
+]]></content>
+  </entry>
+  
+</feed>
