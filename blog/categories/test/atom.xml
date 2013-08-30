@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: test | About Digital]]></title>
-  <link href="http://digitalbot.github.io/blog/categories/test/atom.xml" rel="self"/>
-  <link href="http://digitalbot.github.io/"/>
-  <updated>2013-08-30T21:10:02+09:00</updated>
-  <id>http://digitalbot.github.io/</id>
+  <link href="http://blog.digital-bot.com/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-08-30T21:11:51+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[test-post]]></title>
-    <link href="http://digitalbot.github.io/blog/2013/08/30/test-post/"/>
+    <link href="http://blog.digital-bot.com/blog/2013/08/30/test-post/"/>
     <updated>2013-08-30T11:50:00+09:00</updated>
-    <id>http://digitalbot.github.io/blog/2013/08/30/test-post</id>
+    <id>http://blog.digital-bot.com/blog/2013/08/30/test-post</id>
     <content type="html"><![CDATA[<h2>test</h2>
 
 <p>this is a test.</p>

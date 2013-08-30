@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: bash | About Digital]]></title>
-  <link href="http://digitalbot.github.io/blog/categories/bash/atom.xml" rel="self"/>
-  <link href="http://digitalbot.github.io/"/>
-  <updated>2013-08-30T21:10:02+09:00</updated>
-  <id>http://digitalbot.github.io/</id>
+  <link href="http://blog.digital-bot.com/blog/categories/bash/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-08-30T21:11:51+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[.inputrcの便利設定]]></title>
-    <link href="http://digitalbot.github.io/blog/2013/08/30/more-useful-inputrc/"/>
+    <link href="http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/"/>
     <updated>2013-08-30T13:21:00+09:00</updated>
-    <id>http://digitalbot.github.io/blog/2013/08/30/more-useful-inputrc</id>
+    <id>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc</id>
     <content type="html"><![CDATA[<p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
 けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
 少しの設定だけど少し便利になったので公開してみる。</p>

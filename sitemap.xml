@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://digitalbot.github.io/blog/2013/08/30/test-post/</loc>
+        <loc>http://blog.digital-bot.com/blog/2013/08/30/test-post/</loc>
         <lastmod>2013-08-30T12:42:57+09:00</lastmod>
     </url>
     <url>
-        <loc>http://digitalbot.github.io/blog/2013/08/30/more-useful-inputrc/</loc>
+        <loc>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/</loc>
         <lastmod>2013-08-30T15:20:12+09:00</lastmod>
     </url>
     <url>
-        <loc>http://digitalbot.github.io/blog/archives/</loc>
+        <loc>http://blog.digital-bot.com/blog/archives/</loc>
         <lastmod>2013-08-30T15:20:12+09:00</lastmod>
     </url>
     <url>
-        <loc>http://digitalbot.github.io/</loc>
+        <loc>http://blog.digital-bot.com/</loc>
         <lastmod>2013-08-30T15:20:12+09:00</lastmod>
     </url>
     <url>
-        <loc>http://digitalbot.github.io/robots.txt</loc>
+        <loc>http://blog.digital-bot.com/robots.txt</loc>
         <lastmod>2013-08-30T12:42:36+09:00</lastmod>
     </url>
 </urlset>
