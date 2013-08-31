@@ -2,26 +2,22 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/test-post/</loc>
-        <lastmod>2013-08-31T02:36:47+09:00</lastmod>
+        <lastmod>2013-08-31T12:52:26+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/</loc>
-        <lastmod>2013-08-31T02:37:17+09:00</lastmod>
+        <lastmod>2013-08-31T12:53:29+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/</loc>
-        <lastmod>2013-08-31T02:37:29+09:00</lastmod>
+        <lastmod>2013-08-31T12:53:48+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/archives/</loc>
-        <lastmod>2013-08-31T02:37:29+09:00</lastmod>
+        <lastmod>2013-08-31T12:53:48+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/</loc>
-        <lastmod>2013-08-31T02:37:29+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.digital-bot.com/robots.txt</loc>
-        <lastmod>2013-08-30T12:42:36+09:00</lastmod>
+        <lastmod>2013-08-31T12:53:48+09:00</lastmod>
     </url>
 </urlset>

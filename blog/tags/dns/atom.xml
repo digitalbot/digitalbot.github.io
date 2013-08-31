@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: vps | About Digital]]></title>
-  <link href="http://blog.digital-bot.com/blog/categories/vps/atom.xml" rel="self"/>
+  <title><![CDATA[Tag: dns | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/dns/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-08-31T02:47:41+09:00</updated>
+  <updated>2013-08-31T12:55:36+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>

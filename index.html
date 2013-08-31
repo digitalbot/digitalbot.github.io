@@ -24,20 +24,14 @@
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
-  <script src="/javascripts/footnote.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="About Digital" type="application/atom+xml">
-  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-<script language="JavaScript">
-$(document).ready( function () {
-           $("a[href^='http']:not([href*='" + location.hostname + "'])").attr('target', '_blank');
-           })
-</script>
-
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>
 
   
   <script type="text/javascript">
@@ -55,17 +49,23 @@ $(document).ready( function () {
 
 </head>
 
-<body>
+<body   >
   <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">db</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
   <h1><a href="/">About Digital</a></h1>
   
     <h2>i wanna be a bot...</h2>
   
+  <div class="clear"></div>
 </hgroup>
 
 </header>
-  <div id="navigation">
-    <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
@@ -83,11 +83,9 @@ $(document).ready( function () {
 </ul>
 
 </nav>
-  </div>
-  <div id="body"  >
-    <div id="main">
-      <div id="content">
-        <div class="blog-index">
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
   
   
   
@@ -95,7 +93,9 @@ $(document).ready( function () {
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></h1>
+      
     
     
       <p class="meta">
@@ -141,7 +141,9 @@ $(document).ready( function () {
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></h1>
+      
     
     
       <p class="meta">
@@ -171,6 +173,7 @@ $(document).ready( function () {
 少しの設定だけど少し便利になったので公開してみる。</p>
 
 <div><script src='https://gist.github.com/6386407.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
 <noscript><pre><code></code></pre></noscript></div>
 
 
@@ -189,7 +192,7 @@ $(document).ready( function () {
 
 <h4>参考</h4>
 
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">.inputrc</a></p>
+<p><a href="" title="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">.inputrcについて</a></p>
 </div>
   
   
@@ -202,7 +205,9 @@ $(document).ready( function () {
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/08/30/test-post/">test-post</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/08/30/test-post/">test-post</a></h1>
+      
     
     
       <p class="meta">
@@ -290,8 +295,8 @@ $(document).ready( function () {
   <h1>About Me</h1>
   <p><a href="https://twitter.com/kosukexit">@kosukexit</a></p>
   <dl>
-      <dt>with&#8230;</dt>
-      <dd>emacs/c/objc/perl/mac/unix/vim</dd>
+    <dt>with&#8230;</dt>
+    <dd>emacs/c/objc/perl/mac/unix/vim</dd>
   </dl>
 </section>
 <section>
@@ -313,8 +318,12 @@ $(document).ready( function () {
   </ul>
 </section>
 <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/tech/'>Tech (2)</a></li><li><a href='/blog/categories/test/'>test (1)</a></li></ul>
+</section>
+<section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/bash' style='font-size: 130.0%'>bash(1)</a> <a href='/blog/categories/dns' style='font-size: 130.0%'>dns(1)</a> <a href='/blog/categories/octpress' style='font-size: 130.0%'>octpress(1)</a> <a href='/blog/categories/shell' style='font-size: 130.0%'>shell(1)</a> <a href='/blog/categories/test' style='font-size: 130.0%'>test(1)</a> <a href='/blog/categories/unix' style='font-size: 160.0%'>unix(2)</a> <a href='/blog/categories/useful' style='font-size: 130.0%'>useful(1)</a> <a href='/blog/categories/vps' style='font-size: 130.0%'>vps(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/tags/bash' style='font-size: 130.0%'>bash(1)</a> <a href='/blog/tags/dns' style='font-size: 130.0%'>dns(1)</a> <a href='/blog/tags/octpress' style='font-size: 130.0%'>octpress(1)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(1)</a> <a href='/blog/tags/test' style='font-size: 130.0%'>test(1)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(2)</a> <a href='/blog/tags/useful' style='font-size: 130.0%'>useful(1)</a> <a href='/blog/tags/vps' style='font-size: 130.0%'>vps(1)</a> </span>
 </section>
 
 <section>
@@ -353,15 +362,15 @@ $(document).ready( function () {
   
 </aside>
 
-      </div>
     </div>
-    <footer role="contentinfo"><p>
+  </div>
+  <footer role="contentinfo"><p>
   Copyright &copy; 2013 - digital_bot -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a></span>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
-    
+  
 
 <script type="text/javascript">
       var disqus_shortname = 'aboutdigital';
@@ -405,6 +414,5 @@ $(document).ready( function () {
 
 
 
-  </div>
 </body>
 </html>

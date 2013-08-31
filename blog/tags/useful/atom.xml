@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: useful | About Digital]]></title>
-  <link href="http://blog.digital-bot.com/blog/categories/useful/atom.xml" rel="self"/>
+  <title><![CDATA[Tag: useful | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-08-31T02:47:41+09:00</updated>
+  <updated>2013-08-31T12:55:36+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -23,6 +23,7 @@
 少しの設定だけど少し便利になったので公開してみる。</p>
 
 <p><div><script src='https://gist.github.com/6386407.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
 <noscript><pre><code></code></pre></noscript></div>
 </p>
 
@@ -40,7 +41,7 @@
 
 <h4>参考</h4>
 
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">.inputrc</a></p>
+<p><a href="" title="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">.inputrcについて</a></p>
 ]]></content>
   </entry>
   
