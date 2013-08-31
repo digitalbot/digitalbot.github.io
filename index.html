@@ -9,7 +9,10 @@
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="これは自分の責任なんだけど、さくらインターネットのドメインサービスで、管理画面から新しいCNAMEの設定をしてから、さらに左カラムにある「変更を反映させる」的なものを押さなきゃ設定が反映されないのに気付かなくて一時間くらいハマってた。 &hellip;">
+  <meta name="description" content="この前サブモジュールを含んだリポジトリをgit cloneしてきてなんかうまく動かなくて困った。
+んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。
+そういうときは $ git clone git://hoge/fuga.git
+$ git submodule &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +95,70 @@ $(document).ready( function () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/08/31/git-clone-recursive/">git clone &#8211;recursive便利</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/31/git-clone-recursive/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
+んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
+そういうときは</p>
+
+<pre><code>$ git clone git://hoge/fuga.git
+$ git submodule init
+$ git submodule update
+</code></pre>
+
+<p>すれば良いらしいことがわかった。</p>
+
+<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursice</code>なんていうオプションがあるらしいことを知った。つまり</p>
+
+<pre><code>$ git clone --recursice git://hoge/fuga.git
+</code></pre>
+
+<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
+
+<h2>ちなみに</h2>
+
+<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
+
+<h4>参考</h4>
+
+<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -309,6 +376,10 @@ $(document).ready( function () {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/08/31/git-clone-recursive/">git clone &#8211;recursive便利</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a>
       </li>
     
@@ -324,11 +395,11 @@ $(document).ready( function () {
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/tech/'>Tech (2)</a></li><li><a href='/blog/categories/test/'>test (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/git/'>Git (1)</a></li><li><a href='/blog/categories/tech/'>Tech (3)</a></li><li><a href='/blog/categories/test/'>test (1)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/tags/bash' style='font-size: 130.0%'>bash(1)</a> <a href='/blog/tags/dns' style='font-size: 130.0%'>dns(1)</a> <a href='/blog/tags/octpress' style='font-size: 130.0%'>octpress(1)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(1)</a> <a href='/blog/tags/test' style='font-size: 130.0%'>test(1)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(2)</a> <a href='/blog/tags/useful' style='font-size: 130.0%'>useful(1)</a> <a href='/blog/tags/vps' style='font-size: 130.0%'>vps(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/tags/bash' style='font-size: 120.0%'>bash(1)</a> <a href='/blog/tags/dns' style='font-size: 120.0%'>dns(1)</a> <a href='/blog/tags/git' style='font-size: 120.0%'>git(1)</a> <a href='/blog/tags/octpress' style='font-size: 120.0%'>octpress(1)</a> <a href='/blog/tags/shell' style='font-size: 140.0%'>shell(2)</a> <a href='/blog/tags/test' style='font-size: 120.0%'>test(1)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(3)</a> <a href='/blog/tags/useful' style='font-size: 140.0%'>useful(2)</a> <a href='/blog/tags/vps' style='font-size: 120.0%'>vps(1)</a> </span>
 </section>
 
 <section>

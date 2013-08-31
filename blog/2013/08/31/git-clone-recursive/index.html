@@ -5,12 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: vps - About Digital</title>
+  <title>git clone --recursive便利 - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="Tag: vps">
-  
+  <meta name="description" content="この前サブモジュールを含んだリポジトリをgit cloneしてきてなんかうまく動かなくて困った。
+んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。
+そういうときは $ git clone git://hoge/fuga.git
+$ git submodule &hellip;">
+  <meta name="keywords" content="gitusefulunixshell">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.comblog/tags/vps/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -91,44 +94,141 @@ $(document).ready( function () {
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: vps</h1>
+    
+      
+        <h1 class="entry-title">git clone --recursive便利</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
+
+
+<div class="entry-content"><p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
+んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
+そういうときは</p>
+
+<pre><code>$ git clone git://hoge/fuga.git
+$ git submodule init
+$ git submodule update
+</code></pre>
+
+<p>すれば良いらしいことがわかった。</p>
+
+<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursice</code>なんていうオプションがあるらしいことを知った。つまり</p>
+
+<pre><code>$ git clone --recursice git://hoge/fuga.git
+</code></pre>
+
+<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
+
+<h2>ちなみに</h2>
+
+<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
+
+<h4>参考</h4>
+
+<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <div id="blog-archives" class="tag">
+
+<span class="byline author vcard">Posted by <span class="fn">digital_bot</span></span>
+
+      
 
 
 
-  
-  <h2>2013</h2>
 
-<article>
+
+
+
+
   
 
-<h1><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></h1>
-<time datetime="2013-08-30T22:36:00+09:00" pubdate><span class='month'>Aug</span> <span class='day'>30</span> <span class='year'>2013</span></time>
 
-<footer>
+<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  Posted in&nbsp;
   
-  <span class="categories">Posted in <a class='category' href='/blog/categories/tech/'>Tech</a></span>
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
+</span>
+
+
+      
+
+<span class="tags">
+  Tagged as&nbsp
   
+    <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/shell/'>shell</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+  
+</span>
+
+
+    </p>
     
-    <span class="tags">, tagged as <a class='tag' href='/blog/tags/dns/'>dns</a>, <a class='tag' href='/blog/tags/octpress/'>octpress</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/vps/'>vps</a></span>
-    
+      <div class="sharing">
   
-</footer>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" data-via="kosukexit" data-counturl="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/08/30/sakura-domain/" title="Previous Post: さくらインターネットのドメイン設定">&laquo; さくらインターネットのドメイン設定</a>
+      
+      
+    </p>
+  </footer>
+  
+    <div class="related_posts">
+<h3>You may also like...</h3>
+<ul>
 
-</article>
-
+</ul>
 </div>
 
   
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -224,7 +324,10 @@ $(document).ready( function () {
       var disqus_shortname = 'aboutdigital';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

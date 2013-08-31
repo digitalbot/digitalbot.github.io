@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-08-31T13:01:13+09:00</updated>
+  <updated>2013-08-31T13:10:01+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[git clone --recursive便利]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/"/>
+    <updated>2013-08-31T13:06:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive</id>
+    <content type="html"><![CDATA[<p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
+んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
+そういうときは</p>
+
+<pre><code>$ git clone git://hoge/fuga.git
+$ git submodule init
+$ git submodule update
+</code></pre>
+
+<p>すれば良いらしいことがわかった。</p>
+
+<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursice</code>なんていうオプションがあるらしいことを知った。つまり</p>
+
+<pre><code>$ git clone --recursice git://hoge/fuga.git
+</code></pre>
+
+<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
+
+<h2>ちなみに</h2>
+
+<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
+
+<h4>参考</h4>
+
+<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[さくらインターネットのドメイン設定]]></title>
