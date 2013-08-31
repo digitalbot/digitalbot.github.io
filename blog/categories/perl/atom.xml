@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: shell | About Digital]]></title>
-  <link href="http://blog.digital-bot.com/blog/tags/shell/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Perl | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
   <updated>2013-08-31T18:46:12+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
@@ -137,71 +137,6 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
 	</ol>
 </div>
 </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[git clone --recursive便利]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/"/>
-    <updated>2013-08-31T13:06:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive</id>
-    <content type="html"><![CDATA[<p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
-
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
-
-<p>すれば良いらしいことがわかった。</p>
-
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
-
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
-
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
-
-<h2>ちなみに</h2>
-
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
-
-<h4>参考</h4>
-
-<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[.inputrcの便利設定]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/"/>
-    <updated>2013-08-30T13:21:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc</id>
-    <content type="html"><![CDATA[<p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
-けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
-少しの設定だけど少し便利になったので公開してみる。</p>
-
-<p><div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
-
-<h2>おすすめ</h2>
-
-<p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>なんかは便利だと思う。</p>
-
-<h4>参考</h4>
-
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc</a></p>
 ]]></content>
   </entry>
   

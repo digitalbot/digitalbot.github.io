@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>About Digital</title>
+  <title>GitPrep導入してみた - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
   <meta name="description" content="最近、研究室用にgitリポジトリとgitブラウザが欲しいと思ってGitPrepを導入した。 正直総合力で見てはGithubには劣るけど、逆にあそこまで大掛かりじゃなくシンプルなものが欲しい人にとっては向いてると思う。 &hellip;">
-  
+  <meta name="keywords" content="gitprep">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -90,16 +90,13 @@ $(document).ready( function () {
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></h1>
+      
+        <h1 class="entry-title">GitPrep導入してみた</h1>
       
     
     
@@ -118,14 +115,14 @@ $(document).ready( function () {
 
 <time datetime="2013-08-31T18:01:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
         
-         | <a href="/blog/2013/08/31/gitprep-intro/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>最近、研究室用にgitリポジトリとgitブラウザが欲しいと思って<a href="http://gitprep.org/">GitPrep</a>を導入した。</p>
+<div class="entry-content"><p>最近、研究室用にgitリポジトリとgitブラウザが欲しいと思って<a href="http://gitprep.org/">GitPrep</a>を導入した。</p>
 
 <p>正直総合力で見てはGithubには劣るけど、逆にあそこまで大掛かりじゃなくシンプルなものが欲しい人にとっては向いてると思う。
 けどまぁ最近出来たてのプロダクトってこともあっていくつかはまったことがあるのでここに書いておく。</p>
@@ -247,24 +244,16 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
 
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/08/31/git-clone-recursive/">git clone &#8211;recursive便利</a></h1>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">digital_bot</span></span>
+
       
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -276,248 +265,74 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
   
 
 
-<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/31/git-clone-recursive/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
-
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
-
-<p>すれば良いらしいことがわかった。</p>
-
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
-
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
-
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
-
-<h2>ちなみに</h2>
-
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
-
-<h4>参考</h4>
-
-<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2013-08-31T18:01:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
       
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></h1>
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
       
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="tags">
+  Tagged as&nbsp
   
+    <a class='tag' href='/blog/tags/daemontools/'>daemontools</a>, <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/gitprep/'>gitprep</a>, <a class='tag' href='/blog/tags/nginx/'>nginx</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>, <a class='tag' href='/blog/tags/shell/'>shell</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+  
+</span>
 
 
-<time datetime="2013-08-30T22:36:00+09:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/sakura-domain/#disqus_thread">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>これは自分の責任なんだけど、さくらインターネットのドメインサービスで、管理画面から新しいCNAMEの設定をしてから、さらに左カラムにある「変更を反映させる」的なものを押さなきゃ設定が反映されないのに気付かなくて一時間くらいハマってた。<br/>
-ただでさえDNSの設定は即時反映とも行かなくてわけわかんないことになりやすいからもうちょっと目立つ感じにしてくれても良いのにとおもった。<br/>
-まぁ設定間違いとかもあるからああいうUIなこと自体には文句付けないけど。</p>
-
-<h4>ちなみに</h4>
-
-<p>もう一個運用してるほうのサーバではpdns使ってる。<br/>
-これも日本語の情報がそんな多くはないから最初大変だった。<br/>
-時間があれば記事にしたい。</p>
-</div>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/" >Tweet</a>
   
   
-
-
-    </article>
   
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T13:21:00+09:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/more-useful-inputrc/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
-けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
-少しの設定だけど少し便利になったので公開してみる。</p>
-
-<div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-
-
-<p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
-
-<h2>おすすめ</h2>
-
-<p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="s2">&quot;\C-^&quot;</span>: <span class="s2">&quot;~/&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なんかは便利だと思う。</p>
-
-<h4>参考</h4>
-
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/08/30/test-post/">test-post</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T11:50:00+09:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/test-post/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>test</h2>
-
-<p>this is a test.</p>
-
-<h2>table</h2>
-
-<table>
-<thead>
-<tr>
-<th align="left">left clumn </th>
-<th align="center"> center clumn </th>
-<th align="right"> right clumn</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">a</td>
-<td align="center">a</td>
-<td align="right">a</td>
-</tr>
-<tr>
-<td align="left">b</td>
-<td align="center">b</td>
-<td align="right">c</td>
-</tr>
-</tbody>
-</table>
-
-
-<h1>日本語</h1>
-
-<p>日本語はかけるかな
-<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
-
-<div class="footnotes">
-    <ol>
-        <li id='fn:1'><p> これでどうだ
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-    </ol>
 </div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/08/31/git-clone-recursive/" title="Previous Post: git clone --recursive便利">&laquo; git clone --recursive便利</a>
+      
+      
+    </p>
+  
+    <div class="related_posts">
+<h2>Related Posts...</h2>
+<div style="margin-left:30px;">
+<ul>
 
+<li><a href="/blog/2013/08/31/git-clone-recursive/">git clone --recursive便利</a></li>
+
+<li><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></li>
+
+<li><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></li>
+
+</ul>
+</div>
+</div>
+
+  
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -537,7 +352,7 @@ $ git submodule update
       </li>
     
       <li class="post">
-        <a href="/blog/2013/08/31/git-clone-recursive/">git clone &#8211;recursive便利</a>
+        <a href="/blog/2013/08/31/git-clone-recursive/">git clone --recursive便利</a>
       </li>
     
       <li class="post">
@@ -566,7 +381,7 @@ $ git submodule update
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/digitalbot">@digitalbot</a> on GitHub
@@ -599,6 +414,7 @@ $ git submodule update
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -613,7 +429,10 @@ $ git submodule update
       var disqus_shortname = 'aboutdigital';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

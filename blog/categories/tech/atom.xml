@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-08-31T14:16:45+09:00</updated>
+  <updated>2013-08-31T18:46:12+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,133 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GitPrep導入してみた]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/"/>
+    <updated>2013-08-31T18:01:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro</id>
+    <content type="html"><![CDATA[<p>最近、研究室用にgitリポジトリとgitブラウザが欲しいと思って<a href="http://gitprep.org/">GitPrep</a>を導入した。</p>
+
+<p>正直総合力で見てはGithubには劣るけど、逆にあそこまで大掛かりじゃなくシンプルなものが欲しい人にとっては向いてると思う。
+けどまぁ最近出来たてのプロダクトってこともあっていくつかはまったことがあるのでここに書いておく。</p>
+
+<p>ちなみに、GitPrepはPerl製GitHubクローンで、この記事は<strong>Perl</strong>や<strong>local::lib</strong><sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、<strong>Carton</strong><sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>、<strong>Plenv</strong><sup id='fnref:3'><a href='#fn:3' rel='footnote'>3</a></sup>などが大体わかってる前提で書いてる。でもわからなくても雰囲気でなんとかなる。</p>
+
+<p>あ、ちなみに作業環境としては<strong>CentOS6.3</strong>になる。perlはplenvで個別に入れた<strong>perl5.18</strong>。</p>
+
+<h2>install</h2>
+
+<p>基本的には<a href="https://github.com/yuki-kimoto/gitprep/blob/master/README.md">README</a>通りにやれば良いんだけど、<code>git clone</code>してきて、<code>plackup</code>すれば良いと思ったらそうでも無いらしくて困った。
+なんていうか、初心者も手軽に使えるようにしてる分、煩雑になってる部分もあると思う。</p>
+
+<p>んじゃまぁとりあえず、と思って<code>carton install</code>すると、確かに<code>local/lib/perl5</code>にモジュールが入るんだけど、それが<code>@INC</code>に入ってないし、<code>carton exec</code>しても実行スクリプトがなんかラップされてるからうまく効かない。</p>
+
+<p>仕方ないから素直に<code>./setup.sh</code>を叩くわけだけど、最初はうまくいったけど、後述するアップデート後になんかうまく動かなくなった。</p>
+
+<p>から、結局</p>
+
+<pre><code>$ rm -rf GITPREPDIR/extlib/lib/perl5
+$ mv GITPREPDIR/local/lib/perl5 GITPREPDIR/extlib/lib/
+</code></pre>
+
+<p>して、cartonで入れたモジュールを強引に使うようにした。</p>
+
+<p>ひとまずこれで</p>
+
+<pre><code>$ gitprep
+</code></pre>
+
+<p>すれば動くようになった。</p>
+
+<h2>daemontools</h2>
+
+<p><code>supervisor</code>も使ってみたかったけど、ここは<code>daemontools</code>にした。</p>
+
+<p>daemontools自体のインストールは<a href="http://upsnap.jp/archives/show/96">ココ</a>とかが参考になる。
+で、ともかくデーモン化して運用したいわけだけど、daemontools久しぶりに設定したせいですごいハマってた。
+具体的には、daemontoolsでデーモン化するにはフォアグラウンドのプロセスじゃなきゃだめなこと忘れてた。</p>
+
+<p>幸いにも、実行スクリプトである<code>gitprep</code>(これは実際には<code>hypnotoad</code>のラップ)にもフォアグラウンドオプションがありそれをつけることで解決。</p>
+
+<p>ついでに書いたrunスクリプトを貼っておく。</p>
+
+<p><div><script src='https://gist.github.com/670631b4bd8e6751ffdc.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<h2>update</h2>
+
+<p><code>revision:a80b1a7209</code>あたりからREADMEがマークダウンに対応したのでgitprepをアップデートした。ドキュメントを見る限り、そのまま置き換えたりアップデートしても大丈夫そうなのでそうした。</p>
+
+<pre><code>$ git pull
+</code></pre>
+
+<p>するとやはり特に不自由なくgitprepが最新になった。</p>
+
+<p>しかし、これでさらに捗るぞと思って改めてブラウザからリポジトリにアクセスしたらエラーが出てしまった。こういうときはログを見るに限る。</p>
+
+<pre><code>$ less GITPREPDIR/log/production.log
+</code></pre>
+
+<p>もちろん<code>tail -f</code>でもいいけど、ともかくログをみると<code>Text::Markdown</code>モジュールが無くて死んでるっぽいので再度<code>./setup.sh</code>を動かすことに。
+しかしなんだか謎のエラーを吐いてモジュールがインストールできない。もちろんインストール先は必ずしも<code>extlib</code>以下じゃなくてもいいんだけど、ここまで来たらうまいことまとめたい。
+そこで#installの項にも書いたけど<code>carton install</code>してそれを<code>mv</code>することで解決した。</p>
+
+<h2>Basic Auth</h2>
+
+<p>GitPrepを導入した理由に、プライベートで決められた人だけに公開できるgitリポジトリが欲しいっていうのがあったので認証をかけたかったんだけど、このGitPrep、サインインなどのシステムはあるもののリポジトリそのものを見えなくしたり、cloneを防いだりする機構は現在無いみたい。</p>
+
+<p>そこで<code>nginx</code><sup id='fnref:4'><a href='#fn:4' rel='footnote'>4</a></sup>側でベーシック認証をかけることにした。</p>
+
+<p><div><script src='https://gist.github.com/d4fd11c829066925bfb9.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>基本的には</p>
+
+<pre><code>auth_basic "hoge";
+auth_basic_user_file "/path/to/file";
+</code></pre>
+
+<p>を書くだけでnginxではベーシック認証がかかるみたい。だもんで</p>
+
+<pre><code>$ mkdir -p /usr/local/nginx/htpasswd
+$ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
+</code></pre>
+
+<p>とでもして、上gistの中のでのファイルパスに指定するだけ。</p>
+
+<p>nginxのconfの書き方自体は適当にググって欲しい。とりあえず自分はprefixを<code>/usr/local/nginx</code>にしてたり、<code>general.conf</code>に共通設定をまとめたりしてる。
+あと当然gitprepはリバースプロキシで動いてるからその設定が最下部のブロックになる。</p>
+
+<h2>以上</h2>
+
+<p>つらつらとGitPrep導入にあたって何をしたか書いてみたけど思ったより長くなってしまった。
+あまり調べずに結構適当に書いてしまったので、もしかしたらもっとうまい方法やそもそもやり方がおかしい部分もあるかもしれない。</p>
+
+<p>実際他にもよくわかってないところや不具合なんかもあるんだけど、それはまた別にまとめるとする。</p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p>perlでモジュールを任意の場所にインストール・使用するモジュール。<a href="http://gihyo.jp/dev/serial/01/modern-perl/0018">参考URL</a>
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p>perlでwebアプリごとにモジュールをインストール・管理するモジュール。<a href="http://blog.64p.org/entry/2013/08/06/112350">参考URL</a>
+  <a href='#fnref:2' rev='footnote'>↩</a></p>
+</li><li id='fn:3'><p>perl自体を簡単にインストール・管理するツール。<a href="http://blog.papix.net/entry/2013/01/21/210327">参考URL</a>
+  <a href='#fnref:3' rev='footnote'>↩</a></p>
+</li><li id='fn:4'><p>webサーバ。なんかモダンだってことで最近はApacheより使うかも。<a href="http://nginx.org/ja/">参考URL</a>
+<a href='#fnref:4' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[git clone --recursive便利]]></title>
