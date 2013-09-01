@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: emacs | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/emacs/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-09-01T17:09:25+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress使ってブログはじめた]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/"/>
+    <updated>2013-09-01T17:02:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/01/start-octopress</id>
+    <content type="html"><![CDATA[<p>そういえばだけどOctopressを使ってブログを書き始めた。</p>
+
+<p>前にもブログを書いてたこともあるし、mixiちゃんとやってたころなんかは毎日日記を書いてた。けど最近はブログを続けてられなかった。</p>
+
+<p>なんでか考えてみたら、多分文章を書くことのハードルが高いのが良くないんだと気付いた。</p>
+
+<p>例えば、前のブログは管理画面からHTMLを書くことで記事を投稿する一般的なものだったけど、正直管理画面へアクセスするのもだるければ、HTMLタグを打つのもだるい。</p>
+
+<p>もちろん、マークダウンとかで書いたのを変換してから貼り付けても良いんだけど、なんとなくやっぱり手間だ。
+その点OctopressはEmacsを使って文章をかけるし、記法もマークダウン。記事の投稿もコマンドラインからできるからなんか良い。</p>
+
+<p>あと、思ったのは「良いものを書こう」とするとダメ。<br/>
+適当にそのとき感じたことや、やったことの忘備録程度にすれば手軽に投稿できて良いと思う。</p>
+
+<p>そういうわけで実験的に文体も「です・ます」体でなくかなり適当な感じでやってみてる。</p>
+
+<h3>内容</h3>
+
+<p>技術的なものを中心にそのとき思ったことを書く。</p>
+
+<p>twitterじゃ文字足りないなくらいなときに適当に書く。<br/>
+twitterってのは結構良いんだけど、アレのせいで世の中の文章書く人が減ったと思う。</p>
+
+<h2>目標</h2>
+
+<p>別にホッテントリとか無くていいから、ちゃんと続けて、誰か（後の自分含め）に有用な記事を残せればと思う。</p>
+]]></content>
+  </entry>
+  
+</feed>
