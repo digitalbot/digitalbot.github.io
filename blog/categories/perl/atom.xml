@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perl | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-01T17:09:25+09:00</updated>
+  <updated>2013-09-01T18:29:21+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -26,6 +26,9 @@
 <p>ちなみに、GitPrepはPerl製GitHubクローンで、この記事は<strong>Perl</strong>や<strong>local::lib</strong><sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、<strong>Carton</strong><sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>、<strong>Plenv</strong><sup id='fnref:3'><a href='#fn:3' rel='footnote'>3</a></sup>などが大体わかってる前提で書いてる。でもわからなくても雰囲気でなんとかなる。</p>
 
 <p>あ、ちなみに作業環境としては<strong>CentOS6.3</strong>になる。perlはplenvで個別に入れた<strong>perl5.18</strong>。</p>
+
+<!-- more -->
+
 
 <h2>install</h2>
 
