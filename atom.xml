@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-01T18:33:47+09:00</updated>
+  <updated>2013-09-01T19:00:07+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacsユーザが実践Vimを読んでを読んで]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/01/tb-intro-vim/"/>
+    <updated>2013-09-01T18:54:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/01/tb-intro-vim</id>
+    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/syohex/20130901/1378018638">Emacsユーザが「実践Vim」を読んだ感想(http://d.hatena.ne.jp/syohex/20130901/1378018638)</a></p>
+
+<p>自分もまさににわかEmacsユーザであり（id:syohexさんは全然にわかじゃなくすごい人と思う）、最近Vimの設定も始めたから共感するところあった。すこし感化されたので実践Vimも買おうと思うし、EmacsもVimももうちょっと頑張って使おうと思う。</p>
+
+<p>ただVimスクリプトはなんとなく書いててあんまり気持ち良くない気がする。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress使ってブログはじめた]]></title>
