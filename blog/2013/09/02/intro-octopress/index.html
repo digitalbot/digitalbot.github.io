@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Octopress使ってブログはじめた - About Digital</title>
+  <title>Octopressのインストール - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="そういえばだけどOctopressを使ってブログを書き始めた。 前にもブログを書いてたこともあるし、mixiちゃんとやってたころなんかは毎日日記を書いてた。けど最近はブログを続けてられなかった。 なんでか考えてみたら、多分文章を書くことのハードルが高いのが良くないんだと気付いた。 例えば、 &hellip;">
-  <meta name="keywords" content="octopressblog">
+  <meta name="description" content="先のエントリの通り、Octopressを導入したので導入時に何をしたか、どこにハマったかを残しておこうと思う。 このOctopress + GitHub Pagesを使ってのブログ開設ってのは技術的にはもう1、2年前のトレンドっぽいし、最近ではむしろオレオレBlogの実装とかがトレンドっぽいけど1 &hellip;">
+  <meta name="keywords" content="octopressgitgithubrake">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -97,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">Octopress使ってブログはじめた</h1>
+        <h1 class="entry-title">Octopressのインストール</h1>
       
     
     
@@ -114,7 +114,7 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-09-01T17:02:00+09:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
+<time datetime="2013-09-02T21:00:00+09:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -123,32 +123,130 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>そういえばだけどOctopressを使ってブログを書き始めた。</p>
+<div class="entry-content"><p><a href="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/">先のエントリ</a>の通り、Octopressを導入したので導入時に何をしたか、どこにハマったかを残しておこうと思う。</p>
 
-<p>前にもブログを書いてたこともあるし、mixiちゃんとやってたころなんかは毎日日記を書いてた。けど最近はブログを続けてられなかった。</p>
+<!-- more -->
 
-<p>なんでか考えてみたら、多分文章を書くことのハードルが高いのが良くないんだと気付いた。</p>
 
-<p>例えば、前のブログは管理画面からHTMLを書くことで記事を投稿する一般的なものだったけど、正直管理画面へアクセスするのもだるければ、HTMLタグを打つのもだるい。</p>
+<p>このOctopress + GitHub Pagesを使ってのブログ開設ってのは技術的にはもう1、2年前のトレンドっぽいし、最近ではむしろオレオレBlogの実装とかがトレンドっぽいけど<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、まぁでもともかく<strong>ruby</strong>にも触れてみたかったし、リッチさとシンプルさのバランスから今回はOctopress + GitHub Pagesを採用することにした。</p>
 
-<p>もちろん、マークダウンとかで書いたのを変換してから貼り付けても良いんだけど、なんとなくやっぱり手間だ。
-その点OctopressはEmacsを使って文章をかけるし、記法もマークダウン。記事の投稿もコマンドラインからできるからなんか良い。</p>
+<h2>INSTALL</h2>
 
-<p>あと、思ったのは「良いものを書こう」とするとダメ。<br/>
-適当にそのとき感じたことや、やったことの忘備録程度にすれば手軽に投稿できて良いと思う。</p>
+<ul>
+<li><a href="http://octopress.org/">公式サイト</a></li>
+</ul>
 
-<p>そういうわけで実験的に文体も「です・ます」体でなくかなり適当な感じでやってみてる。</p>
 
-<h3>内容</h3>
+<p>インストールは公式の<a href="http://octopress.org/doc/setup/">setupページ</a>を見れば大体問題ないと思うし、なんだったら日本語の解説記事<sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>もいろいろあるのでそちらを参考にすれば良いと思う。</p>
 
-<p>技術的なものを中心にそのとき思ったことを書く。</p>
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+</code></pre>
 
-<p>twitterじゃ文字足りないなくらいなときに適当に書く。<br/>
-twitterってのは結構良いんだけど、アレのせいで世の中の文章書く人が減ったと思う。</p>
+<p>基本的には上コマンドを打って、後にモジュールを入れていくだけ。</p>
 
-<h2>目標</h2>
+<p>ただ、一点注意するポイントがあって、<strong>ruby</strong>のバージョンが1.9.3じゃなければいけないことと、<strong>rbenv</strong>で1.9.3を入れててもなんだか</p>
 
-<p>別にホッテントリとか無くていいから、ちゃんと続けて、誰か（後の自分含め）に有用な記事を残せればと思う。</p>
+<pre><code>rbenv: version `1.9.3' is not installed
+</code></pre>
+
+<p>とか言われてセットアップをすすめることができないこと。</p>
+
+<p>これはおそらくrbenvで管理してるrubyのバージョンが、パッチ番号まで含めたものになってるからだと思う。試しにホームディレクトリかどっかで<code>rbenv versions</code>するとこうなる</p>
+
+<pre><code>$ rbenv versions
+  system
+  1.9.3-p448
+* 2.0.0-p247 (set by /Users/kosuke/.anyenv/envs/rbenv/version)
+</code></pre>
+
+<p><code>global</code>は<em>2.0.0-p247</em>を使うことになってるし、<em>1.9.3</em>も<strong>1.9.3-p448</strong>がしっかり入っているので、octopressのディレクトリの<code>.ruby-version</code>がしっかりしていれば特に問題なくセットアップを進めることができるはずだ。んで、試しにその.ruby-versionを見てみるとこうなっていた。</p>
+
+<pre><code>$ cat OCTOPRESSDIR/.ruby-version
+1.9.3
+</code></pre>
+
+<p>これはもしやと思い</p>
+
+<pre><code>$ echo "1.9.3-p448" &gt; OCTOPRESSDIR/.ruby-version
+</code></pre>
+
+<p>とすると無事先のエラーが消えセットアップを進めることができるようになった。なんだかrbenvのエラーが出てハマってるって人はパッチ番号まで含めた.ruby-versionを改めて作ると良いかもしれない。</p>
+
+<p>まぁともかくrbenvの問題を乗り切ればあとは公式の手順通りにに<code>cd octopress</code>した後に</p>
+
+<pre><code>$ gem install bundler #さっきはここでversionについてエラーが出てた
+$ rbenv rehash
+$ bundle install
+$ bundle update
+</code></pre>
+
+<p>すればオーケー。</p>
+
+<p><strong>ここで大事なのが</strong>、この時点で（<code>rake install</code>する前に）</p>
+
+<pre><code>$ git add .
+$ git commit -m "init ok"
+</code></pre>
+
+<p>とでもしてしっかり現状を記録しておくこと。何故なら、後にテーマを変えたり色々プラグインを入れたりしたときに、わけがわからなくなって初期状態に戻したくなることが絶対にあるから。以後、テーマを入れたりプラグインを入れたりするときはブランチを切って気に入ったらマージするなどの作業をすることをお勧めする。</p>
+
+<p>コミットをしたらとりあえず</p>
+
+<pre><code>$ rake install
+</code></pre>
+
+<p>すれば準備は万端になるし</p>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<p>すれば <a href="http://localhost:4000/">http://localhost:4000/</a> にサーバが立ち上がり初期設定のブログのプレビューが見れるはず。</p>
+
+<h4>Directory_watcherの問題</h4>
+
+<ul>
+<li><a href="http://blog.satooshi.jp/blog/2013/04/09/octopress-preview-never-stop-auto-regeneration/">Octopressでpreviewしていたらregeneration: 1 files changedが終わらない場合の対処方法</a></li>
+</ul>
+
+
+<p>ここにあるとおり、Octopressは<code>rake preview</code>でプレビューが見れるのはいいんだけど、なんだかファイル監視システムの不具合でCPU使用率がとんでもないことになってしまうバグが有る。なので<code>Gemfile</code>の中でdirectory_watcherのバージョンを明示してあげよう。</p>
+
+<pre><code>gem "directory_watcher", "~&gt; 1.4.1"
+</code></pre>
+
+<p>こうして再度<code>bundle update</code>すればこの問題は解決されるはず。</p>
+
+<h2>おわりに</h2>
+
+<p>あとは他のブログで色々と解説されている通り<code>rake setup_github_pages</code>したり、<code>rake new_post["hoge"]</code>するなりなんなりでブログを書いていけば良いと思う。他にも紹介すべきポイントやgistのズレの問題について書くことはあるんだけど、今回はとりあえずインストールまで書いてみた。</p>
+
+<p>以上。</p>
+
+<p>※ なお、参考に上げたページなどは大変有用だが一部間違った情報などもあるので注意が必要</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><p><a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">GitHub pages + Octopressの導入</a></p></li>
+<li><p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a></p></li>
+</ul>
+
+
+<hr />
+
+<div class="footnotes">
+    <ol>
+        <li id='fn:1'><p>例えばPerlでは<a href="http://songmu.github.io/p5-Riji/blog/">riji</a>など。
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p><a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/</a>
+<a href='#fnref:2' rev='footnote'>↩</a></p>
+</li>
+    </ol>
+</div>
+
+
+
 </div>
 
 
@@ -171,13 +269,13 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
   
 
 
-<time datetime="2013-09-01T17:02:00+09:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
+<time datetime="2013-09-02T21:00:00+09:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2013</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/etc/'>Etc</a>
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -187,7 +285,7 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/blog/'>blog</a>, <a class='tag' href='/blog/tags/emacs/'>emacs</a>, <a class='tag' href='/blog/tags/octopress/'>octopress</a>, <a class='tag' href='/blog/tags/twitter/'>twitter</a>
+    <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/github/'>github</a>, <a class='tag' href='/blog/tags/octopress/'>octopress</a>, <a class='tag' href='/blog/tags/rbenv/'>rbenv</a>, <a class='tag' href='/blog/tags/ruby/'>ruby</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>
   
 </span>
 
@@ -196,7 +294,7 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/" >Tweet</a>
   
   
   
@@ -207,10 +305,8 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/08/31/gitprep-intro/" title="Previous Post: GitPrep導入してみた">&laquo; GitPrep導入してみた</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/09/01/tb-intro-vim/" title="Previous Post: Emacsユーザが実践Vimを読んでを読んで">&laquo; Emacsユーザが実践Vimを読んでを読んで</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/09/01/tb-intro-vim/" title="Next Post: Emacsユーザが実践Vimを読んでを読んで">Emacsユーザが実践Vimを読んでを読んで &raquo;</a>
       
     </p>
   
@@ -219,9 +315,15 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
 <div style="margin-left:30px;">
 <ul>
 
-<li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
+<li><a href="/blog/2013/09/01/start-octopress/">Octopress使ってブログはじめた</a></li>
 
-<li><a href="/blog/2013/09/01/tb-intro-vim/">Emacsユーザが実践Vimを読んでを読んで</a></li>
+<li><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></li>
+
+<li><a href="/blog/2013/08/31/git-clone-recursive/">git clone --recursive便利</a></li>
+
+<li><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></li>
+
+<li><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></li>
 
 </ul>
 </div>
@@ -336,8 +438,8 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/01/start-octopress/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/01/start-octopress/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-02T19:09:29+09:00</updated>
+  <updated>2013-09-02T21:06:33+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,136 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressのインストール]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/02/intro-octopress/"/>
+    <updated>2013-09-02T21:00:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/02/intro-octopress</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/">先のエントリ</a>の通り、Octopressを導入したので導入時に何をしたか、どこにハマったかを残しておこうと思う。</p>
+
+<!-- more -->
+
+
+<p>このOctopress + GitHub Pagesを使ってのブログ開設ってのは技術的にはもう1、2年前のトレンドっぽいし、最近ではむしろオレオレBlogの実装とかがトレンドっぽいけど<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、まぁでもともかく<strong>ruby</strong>にも触れてみたかったし、リッチさとシンプルさのバランスから今回はOctopress + GitHub Pagesを採用することにした。</p>
+
+<h2>INSTALL</h2>
+
+<ul>
+<li><a href="http://octopress.org/">公式サイト</a></li>
+</ul>
+
+
+<p>インストールは公式の<a href="http://octopress.org/doc/setup/">setupページ</a>を見れば大体問題ないと思うし、なんだったら日本語の解説記事<sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>もいろいろあるのでそちらを参考にすれば良いと思う。</p>
+
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+</code></pre>
+
+<p>基本的には上コマンドを打って、後にモジュールを入れていくだけ。</p>
+
+<p>ただ、一点注意するポイントがあって、<strong>ruby</strong>のバージョンが1.9.3じゃなければいけないことと、<strong>rbenv</strong>で1.9.3を入れててもなんだか</p>
+
+<pre><code>rbenv: version `1.9.3' is not installed
+</code></pre>
+
+<p>とか言われてセットアップをすすめることができないこと。</p>
+
+<p>これはおそらくrbenvで管理してるrubyのバージョンが、パッチ番号まで含めたものになってるからだと思う。試しにホームディレクトリかどっかで<code>rbenv versions</code>するとこうなる</p>
+
+<pre><code>$ rbenv versions
+  system
+  1.9.3-p448
+* 2.0.0-p247 (set by /Users/kosuke/.anyenv/envs/rbenv/version)
+</code></pre>
+
+<p><code>global</code>は<em>2.0.0-p247</em>を使うことになってるし、<em>1.9.3</em>も<strong>1.9.3-p448</strong>がしっかり入っているので、octopressのディレクトリの<code>.ruby-version</code>がしっかりしていれば特に問題なくセットアップを進めることができるはずだ。んで、試しにその.ruby-versionを見てみるとこうなっていた。</p>
+
+<pre><code>$ cat OCTOPRESSDIR/.ruby-version
+1.9.3
+</code></pre>
+
+<p>これはもしやと思い</p>
+
+<pre><code>$ echo "1.9.3-p448" &gt; OCTOPRESSDIR/.ruby-version
+</code></pre>
+
+<p>とすると無事先のエラーが消えセットアップを進めることができるようになった。なんだかrbenvのエラーが出てハマってるって人はパッチ番号まで含めた.ruby-versionを改めて作ると良いかもしれない。</p>
+
+<p>まぁともかくrbenvの問題を乗り切ればあとは公式の手順通りにに<code>cd octopress</code>した後に</p>
+
+<pre><code>$ gem install bundler #さっきはここでversionについてエラーが出てた
+$ rbenv rehash
+$ bundle install
+$ bundle update
+</code></pre>
+
+<p>すればオーケー。</p>
+
+<p><strong>ここで大事なのが</strong>、この時点で（<code>rake install</code>する前に）</p>
+
+<pre><code>$ git add .
+$ git commit -m "init ok"
+</code></pre>
+
+<p>とでもしてしっかり現状を記録しておくこと。何故なら、後にテーマを変えたり色々プラグインを入れたりしたときに、わけがわからなくなって初期状態に戻したくなることが絶対にあるから。以後、テーマを入れたりプラグインを入れたりするときはブランチを切って気に入ったらマージするなどの作業をすることをお勧めする。</p>
+
+<p>コミットをしたらとりあえず</p>
+
+<pre><code>$ rake install
+</code></pre>
+
+<p>すれば準備は万端になるし</p>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<p>すれば <a href="http://localhost:4000/">http://localhost:4000/</a> にサーバが立ち上がり初期設定のブログのプレビューが見れるはず。</p>
+
+<h4>Directory_watcherの問題</h4>
+
+<ul>
+<li><a href="http://blog.satooshi.jp/blog/2013/04/09/octopress-preview-never-stop-auto-regeneration/">Octopressでpreviewしていたらregeneration: 1 files changedが終わらない場合の対処方法</a></li>
+</ul>
+
+
+<p>ここにあるとおり、Octopressは<code>rake preview</code>でプレビューが見れるのはいいんだけど、なんだかファイル監視システムの不具合でCPU使用率がとんでもないことになってしまうバグが有る。なので<code>Gemfile</code>の中でdirectory_watcherのバージョンを明示してあげよう。</p>
+
+<pre><code>gem "directory_watcher", "~&gt; 1.4.1"
+</code></pre>
+
+<p>こうして再度<code>bundle update</code>すればこの問題は解決されるはず。</p>
+
+<h2>おわりに</h2>
+
+<p>あとは他のブログで色々と解説されている通り<code>rake setup_github_pages</code>したり、<code>rake new_post["hoge"]</code>するなりなんなりでブログを書いていけば良いと思う。他にも紹介すべきポイントやgistのズレの問題について書くことはあるんだけど、今回はとりあえずインストールまで書いてみた。</p>
+
+<p>以上。</p>
+
+<p>※ なお、参考に上げたページなどは大変有用だが一部間違った情報などもあるので注意が必要</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><p><a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">GitHub pages + Octopressの導入</a></p></li>
+<li><p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a></p></li>
+</ul>
+
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p>例えばPerlでは<a href="http://songmu.github.io/p5-Riji/blog/">riji</a>など。
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p><a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/</a>
+<a href='#fnref:2' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacsユーザが実践Vimを読んでを読んで]]></title>
@@ -204,40 +334,6 @@ $ git submodule update
 <p>もう一個運用してるほうのサーバではpdns使ってる。<br/>
 これも日本語の情報がそんな多くはないから最初大変だった。<br/>
 時間があれば記事にしたい。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[.inputrcの便利設定]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/"/>
-    <updated>2013-08-30T13:21:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc</id>
-    <content type="html"><![CDATA[<p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
-けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
-少しの設定だけど少し便利になったので公開してみる。</p>
-
-<p><div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
-
-<h2>おすすめ</h2>
-
-<p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>なんかは便利だと思う。</p>
-
-<p>それにしたって、BashやZshのモダンな設定とかはあるのに、2013現在のモダンなinputrcの設定や拡張が現れないのはなんでだろう。みんなZshいじってるからそれで満足なのかな。</p>
-
-<h4>参考</h4>
-
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc</a></p>
 ]]></content>
   </entry>
   
