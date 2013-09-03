@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: twitter | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/twitter/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-03T18:23:08+09:00</updated>
+  <updated>2013-09-03T18:32:59+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -48,7 +48,7 @@
 
 <h3>自分のpostへのリンク</h3>
 
-<p>これは上記サイトで紹介されている<strong>post_url.rb</strong>が404になっていて困った。んで<strong>post_url octopress</strong>なんかでググったらそれっぽいリポジトリが見つかって導入してみるもうまく動かなかったので結局あきらめた。検索結果を見ると外国人が「動かないぜ！」っていくつか悲鳴を上げてるエントリも見つけた。</p>
+<p>これは上記サイトで紹介されている<strong>post_url.rb</strong>が404になっていて困った。んで<strong>post_url octopress</strong>なんかでググったらそれっぽいリポジトリが見つかって導入してみるもうまく動かなかったので結局あきらめた。検索結果を見ると外国人が「動かないぜ！」っていくつか悲鳴を上げてるエントリも見つけた。まぁ別になくてもそんなに困らない気もしてるから良いや。</p>
 
 <h3>見出し目次の追加</h3>
 
@@ -87,14 +87,14 @@ related_posts_limit: 5
 </ul>
 
 
-<p>はんかはあんまり興味なかったのでいじらなかった。しかも<code>favicon</code>は入れたテーマ<code>darkstripe</code>で勝手に設定された。</p>
+<p>なんかはあんまり興味なかったのでいじらなかった。しかも<code>favicon</code>は入れたテーマ<code>darkstripe</code>で勝手に設定された。</p>
 
 <ul>
 <li>テンプレート変更</li>
 </ul>
 
 
-<p>なんかも重要なんだけど、これは後述する。</p>
+<p>これなんかも重要なんだけど、これは後述する。</p>
 
 <h2>タグとカテゴリ</h2>
 
@@ -147,7 +147,7 @@ related_posts_limit: 5
 </span><span class='line'>{% endif %}
 </span><span class='line'>&lt;/code>&lt;/pre>
 </span><span class='line'>
-</span><span class='line'>&lt;p>  {% endif %}
+</span><span class='line'>&lt;p>  {% endif %}   # here!!
 </span><span class='line'>&lt;/footer>
 </span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
