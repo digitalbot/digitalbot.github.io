@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: twitter | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/twitter/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-03T18:32:59+09:00</updated>
+  <updated>2013-09-03T18:52:53+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -159,12 +159,12 @@ related_posts_limit: 5
 
 <p>んで<strong>後述する</strong>って上で書いたけど、Rakefileの中でこのタグとカテゴリについてなどを新しいポストを生成するとき書きやすくする。</p>
 
-<p><div><script src='https://gist.github.com/5372744.js'></script>
+<p><div><script src='https://gist.github.com/6421832.js'></script>
 <script type="text/javascript">$("td.line-numbers").remove();</script>
 <noscript><pre><code></code></pre></noscript></div>
 </p>
 
-<p>これは<a href="https://github.com/rcmdnk">@rcmdnk</a>さんのgistだけど、自分も大体こんな感じになってる。感謝。</p>
+<p><a href="https://github.com/rcmdnk">@rcmdnk</a>さんの<a href="https://gist.github.com/rcmdnk/5372744">gist</a>も見て自分なりにやると良いと思う。</p>
 
 <h2>gistの表示バグ</h2>
 
