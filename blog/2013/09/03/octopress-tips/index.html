@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopressのカスタマイズ - About Digital</title>
+  <meta name="author" content="digital_bot">
+
+  
+  <meta name="description" content="Octopress、ただ単に入れただけじゃ物足りないので、当然いろいろ設定をいじったり、プラグインを入れたりした。 3rd Party Settings デフォルトで拡張できる3rd Party Settingsでは Github repositories
+Twitter
+Google &hellip;">
+  <meta name="keywords" content="octopress">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="About Digital" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>
+<script language="javaScript">
+$(document).ready( function () {
+   $("a[href^='http']:not([href*='" + location.hostname + "'])").attr('target', '_blank');
+})
+</script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-43655184-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">db</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">About Digital</a></h1>
+  
+    <h2>i wanna be a bot...</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.digital-bot.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Octopressのカスタマイズ</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-03T17:03:00+09:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Octopress、ただ単に入れただけじゃ物足りないので、当然いろいろ設定をいじったり、プラグインを入れたりした。</p>
+
+<h2>3rd Party Settings</h2>
+
+<p>デフォルトで拡張できる3rd Party Settingsでは</p>
+
+<ul>
+<li><p>Github repositories</p></li>
+<li><p>Twitter</p></li>
+<li><p>Google Analytics</p></li>
+<li><p>DISQUS</p></li>
+</ul>
+
+
+<p>を設定した。特にGoogle AnalyticsとDISQUSは新しくアカウントを取らなきゃいけないから面倒だと最初は思ったんだけど、アカウントとったら一瞬で設定できたから<strong>すごい！</strong>と思った。</p>
+
+<!-- more -->
+
+
+<h2>プラグインなど</h2>
+
+<ul>
+<li><a href="http://rcmdnk.github.io/blog/2013/03/23/octopress/">Octopress Tips</a></li>
+</ul>
+
+
+<p>基本的にはこのサイトに書いてあることをそのまま実行すれば良い感じになる。けどここのサイト、とても詳しくて良いんだけど、現状いくつかうまくいかない部分があったのでハマったところを書き残しておく。</p>
+
+<h3>自分のpostへのリンク</h3>
+
+<p>これは上記サイトで紹介されている<strong>post_url.rb</strong>が404になっていて困った。んで<strong>post_url octopress</strong>なんかでググったらそれっぽいリポジトリが見つかって導入してみるもうまく動かなかったので結局あきらめた。検索結果を見ると外国人が「動かないぜ！」っていくつか悲鳴を上げてるエントリも見つけた。</p>
+
+<h3>見出し目次の追加</h3>
+
+<p>これもなんだかうまく動かなかった。日本語を使わないと確かにうまくいったんだけど、<a href="https://github.com/Kinvey/jekyll/commit/21325ce2b71ad138be66748b8df7290dd3438ba4">ココ</a>の通りにやってもなんかダメだったので結局これも諦めた。というか見出し目次使わないって気付いた。</p>
+
+<h3>footnote</h3>
+
+<p>これはうまくいった。ただ、上記サイトでは<code>footnote.rb</code>だけ<code>plugins/</code>に入れれば良いっぽい書き方してるけど、<a href="https://github.com/fcy/footnote-octopress">作者のGitHub</a>では<code>footnote.js</code>と<code>_footnote.scss</code>もちゃんと配置しろって書いてあるから注意が必要。このfootnoteも便利なんだけど、ぶっちゃけポップアップはスタイルによっては綺麗に見えないし、indexで複数の記事が出てるときにポップアップさせると、その記事のじゃないノートが表示されちゃうから微妙っちゃ微妙。</p>
+
+<h3>関連記事</h3>
+
+<p>これは上記サイト通りにやると自分の環境ではだめだった。何がダメだったかというと、<code>_config.yml</code>に</p>
+
+<pre><code># Related post
+related_posts: true
+related_posts_limit: 5
+</code></pre>
+
+<p>を<strong>書き足してはいけなかった</strong>。これを書き足すと出なくて、なんかおかしいなと思ってこの記述を消したら関連記事が出るようになった。</p>
+
+<p>他の</p>
+
+<ul>
+<li><p>table</p></li>
+<li><p>markdownの拡張子</p></li>
+<li><p>タグクラウド</p></li>
+</ul>
+
+
+<p>に関しては問題なく設定できて、</p>
+
+<ul>
+<li><p>favicon</p></li>
+<li><p>404</p></li>
+<li><p>画像の挿入</p></li>
+</ul>
+
+
+<p>はんかはあんまり興味なかったのでいじらなかった。しかも<code>favicon</code>は入れたテーマ<code>darkstripe</code>で勝手に設定された。</p>
+
+<ul>
+<li>テンプレート変更</li>
+</ul>
+
+
+<p>なんかも重要なんだけど、これは後述する。</p>
+
+<h2>タグとカテゴリ</h2>
+
+<p>&ndash;<a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグの運用</a></p>
+
+<p>またこのサイトにある通り、タグとカテゴリの運用を分けた。これもまたこのブログのとおりにやれば動くはず。けど、<strong>注意点があって</strong>、<code>archive_post.html</code>にミスがあるのと、テーマによっては<code>post.html</code>のなかで<code>include post/tags.html</code>するとタイトルと被ってスタイルが崩れることがあるのでそこはうまくやる必要がある。<code>archive_post.html</code>は正しくは下記になる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% capture category %}{{ post.categories | size }}{% endcapture %}
+</span><span class='line'>{% capture tag %}{{ post.tags | size }}{% endcapture %}
+</span><span class='line'>&lt;h1>&lt;a href="{{ root_url }}{{ post.url }}">{{post.title}}&lt;/a>&lt;/h1>
+</span><span class='line'>&lt;time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date | date: "&lt;span class='month'>%b&lt;/span> &lt;span class='day'>%d&lt;/span> &lt;span class='year'>%Y&lt;/span>"}}&lt;/time>
+</span><span class='line'>{% if category != '0' || if tag != '0' %}
+</span><span class='line'>&lt;footer>
+</span><span class='line'>  {% if category != '0' %}
+</span><span class='line'>  &lt;span class="categories">Posted in {{ post.categories | category_links }}&lt;/span>
+</span><span class='line'>  {% endif %}
+</span><span class='line'>  {% if tag != '0' %}
+</span><span class='line'>    {% if category != '0' %}
+</span><span class='line'>    &lt;span class="tags">, tagged as {{ post.tags | tag_links }}&lt;/span>
+</span><span class='line'>    {% else %}
+</span><span class='line'>    &lt;span class="tags">Tagged as {{ post.tags | tag_links }}&lt;/span>
+</span><span class='line'>    {% endif %}
+</span><span class='line'>  {% endif %}
+</span><span class='line'>&lt;/footer>
+</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>具体的にリンク元と何が違うかというと、<code>if tag != '0'</code>に対応する<code>endif</code>を追加しただけ。でもこれがないと普通にエラーになるので注意が必要。</p>
+
+<p><code>post/tags.html</code>と<code>post/categories.html</code>をどこでインクルードするかは多分人それぞれだと思う。自分は記事下にだけ置くことにした。</p>
+
+<h4>Rakefile</h4>
+
+<p>んで<strong>後述する</strong>って上で書いたけど、Rakefileの中でこのタグとカテゴリについてなどを新しいポストを生成するとき書きやすくする。</p>
+
+<div><script src='https://gist.github.com/5372744.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>これは<a href="https://github.com/rcmdnk">@rcmdnk</a>さんのgistだけど、自分も大体こんな感じになってる。感謝。</p>
+
+<h2>gistの表示バグ</h2>
+
+<p>なんだか<a href="http://octopress.org/docs/plugins/gist-tag/">公式サイト</a>みてもわかると思うんだけど、gistの表示がずれる(2013/09/03現在)。</p>
+
+<p><img src="/images/gistbug.png" alt="ずれる" /></p>
+
+<p>これを回避する決定的な手段てのは未だに無いっぽくて、</p>
+
+<ul>
+<li><a href="http://rcmdnk.github.io/blog/2013/05/06/blog-octopress/">OctopressのGist表示の調整</a></li>
+</ul>
+
+
+<p>にも回避策はあるんだけど、使ってるテーマのせいか手元の環境ではうまくいかなかった。そこでもうちょっとググったら、解決策っていうかまぁマシになるんじゃね的なのを見つけた。</p>
+
+<ul>
+<li><a href="http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/">Fixing Gist Embeds in Octopress</a></li>
+</ul>
+
+
+<p>ここにあるコードを参考にgistのズレを少しだけ改善してみた。具体的には<code>plugins/git_tag.rb</code>の<code>html_output_for</code>メソッドを</p>
+
+<pre><code>def html_output_for(script_url, code)
+  code = CGI.escapeHTML code
+  &lt;&lt;-HTML
+&lt;div&gt;&lt;script src='#{script_url}'&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;$("td.line-numbers").remove();&lt;/script&gt;
+&lt;noscript&gt;&lt;pre&gt;&lt;code&gt;#{code}&lt;/code&gt;&lt;/pre&gt;&lt;/noscript&gt;&lt;/div&gt;
+  HTML
+end
+</code></pre>
+
+<p>こう書き換える。ポイントは下記。JSで無理やりって感じ。</p>
+
+<pre><code>&lt;script type="text/javascript"&gt;$("td.line-numbers").remove();&lt;/script&gt;
+</code></pre>
+
+<p>元記事では他にも<code>.gist-file</code>とかいろいろとってるけど、結局<code>td.line-numbers</code>だけに落ち着いた。そんで<code>sass/custom/_style.scss</code>に下記を付け足す。</p>
+
+<pre><code>.gist-file {
+  font-size:.8em !important;
+}
+
+table.lines{
+  width: 100%;
+}
+</code></pre>
+
+<p><code>footnote</code>を導入してたらこの記述の上に<code>@import "footnote";</code>があると思う。</p>
+
+<p>これでまぁそこそこ納得できる表示になったと思う。</p>
+
+<h2>CNAMEの設定</h2>
+
+<ul>
+<li><a href="http://blog.glidenote.com/blog/2011/12/20/how-to-use-custom-domain-on-github-pages/">GitHub PagesでCustom Domainwを利用する</a></li>
+</ul>
+
+
+<p>この通りに。やはり反映にやや時間がかかるのと<a href="http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/">この記事</a>の通り、油断してはいけないということ。</p>
+
+<h2>おわりに</h2>
+
+<p>基本的にハマったところを中心にOctopressのカスタマイズを振り返ってみた。詳しい設定方法は紹介したブログを見て欲しい。先人たちに感謝。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">digital_bot</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-03T17:03:00+09:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  Tagged as&nbsp
+  
+    <a class='tag' href='/blog/tags/disqus/'>disqus</a>, <a class='tag' href='/blog/tags/github/'>github</a>, <a class='tag' href='/blog/tags/octopress/'>octopress</a>, <a class='tag' href='/blog/tags/ruby/'>ruby</a>, <a class='tag' href='/blog/tags/twitter/'>twitter</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/09/02/intro-octopress/" title="Previous Post: Octopressのインストール">&laquo; Octopressのインストール</a>
+      
+      
+    </p>
+  
+    <div class="related_posts">
+<h2>Related Posts...</h2>
+<div style="margin-left:30px;">
+<ul>
+
+<li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
+
+<li><a href="/blog/2013/09/01/start-octopress/">Octopress使ってブログはじめた</a></li>
+
+</ul>
+</div>
+</div>
+
+  
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p><a href="https://twitter.com/kskexit">@kskexit</a></p>
+  <dl>
+    <dt>with&#8230;</dt>
+    <dd>emacs/c/objc/perl/mac/unix/vim</dd>
+  </dl>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/03/octopress-tips/">Octopressのカスタマイズ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/01/tb-intro-vim/">Emacsユーザが実践Vimを読んでを読んで</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/01/start-octopress/">Octopress使ってブログはじめた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/etc/'>Etc (1)</a></li><li><a href='/blog/categories/git/'>Git (3)</a></li><li><a href='/blog/categories/perl/'>Perl (1)</a></li><li><a href='/blog/categories/tech/'>Tech (7)</a></li><li><a href='/blog/categories/test/'>test (1)</a></li></ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/tags/bash' style='font-size: 112.0%'>bash(1)</a> <a href='/blog/tags/blog' style='font-size: 112.0%'>blog(1)</a> <a href='/blog/tags/daemontools' style='font-size: 112.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 112.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 112.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 124.0%'>emacs(2)</a> <a href='/blog/tags/git' style='font-size: 136.0%'>git(3)</a> <a href='/blog/tags/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/tags/gitprep' style='font-size: 112.0%'>gitprep(1)</a> <a href='/blog/tags/nginx' style='font-size: 112.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/tags/octpress' style='font-size: 112.0%'>octpress(1)</a> <a href='/blog/tags/perl' style='font-size: 112.0%'>perl(1)</a> <a href='/blog/tags/rbenv' style='font-size: 112.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 124.0%'>ruby(2)</a> <a href='/blog/tags/shell' style='font-size: 136.0%'>shell(3)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(1)</a> <a href='/blog/tags/trackback' style='font-size: 112.0%'>trackback(1)</a> <a href='/blog/tags/twitter' style='font-size: 124.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(5)</a> <a href='/blog/tags/useful' style='font-size: 136.0%'>useful(3)</a> <a href='/blog/tags/vim' style='font-size: 112.0%'>vim(1)</a> <a href='/blog/tags/vps' style='font-size: 112.0%'>vps(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/digitalbot">@digitalbot</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'digitalbot',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - digital_bot -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'aboutdigital';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
