@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: ruby | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/ruby/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-03T18:52:53+09:00</updated>
+  <updated>2013-09-03T19:07:45+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -230,6 +230,8 @@ table.lines{
 <h2>おわりに</h2>
 
 <p>基本的にハマったところを中心にOctopressのカスタマイズを振り返ってみた。詳しい設定方法は紹介したブログを見て欲しい。先人たちに感謝。</p>
+
+<p>ちなみにひとつ言えるのは、新しいプラグインなりテーマを入れるときは、後々混乱するから絶対に細かく<strong>ブランチを切る</strong>か、<strong>コミット</strong>して変更する前の状態に戻せるようにしたほうが良い。</p>
 ]]></content>
   </entry>
   
