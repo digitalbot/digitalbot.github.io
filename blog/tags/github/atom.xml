@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: github | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/github/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-03T19:45:48+09:00</updated>
+  <updated>2013-09-04T00:59:43+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mountain Lionにjuliusをhomebrewで入れる]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/04/install-julius/"/>
+    <updated>2013-09-04T00:24:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/04/install-julius</id>
+    <content type="html"><![CDATA[<p>音声認識ソフトである<a href="http://julius.sourceforge.jp/index.php">julius</a>をMBAにインストールした。バージョンとしては2013年9月4日現在最新のjulius4.2.3になる。</p>
+
+<!-- more -->
+
+
+<p>環境によってたまにハマる場合もあるみたいだけど、基本的にはMacOS 10.8でMountain Lionの場合は</p>
+
+<ul>
+<li><p>PortAudio入れる</p></li>
+<li><p>Julius入れる(<code>--with-mictype=portaudio</code>する)</p></li>
+<li><p>DictationKit入れる</p></li>
+</ul>
+
+
+<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
+
+<h2>INSTALL</h2>
+
+<p>んで、さっそくインストールしていくわけなんだけど、なんだか手順説明するのもおっくうだし、自分でも毎回同じ手順踏むの面倒なので<strong>Homebrew</strong>の<a href="https://github.com/digitalbot/homebrew-acoust/blob/master/julius.rb">Formula</a>にした。</p>
+
+<pre><code>$ brew tap digitalbot/homebrew-acoust
+$ brew install julius
+</code></pre>
+
+<p>で<code>--univarsal</code>な<code>portaudio</code>も先に入れてくれるし、肝心の<code>julius</code>コマンドがインストールされない問題も解決してくれるパッチも書いて入れた。</p>
+
+<h2>juliusコマンドがインストールされない件</h2>
+
+<pre><code>- if (j_adin_init(recog) == FALSE) return;
++ if (j_adin_init(recog) == FALSE) return 0;
+</code></pre>
+
+<p>パッチを見てもらえればわかると思うけど、おそらくmountain lionのデフォルトコンパイラ(llvm-gccだっけ？)が<code>return;</code>で返す値をうまく解釈してくれてないんじゃないかと思う。詳しくはこれから追うけど、ともかくこのパッチを当てると<code>/usr/local/Cellar/julius/4.2.3/bin</code>以下に<code>julius</code>コマンドが入るし、homebrewがうまく<code>/usr/local/bin</code>にシンボリックリンク貼ってくれる。</p>
+
+<h2>終わりに</h2>
+
+<p>今回はじめて<code>homebrew tap</code>を作ったし、<code>Formula</code>も書いた。簡単だったけど良い勉強になった。</p>
+
+<p>juliusは色々と情報が回っててそれぞれがそれぞれのコンパイルオプションやらパッチ当ててる感じあるけど、最低限動く感じだったら今回紹介したもので必要十分だと思う。ちなみに今回迷ったんだけど、DictationKitはhomebrewでのインストールを見送ったので自分で<a href="http://sourceforge.jp/projects/julius/downloads/59050/dictation-kit-v4.2.3.tar.gz/">ダウンロード</a>してきて使って欲しい。使用法はDictationKitのディレクトリで(というかfast.jconfを引数で指定して)juliusを実行するだけ。</p>
+
+<pre><code>$ cd dictation-kit-v4.2.3
+$ julius -C fast.jconf -charconv EUC-JP UTF-8
+</code></pre>
+
+<p>何かあったら絶賛プルリクエスト受付中なのでどうぞ。homebrew-acoustでは今後も音響関係のformulaを作っていければなぁと思っている。</p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopressのカスタマイズ]]></title>
