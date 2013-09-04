@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: perl | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T01:05:01+09:00</updated>
+  <updated>2013-09-04T09:41:03+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -23,7 +23,7 @@
 <p>正直総合力で見てはGithubには劣るけど、逆にあそこまで大掛かりじゃなくシンプルなものが欲しい人にとっては向いてると思う。
 けどまぁ最近出来たてのプロダクトってこともあっていくつかはまったことがあるのでここに書いておく。</p>
 
-<p>ちなみに、GitPrepはPerl製GitHubクローンで、この記事は<strong>Perl</strong>や<strong>local::lib</strong><sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、<strong>Carton</strong><sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>、<strong>Plenv</strong><sup id='fnref:3'><a href='#fn:3' rel='footnote'>3</a></sup>などが大体わかってる前提で書いてる。でもわからなくても雰囲気でなんとかなる。</p>
+<p>ちなみに、GitPrepはPerl製GitHubクローンで、この記事は<strong>Perl</strong>や<strong>local::lib</strong>{% footnote_ref 1 %}、<strong>Carton</strong>{% footnote_ref 2 %}、<strong>Plenv</strong>{% footnote_ref 3 %}などが大体わかってる前提で書いてる。でもわからなくても雰囲気でなんとかなる。</p>
 
 <p>あ、ちなみに作業環境としては<strong>CentOS6.3</strong>になる。perlはplenvで個別に入れた<strong>perl5.18</strong>。</p>
 
@@ -66,10 +66,7 @@ $ mv GITPREPDIR/local/lib/perl5 GITPREPDIR/extlib/lib/
 
 <p>ついでに書いたrunスクリプトを貼っておく。</p>
 
-<p><div><script src='https://gist.github.com/670631b4bd8e6751ffdc.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
+<p>{% gist 670631b4bd8e6751ffdc %}</p>
 
 <h2>update</h2>
 
@@ -93,12 +90,9 @@ $ mv GITPREPDIR/local/lib/perl5 GITPREPDIR/extlib/lib/
 
 <p>GitPrepを導入した理由に、プライベートで決められた人だけに公開できるgitリポジトリが欲しいっていうのがあったので認証をかけたかったんだけど、このGitPrep、サインインなどのシステムはあるもののリポジトリそのものを見えなくしたり、cloneを防いだりする機構は現在無いみたい。</p>
 
-<p>そこで<code>nginx</code><sup id='fnref:4'><a href='#fn:4' rel='footnote'>4</a></sup>側でベーシック認証をかけることにした。</p>
+<p>そこで<code>nginx</code>{% footnote_ref 4 %}側でベーシック認証をかけることにした。</p>
 
-<p><div><script src='https://gist.github.com/d4fd11c829066925bfb9.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
+<p>{% gist d4fd11c829066925bfb9 %}</p>
 
 <p>基本的には</p>
 
@@ -126,20 +120,12 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p>perlでモジュールを任意の場所にインストール・使用するモジュール。<a href="http://gihyo.jp/dev/serial/01/modern-perl/0018">参考URL</a>
-  <a href='#fnref:1' rev='footnote'>↩</a></p>
-</li><li id='fn:2'><p>perlでwebアプリごとにモジュールをインストール・管理するモジュール。<a href="http://blog.64p.org/entry/2013/08/06/112350">参考URL</a>
-  <a href='#fnref:2' rev='footnote'>↩</a></p>
-</li><li id='fn:3'><p>perl自体を簡単にインストール・管理するツール。<a href="http://blog.papix.net/entry/2013/01/21/210327">参考URL</a>
-  <a href='#fnref:3' rev='footnote'>↩</a></p>
-</li><li id='fn:4'><p>webサーバ。なんかモダンだってことで最近はApacheより使うかも。<a href="http://nginx.org/ja/">参考URL</a>
-<a href='#fnref:4' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+  {% fn %}perlでモジュールを任意の場所にインストール・使用するモジュール。<a href="http://gihyo.jp/dev/serial/01/modern-perl/0018">参考URL</a>
+  {% fn %}perlでwebアプリごとにモジュールをインストール・管理するモジュール。<a href="http://blog.64p.org/entry/2013/08/06/112350">参考URL</a>
+  {% fn %}perl自体を簡単にインストール・管理するツール。<a href="http://blog.papix.net/entry/2013/01/21/210327">参考URL</a>
+  {% fn %}webサーバ。なんかモダンだってことで最近はApacheより使うかも。<a href="http://nginx.org/ja/">参考URL</a>
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   

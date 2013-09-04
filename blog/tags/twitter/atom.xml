@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: twitter | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/twitter/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T01:05:01+09:00</updated>
+  <updated>2013-09-04T09:41:03+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -102,54 +102,34 @@ related_posts_limit: 5
 
 <p>またこのサイトにある通り、タグとカテゴリの運用を分けた。これもまたこのブログのとおりにやれば動くはず。けど、<strong>注意点があって</strong>、<code>archive_post.html</code>にミスがあるのと、テーマによっては<code>post.html</code>のなかで<code>include post/tags.html</code>するとタイトルと被ってスタイルが崩れることがあるのでそこはうまくやる必要がある。<code>archive_post.html</code>は正しくは下記になる。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{% capture category %}{{ post.categories | size }}{% endcapture %}
-</span><span class='line'>{% capture tag %}{{ post.tags | size }}{% endcapture %}&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&lt;a href="{{ root_url }}{{ post.url }}">{{post.title}}&lt;/a>&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&lt;time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date | date: &ldquo;&lt;span class='month'>%b&lt;/span> &lt;span class='day'>%d&lt;/span> &lt;span class='year'>%Y&lt;/span>&rdquo;}}&lt;/time>
-</span><span class='line'>{% if category != &lsquo;0&rsquo; || if tag != &lsquo;0&rsquo; %}
-</span><span class='line'>&lt;footer>
-</span><span class='line'>  {% if category != &lsquo;0&rsquo; %}
-</span><span class='line'>  &lt;span class="categories">Posted in {{ post.categories | category_links }}&lt;/span>
-</span><span class='line'>  {% endif %}
-</span><span class='line'>  {% if tag != &lsquo;0&rsquo; %}&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>{% if category != '0' %}
-</span><span class='line'>&lt;span class="tags"&gt;, tagged as {{ post.tags | tag_links }}&lt;/span&gt;
-</span><span class='line'>{% else %}
-</span><span class='line'>&lt;span class="tags"&gt;Tagged as {{ post.tags | tag_links }}&lt;/span&gt;
-</span><span class='line'>{% endif %}
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  {% endif %}   # here!!
-</span><span class='line'>&lt;/footer>
-</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+{% raw %}
+{% capture category %}{{ post.categories | size }}{% endcapture %}
+{% capture tag %}{{ post.tags | size }}{% endcapture %}</p>
+
+<h1><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h1>
+
+
+<p><time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date | date: &ldquo;<span class='month'>%b</span> <span class='day'>%d</span> <span class='year'>%Y</span>&rdquo;}}</time>
+{% if category != &lsquo;0&rsquo; || if tag != &lsquo;0&rsquo; %}
+<footer>
+  {% if category != &lsquo;0&rsquo; %}
+  <span class="categories">Posted in {{ post.categories | category_links }}</span>
+  {% endif %}
+  {% if tag != &lsquo;0&rsquo; %}</p>
+
+<pre><code>{% if category != '0' %}
+&lt;span class="tags"&gt;, tagged as {{ post.tags | tag_links }}&lt;/span&gt;
+{% else %}
+&lt;span class="tags"&gt;Tagged as {{ post.tags | tag_links }}&lt;/span&gt;
+{% endif %}
+</code></pre>
+
+<p>  {% endif %}   # here!!
+</footer>
+{% endif %}
+{% endraw %}
+{% endcodeblock %}</p>
 
 <p>具体的にリンク元と何が違うかというと、<code>if tag != '0'</code>に対応する<code>endif</code>を追加しただけ。でもこれがないと普通にエラーになるので注意が必要。</p>
 
@@ -159,10 +139,7 @@ related_posts_limit: 5
 
 <p>んで<strong>後述する</strong>って上で書いたけど、Rakefileの中でこのタグとカテゴリについてなどを新しいポストを生成するとき書きやすくする。</p>
 
-<p><div><script src='https://gist.github.com/6421832.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
+<p>{% gist 6421832 %}</p>
 
 <p><a href="https://github.com/rcmdnk">@rcmdnk</a>さんの<a href="https://gist.github.com/rcmdnk/5372744">gist</a>も見て自分なりにやると良いと思う。</p>
 

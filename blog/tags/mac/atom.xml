@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mac | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mac/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T01:05:01+09:00</updated>
+  <updated>2013-09-04T09:41:03+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -32,7 +32,7 @@
 </ul>
 
 
-<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
+<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。そこらへんの話は前のブログ{% footnote_ref1 %}で書いた。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
 
 <h2>INSTALL</h2>
 
@@ -50,7 +50,7 @@ $ brew install julius
 + if (j_adin_init(recog) == FALSE) return 0;
 </code></pre>
 
-<p>パッチを見てもらえればわかると思うけど、おそらくmountain lionのデフォルトコンパイラ(llvm-gccだっけ？)が<code>return;</code>で返す値をうまく解釈してくれてないんじゃないかと思う。詳しくはこれから追うけど、ともかくこのパッチを当てると<code>/usr/local/Cellar/julius/4.2.3/bin</code>以下に<code>julius</code>コマンドが入るし、homebrewがうまく<code>/usr/local/bin</code>にシンボリックリンク貼ってくれる。</p>
+<p>パッチを見てもらえればわかると思うけど、おそらくmountain lionのデフォルトコンパイラ(llvm-gccだっけ？)が<code>return;</code>で返す値をうまく解釈してくれてないんじゃないかと思う。詳しくはこれから追うけど、ともかくこのパッチを当てると<code>/usr/local/Cellar/julius/4.2.3/bin</code>以下に<code>julius</code>コマンドが入るし、homebrewがうまく<code>/usr/local/bin</code>にシンボリックリンク貼ってくれる。多分このパッチ当てなくても<code>gcc</code>を<code>homebrew-versions</code>で別途入れて使うように指定したらうまくいく気もする。</p>
 
 <h2>終わりに</h2>
 
@@ -66,14 +66,11 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+  {% fn %}<a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
+  {% fn %}<a href="http://qiita.com/ikesato/items/ffe1eff8440a995065fe">音声認識 Julius 4.2.3 + Mac OSX Mountain Lion 10.8.4 でビルドする方法</a>
+  {% fn %}[HomebrewでOSXに音声解析エンジンJuliusを入れる][<a href="http://qiita.com/o_ame/items/1236b91b15d077e03525">http://qiita.com/o_ame/items/1236b91b15d077e03525</a>]
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   
