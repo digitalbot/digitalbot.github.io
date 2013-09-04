@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T16:10:05+09:00</updated>
+  <updated>2013-09-05T01:01:13+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs trampを使った多段リモートファイル操作]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp/"/>
+    <updated>2013-09-05T00:03:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp</id>
+    <content type="html"><![CDATA[<p>Emacsでは<code>tramp</code>という、リモートのファイルやディレクトリをあたかもローカルにあるように扱うことができる拡張が標準で備えられてる。</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/hideden/20090108/1231395529">emacs + trampで多段SSHで接続したサーバー上のファイルを直接編集する時のメモ</a></li>
+</ul>
+
+
+<p>これは少し過去の情報だが、基本的にはこの通りだし、多段ssh、なかでもsudoを途中で挟む多段sshについて言及されているのでとても良い記事だと思う。そこで、自分への忘備録も兼ねて、使い方や補足をしたいと思う。ちなみに、環境としてはCocoaEmacs v24.3を想定しているが、Emacs v23以降だったら大体変わらないと思う。</p>
+
+<!-- more -->
+
+
+<h2>HOW TO USE</h2>
+
+<p>最初から入ってるので<code>.emacs</code>に</p>
+
+<pre><code>(require 'tramp)
+(setq tramp-default-method "ssh")
+</code></pre>
+
+<p>するだけ。あとはホントに<code>C-xC-f</code> <code>/user@hoge.com:~/fuga.txt</code>とかすると使える。<code>anything</code>や<code>helm</code>とも連携することができるし、<code>recentf</code>の設定にもよるけどパスを打つこと無く履歴から開くこともできる。ただ、<code>helm</code>越しだと現状いくつか問題があるので注意が必要(<code>helm-for-files</code>でエラーが起きたり、tramp上現在ディレクトリをソースに含めると重くなる)。</p>
+
+<p>注意点は普通<code>find-file</code>(<code>C-xC-f</code>)したときって、プロンプトが<code>~/</code>ってなってると思うんだけど、これを<code>/</code>にした上でサーバ名を書き始めること。最初の何もわかってなかった頃これを間違えて悩んでたときあった。</p>
+
+<p>で、しかもtrampはしっかりと<code>~/.ssh/config</code>まで読んでくれてるようなので、実は特別な設定をしないでも<code>~/.ssh/config</code>の方で設定が済んでいればホスト名などを省略して書くことができる。素晴らしい。</p>
+
+<h2>多段ssh</h2>
+
+<p>多段sshも<code>~/.ssh/config</code>の設定がしてあれば難なくできるはずだけど、個人的に一つ重宝している機能があって、sshの途中で<code>sudo</code>を挟めることがとても良い。以下にサンプルをのせてみる。</p>
+
+<div><script src='https://gist.github.com/6438514.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p><code>tramp-default-proxies-alist</code>に<code>("host" "user" "method")</code>を設定してtrampを実行した場合、<strong>method</strong>で記述した方法で一旦接続した後に<strong>user@host</strong>に接続を行う<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。これを利用して一段目のサーバで<code>sudo</code>して<em>root</em>として二段目のサーバにログインできているのがポイント高い。</p>
+
+<p>んでこの二段目のサーバに入るときにプロンプトからパスワードを要求されるので一段目でsudoするときのパスを入力すれば一気に三段目でも四段目でもファイルやディレクトリを開くことができる。</p>
+
+<h2>おわりに</h2>
+
+<p>このEmacsのtrampがあるからCocoaEmacsを使ってると行っても過言ではない。<code>perl-completion.el</code>や<code>key-combo.el</code>などの一部のelispと相性が悪いのが難点だけど、大変便利に使ってる。</p>
+
+<hr />
+
+<div class="footnotes">
+    <ol>
+        <li id='fn:1'><p><a href="http://dukeiizu.blogspot.jp/2011/05/emacs-tramp-sudo.html">emacs TRAMP で、リモート・サーバを sudo で接続する</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+    </ol>
+</div>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mountain Lionにjuliusをhomebrewで入れる]]></title>
