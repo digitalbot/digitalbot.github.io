@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: test | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/test/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T09:41:03+09:00</updated>
+  <updated>2013-09-04T16:04:42+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -53,11 +53,16 @@
 <h1>日本語</h1>
 
 <p>日本語はかけるかな
-{% footnote_ref 1 %}</p>
+<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
 
-<p>{% footnotes %}
-  {% fn %} これでどうだ
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p> これでどうだ
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: rbenv | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/rbenv/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-04T09:41:03+09:00</updated>
+  <updated>2013-09-04T16:04:42+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -23,7 +23,7 @@
 <!-- more -->
 
 
-<p>このOctopress + GitHub Pagesを使ってのブログ開設ってのは技術的にはもう1、2年前のトレンドっぽいし、最近ではむしろオレオレBlogの実装とかがトレンドっぽいけど{% footnote_ref 1 %}、まぁでもともかく<strong>ruby</strong>にも触れてみたかったし、リッチさとシンプルさのバランスから今回はOctopress + GitHub Pagesを採用することにした。</p>
+<p>このOctopress + GitHub Pagesを使ってのブログ開設ってのは技術的にはもう1、2年前のトレンドっぽいし、最近ではむしろオレオレBlogの実装とかがトレンドっぽいけど<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、まぁでもともかく<strong>ruby</strong>にも触れてみたかったし、リッチさとシンプルさのバランスから今回はOctopress + GitHub Pagesを採用することにした。</p>
 
 <h2>INSTALL</h2>
 
@@ -32,7 +32,7 @@
 </ul>
 
 
-<p>インストールは公式の<a href="http://octopress.org/doc/setup/">setupページ</a>を見れば大体問題ないと思うし、なんだったら日本語の解説記事{% footnote_ref 2 %}もいろいろあるのでそちらを参考にすれば良いと思う。</p>
+<p>インストールは公式の<a href="http://octopress.org/doc/setup/">setupページ</a>を見れば大体問題ないと思うし、なんだったら日本語の解説記事<sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>もいろいろあるのでそちらを参考にすれば良いと思う。</p>
 
 <pre><code>$ git clone git://github.com/imathis/octopress.git octopress
 $ cd octopress
@@ -130,10 +130,16 @@ $ git commit -m "init ok"
 
 <hr />
 
-<p>{% footnotes %}
-  {% fn %}例えばPerlでは<a href="http://songmu.github.io/p5-Riji/blog/">riji</a>など。
-  {% fn %}<a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/</a>
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p>例えばPerlでは<a href="http://songmu.github.io/p5-Riji/blog/">riji</a>など。
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p><a href="http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/">http://rcmdnk.github.io/blog/2013/03/07/setup-octopress/</a>
+<a href='#fnref:2' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   
