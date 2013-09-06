@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-05T01:01:13+09:00</updated>
+  <updated>2013-09-07T02:36:46+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AnythingからHelmに移行できない]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/"/>
+    <updated>2013-09-07T02:30:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm</id>
+    <content type="html"><![CDATA[<p><code>Anything</code>から<code>Helm</code>に移行できない。わざわざ移行する必要も確かに無いんだけど、移行できるもんなら移行したいってもん。だけど、Anythingだと快適に使えるEmacsも、Helmに切り替えるとどうにも使い勝手が悪くなる。</p>
+
+<p>自分は<strong>Mac OS 10.8 mountain lion</strong>と<strong>Mac OS 10.6 snow leopard</strong>の環境で同じ<strong>CocoaEmacs</strong>・同じ<strong>.emacs</strong>を使ってるんだけど、Anythingだと両方のマシンで問題なく動くのに、Helmだとsnow leopardで動かないってことがあって割と困ってる。しかも、そもそもどちらの環境でもうまく動かないHelmの機能もいくつかあってさらに困ってる。</p>
+
+<p>だからHelmのほうはブランチを切って(当然.emacsは<code>git</code>管理してる。ちなみにCentOS上のgitolite)ちょくちょく修正を加えては試して、ダメだからmasterにもどってAnythingを使ってって感じになってる。具体的には</p>
+
+<ul>
+<li><p><code>helm-gtags</code>が意図通りの挙動をしない</p></li>
+<li><p><code>helm-show-kill-ring</code>の画面分割がおかしい</p>
+
+<ul>
+<li>しかも<code>popwin.el</code>に登録できない</li>
+</ul>
+</li>
+<li><p><code>helm-show-kill-ring</code>がsnow leopardで複数行を一行ずつと解釈する</p></li>
+<li><p><code>helm-for-files</code>で<code>tramp</code>使ってファイル開こうとすると落ちる</p></li>
+<li><p><code>tramp</code>使ってリモートに入ってるときにfile系helmの機能使うと、カレントディレクトリのソースを取ってくるのに手間取って固まる</p></li>
+</ul>
+
+
+<p>あたりが現状問題視しているもの。詳しい話(具体的な設定など)はまた次の機会に書くとして、あくまでメモとしてここにとりあえず書いとく。自分でも忘れちゃうから。</p>
+
+<p>そもそも、Helmが色々置き換え過ぎだし、デフォルトの挙動が色々ちょっときもいのもどうなのかなぁと思ってる。</p>
+
+<p>しかし、Anythingにも問題があって、いつからかregionがactiveなときに<code>anything-*</code>するとそのanythingバッファの中で<code>delete-backward-char</code>が出来なくなってしまってる。つまり、例えば仮にある範囲内の文字を置換したくて、範囲を選択した状態で<code>replace-string</code>すべく<code>M-x</code>してから<code>reprace</code>とかtypoしたのを<code>C-h</code>(に<code>delete-backward-char</code>をバインドしてる)で修正出来ない。まぁここらへんも別にまたまとめよう。</p>
+
+<h2>おわりに</h2>
+
+<p>まぁともかく今回は自分への忘備録として、色々ハマったときに参考にしたサイトでも上げておこうかと思う。こういう<strong>「**できない」</strong>って書いてあるだけのエントリは後にそれがどうなったかわからないし、解決策や問題が起きた具体例がないと何も進展しないってことで悪いとされてるみたいだけど、まぁ何書こうが良いだろう。</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><p><a href="http://www49.atwiki.jp/ntemacs/pages/32.html">http://www49.atwiki.jp/ntemacs/pages/32.html</a></p></li>
+<li><p><a href="http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97">http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97</a></p></li>
+<li><p><a href="http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html">http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html</a></p></li>
+<li><p><a href="https://github.com/emacs-helm/helm/issues/94">https://github.com/emacs-helm/helm/issues/94</a></p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs trampを使った多段リモートファイル操作]]></title>
@@ -514,20 +561,6 @@ $ git commit -m "init ok"
 	</ol>
 </div>
 </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacsユーザが実践Vimを読んでを読んで]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/01/tb-intro-vim/"/>
-    <updated>2013-09-01T18:54:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/01/tb-intro-vim</id>
-    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/syohex/20130901/1378018638">Emacsユーザが「実践Vim」を読んだ感想
-(http://d.hatena.ne.jp/syohex/20130901/1378018638)</a></p>
-
-<p>自分もまさににわかEmacsユーザであり（id:syohexさんは全然にわかじゃなくすごい人と思う）、最近Vimの設定も始めたから共感するところあった。すこし感化されたので実践Vimも買おうと思うし、EmacsもVimももうちょっと頑張って使おうと思う。</p>
-
-<p>ただVimスクリプトはなんとなく書いててあんまり気持ち良くない気がする。</p>
 ]]></content>
   </entry>
   

@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Emacs - About Digital</title>
+  <title>AnythingからHelmに移行できない - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="Category: Emacs">
-  
+  <meta name="description" content="AnythingからHelmに移行できない。わざわざ移行する必要も確かに無いんだけど、移行できるもんなら移行したいってもん。だけど、Anythingだと快適に使えるEmacsも、Helmに切り替えるとどうにも使い勝手が悪くなる。 自分はMac OS 10.8 mountain lionとMac &hellip;">
+  <meta name="keywords" content="emacshelmanything">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.comblog/categories/emacs/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -92,66 +92,175 @@ $(document).ready( function () {
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Emacs</h1>
+    
+      
+        <h1 class="entry-title">AnythingからHelmに移行できない</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-07T02:30:00+09:00" pubdate data-updated="true">Sep 7<span>th</span>, 2013</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p><code>Anything</code>から<code>Helm</code>に移行できない。わざわざ移行する必要も確かに無いんだけど、移行できるもんなら移行したいってもん。だけど、Anythingだと快適に使えるEmacsも、Helmに切り替えるとどうにも使い勝手が悪くなる。</p>
 
-  
-  <h2>2013</h2>
+<p>自分は<strong>Mac OS 10.8 mountain lion</strong>と<strong>Mac OS 10.6 snow leopard</strong>の環境で同じ<strong>CocoaEmacs</strong>・同じ<strong>.emacs</strong>を使ってるんだけど、Anythingだと両方のマシンで問題なく動くのに、Helmだとsnow leopardで動かないってことがあって割と困ってる。しかも、そもそもどちらの環境でもうまく動かないHelmの機能もいくつかあってさらに困ってる。</p>
 
-<article>
-  
+<p>だからHelmのほうはブランチを切って(当然.emacsは<code>git</code>管理してる。ちなみにCentOS上のgitolite)ちょくちょく修正を加えては試して、ダメだからmasterにもどってAnythingを使ってって感じになってる。具体的には</p>
 
-<h1><a href="/blog/2013/09/07/cant-use-helm/">AnythingからHelmに移行できない</a></h1>
-<time datetime="2013-09-07T02:30:00+09:00" pubdate><span class='month'>Sep</span> <span class='day'>07</span> <span class='year'>2013</span></time>
+<ul>
+<li><p><code>helm-gtags</code>が意図通りの挙動をしない</p></li>
+<li><p><code>helm-show-kill-ring</code>の画面分割がおかしい</p>
 
-<footer>
-  
-  <span class="categories">Posted in <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/tech/'>Tech</a></span>
-  
-  
-    
-    <span class="tags">, tagged as <a class='tag' href='/blog/tags/anything/'>anything</a>, <a class='tag' href='/blog/tags/emacs/'>emacs</a>, <a class='tag' href='/blog/tags/helm/'>helm</a>, <a class='tag' href='/blog/tags/mac/'>mac</a></span>
-    
-  
-</footer>
+<ul>
+<li>しかも<code>popwin.el</code>に登録できない</li>
+</ul>
+</li>
+<li><p><code>helm-show-kill-ring</code>がsnow leopardで複数行を一行ずつと解釈する</p></li>
+<li><p><code>helm-for-files</code>で<code>tramp</code>使ってファイル開こうとすると落ちる</p></li>
+<li><p><code>tramp</code>使ってリモートに入ってるときにfile系helmの機能使うと、カレントディレクトリのソースを取ってくるのに手間取って固まる</p></li>
+</ul>
 
 
-</article>
+<p>あたりが現状問題視しているもの。詳しい話(具体的な設定など)はまた次の機会に書くとして、あくまでメモとしてここにとりあえず書いとく。自分でも忘れちゃうから。</p>
 
+<p>そもそも、Helmが色々置き換え過ぎだし、デフォルトの挙動が色々ちょっときもいのもどうなのかなぁと思ってる。</p>
 
+<p>しかし、Anythingにも問題があって、いつからかregionがactiveなときに<code>anything-*</code>するとそのanythingバッファの中で<code>delete-backward-char</code>が出来なくなってしまってる。つまり、例えば仮にある範囲内の文字を置換したくて、範囲を選択した状態で<code>replace-string</code>すべく<code>M-x</code>してから<code>reprace</code>とかtypoしたのを<code>C-h</code>(に<code>delete-backward-char</code>をバインドしてる)で修正出来ない。まぁここらへんも別にまたまとめよう。</p>
 
-<article>
-  
+<h2>おわりに</h2>
 
-<h1><a href="/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a></h1>
-<time datetime="2013-09-05T00:03:00+09:00" pubdate><span class='month'>Sep</span> <span class='day'>05</span> <span class='year'>2013</span></time>
+<p>まぁともかく今回は自分への忘備録として、色々ハマったときに参考にしたサイトでも上げておこうかと思う。こういう<strong>「**できない」</strong>って書いてあるだけのエントリは後にそれがどうなったかわからないし、解決策や問題が起きた具体例がないと何も進展しないってことで悪いとされてるみたいだけど、まぁ何書こうが良いだろう。</p>
 
-<footer>
-  
-  <span class="categories">Posted in <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/tech/'>Tech</a></span>
-  
-  
-    
-    <span class="tags">, tagged as <a class='tag' href='/blog/tags/anything/'>anything</a>, <a class='tag' href='/blog/tags/emacs/'>emacs</a>, <a class='tag' href='/blog/tags/helm/'>helm</a>, <a class='tag' href='/blog/tags/ssh/'>ssh</a>, <a class='tag' href='/blog/tags/tramp/'>tramp</a>, <a class='tag' href='/blog/tags/unix/'>unix</a></span>
-    
-  
-</footer>
+<h4>参考</h4>
 
-
-</article>
+<ul>
+<li><p><a href="http://www49.atwiki.jp/ntemacs/pages/32.html">http://www49.atwiki.jp/ntemacs/pages/32.html</a></p></li>
+<li><p><a href="http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97">http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97</a></p></li>
+<li><p><a href="http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html">http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html</a></p></li>
+<li><p><a href="https://github.com/emacs-helm/helm/issues/94">https://github.com/emacs-helm/helm/issues/94</a></p></li>
+</ul>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">digital_bot</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-07T02:30:00+09:00" pubdate data-updated="true">Sep 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  Tagged as&nbsp
+  
+    <a class='tag' href='/blog/tags/anything/'>anything</a>, <a class='tag' href='/blog/tags/emacs/'>emacs</a>, <a class='tag' href='/blog/tags/helm/'>helm</a>, <a class='tag' href='/blog/tags/mac/'>mac</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/09/05/emacs-tramp/" title="Previous Post: Emacs trampを使った多段リモートファイル操作">&laquo; Emacs trampを使った多段リモートファイル操作</a>
+      
+      
+    </p>
+  
+    <div class="related_posts">
+<h2>Related Posts...</h2>
+<div style="margin-left:30px;">
+<ul>
+
+<li><a href="/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a></li>
+
+<li><a href="/blog/2013/09/04/install-julius/">Mountain Lionにjuliusをhomebrewで入れる</a></li>
+
+<li><a href="/blog/2013/09/01/tb-intro-vim/">Emacsユーザが実践Vimを読んでを読んで</a></li>
+
+<li><a href="/blog/2013/09/01/start-octopress/">Octopress使ってブログはじめた</a></li>
+
+</ul>
+</div>
+</div>
+
+  
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -251,7 +360,10 @@ $(document).ready( function () {
       var disqus_shortname = 'aboutdigital';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
