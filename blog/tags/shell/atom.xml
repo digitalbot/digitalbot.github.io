@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: shell | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/shell/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-07T02:40:59+09:00</updated>
+  <updated>2013-09-07T02:44:19+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -144,7 +144,7 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[git clone --recursive便利]]></title>
+    <title type="html"><![CDATA[git clone --recursive]]></title>
     <link href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/"/>
     <updated>2013-08-31T13:06:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive</id>
@@ -172,7 +172,11 @@ $ git submodule update
 
 <h4>参考</h4>
 
-<p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p>
+<ul>
+<li><p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p></li>
+<li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
+</ul>
+
 ]]></content>
   </entry>
   
