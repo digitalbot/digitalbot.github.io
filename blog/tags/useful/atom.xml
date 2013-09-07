@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: useful | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-08T03:40:03+09:00</updated>
+  <updated>2013-09-08T03:40:50+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -19,6 +19,9 @@
     <updated>2013-09-08T03:11:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask</id>
     <content type="html"><![CDATA[<p>どうやらMacのGUIアプリケーションまでも<code>homebrew</code>で管理をしようとしている人がいるらしい。確かに考えなくもなかったけど、本当に作った人がいるとは思わなかったし、うまいことhomebrewを拡張した感じで作ってると感じた。マックのアプリのパッケージ管理がこれで楽になればよいなぁと思う。バージョンの管理も。</p>
+
+<!-- more -->
+
 
 <h2>Git repo</h2>
 
