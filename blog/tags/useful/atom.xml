@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: useful | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-08T03:33:52+09:00</updated>
+  <updated>2013-09-08T03:40:03+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -44,7 +44,7 @@ $ brew install brew-cask
 
 <p>homebrew本体とは微妙に違ってるところがあって、homebrewでは<code>/usr/loca/Cellar</code>以下に実体をインストールしていくのに対し、homebrew-caskでインストールされたアプリケーションは、<code>Caskroom</code>というところに入る。これはデフォルトだと<code>/opt/homebrew-cask/Caskroom</code>で、最初のアプリをインストール時に<em>「ここにCaskroom作りたいんだけどパーミッションの関係で作れないからsudoパスワードを入力してくれ」</em>的なことを言われた。そして、このCaskroomから<code>~/Applications</code>にシンボリックリンクが貼られるみたい。もちろんこれもデフォルトの話で、</p>
 
-<pre><code>$ export HOMEBREW_CASK_OPTS= "--appdir=/Applications"
+<pre><code>$ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 </code></pre>
 
 <p>とか環境変数で変えられるみたい。<strong>update</strong>もどうやら<code>brew upgrade</code>で出来るみたいでココらへんは空気のような振る舞いをしてくれる。</p>
@@ -53,11 +53,16 @@ $ brew install brew-cask
 
 <ul>
 <li><p><code>~/Applications</code>に入るのはシンボリックリンクなので、ランチャー(少なくとも<code>QuickSilver</code>)で認識できない</p></li>
-<li><p><code>brew cask uninstall</code>時には<code>.plst</code>なども一緒に掃除してくれるのか(多分してくれない)</p></li>
+<li><p><code>brew cask uninstall</code>時には<code>*.plst</code>なども一緒に掃除してくれるのか(多分してくれない)</p>
+
+<ul>
+<li>そして確かにアンインストールはされるけど、<code>/opt/Caskroom</code>以下に空のそのアプリのディレクトリが残る</li>
+</ul>
+</li>
 </ul>
 
 
-<p>くらいかなぁ。今もともと入れてるアプリを置き換えるかどうかは少し迷うかな。ちょっといろいろ試してみようかと思う。</p>
+<p>くらいかなぁ。今もともと入れてるアプリを置き換えるかどうかは少し迷うかな。ちょっといろいろ試してみようかと思う。いずれにせよ、これをうまく使いこなせばマックブックを買い換えた時なんかに絶大な威力を発揮する気がする。</p>
 ]]></content>
   </entry>
   
