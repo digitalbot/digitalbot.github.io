@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-08T03:40:50+09:00</updated>
+  <updated>2013-09-08T12:35:35+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -41,7 +41,7 @@ $ brew install brew-cask
 <pre><code>$ brew cask install google-chrome
 </code></pre>
 
-<p>などとすると<code>~/Applications/"Google Chrome.app"</code>が生まれるという寸法らしい。全くもってお手軽。一々ダウンロードリンクを探すこともなければ、ドラッグアンドドロップも必要ない。しかも、<code>brew cask install</code>に複数のアプリ名を渡せば一括でインストールが可能。これは便利だと思う。良い。</p>
+<p>とかすると<code>~/Applications/"Google Chrome.app"</code>が生まれるという寸法らしい。すごいお手軽。一々ダウンロードリンクを探すこともなければ、ドラッグアンドドロップも必要ない。しかも、<code>brew cask install</code>に複数のアプリ名を渡せば一括でインストールが可能。これは便利だと思う。良い。</p>
 
 <h2>雑感</h2>
 
