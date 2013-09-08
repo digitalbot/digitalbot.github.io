@@ -160,7 +160,7 @@ $ brew install brew-cask
 
 <h2>雑感</h2>
 
-<p>homebrew本体とは微妙に違ってるところがあって、homebrewでは<code>/usr/loca/Cellar</code>以下に実体をインストールしていくのに対し、homebrew-caskでインストールされたアプリケーションは、<code>Caskroom</code>というところに入る。これはデフォルトだと<code>/opt/homebrew-cask/Caskroom</code>で、最初のアプリをインストール時に<em>「ここにCaskroom作りたいんだけどパーミッションの関係で作れないからsudoパスワードを入力してくれ」</em>的なことを言われた。そして、このCaskroomから<code>~/Applications</code>にシンボリックリンクが貼られるみたい。もちろんこれもデフォルトの話で、</p>
+<p>homebrew本体とは微妙に違ってるところがあって、homebrewでは<code>/usr/loca./Cellar</code>以下に実体をインストールしていくのに対し、homebrew-caskでインストールされたアプリケーションは、<code>Caskroom</code>というところに入る。これはデフォルトだと<code>/opt/homebrew-cask/Caskroom</code>で、最初のアプリをインストール時に<em>「ここにCaskroom作りたいんだけどパーミッションの関係で作れないからsudoパスワードを入力してくれ」</em>的なことを言われた。そして、このCaskroomから<code>~/Applications</code>にシンボリックリンクが貼られるみたい。もちろんこれもデフォルトの話で、</p>
 
 <pre><code>$ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 </code></pre>
@@ -174,7 +174,7 @@ $ brew install brew-cask
 <li><p><code>brew cask uninstall</code>時には<code>*.plst</code>なども一緒に掃除してくれるのか(多分してくれない)</p>
 
 <ul>
-<li>そして確かにアンインストールはされるけど、<code>/opt/Caskroom</code>以下に空のそのアプリのディレクトリが残る</li>
+<li>そして確かにアンインストールはされるけど、<code>/opt/homebrew-cask/Caskroom</code>以下に空のそのアプリのディレクトリが残る</li>
 </ul>
 </li>
 </ul>
