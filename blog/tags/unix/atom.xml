@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: unix | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/unix/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-11T01:05:08+09:00</updated>
+  <updated>2013-09-11T01:25:38+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.digital-bot.com/blog/2013/09/11/about-percol/"/>
     <updated>2013-09-11T01:03:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/09/11/about-percol</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/mooz/percol">percol</a>というコマンドラインを大変便利にしてくれるソフトウェアがあるのだけれど、これをインストールするときに少しハマった。percolはpython製のツールで、インストール方法は素直に<code>git clone</code>してきて<code>setup.py</code>を主導で叩くか、<code>pip install percol</code>するなどあるんだけど、なんだか毎回どうしようか迷う。というのも、あんまりpython製のアプリとして意識したくないから<code>/usr/local/bin</code>とかに入って欲しいんだけど、管理の簡単さなどから<code>pip</code>も捨てがたいよなぁってなるから。</p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/mooz/percol">percol</a>というコマンドラインを大変便利にしてくれるソフトウェアがあるのだけれど、これをインストールするときに少しハマった。percolはpython製のツールで、インストール方法は素直に<code>git clone</code>してきて<code>setup.py</code>を手で叩くか、<code>pip install percol</code>するなどあるんだけど、なんだか毎回どうしようか迷う。というのも、あんまりpython製のアプリとして意識したくないから<code>/usr/local/bin</code>とかに入って欲しいんだけど、管理の簡単さなどから<code>pip</code>も捨てがたいよなぁってなるから。</p>
 
 <p>んで、先日もMBAを新調したのでpercolを入れてたんだけど、どうにもインストールが出来ない。pythonに明るくないのでなんて言えばいいかわからないし先日のことなので詳しくは忘れたけど、ヘッダというかモジュールのパスが解決出来てないっぽくてmakeが出来ない状況になってた。</p>
 
