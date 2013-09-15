@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: useful | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-16T03:20:56+09:00</updated>
+  <updated>2013-09-16T03:34:36+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[複数PCでsshキーを共有する]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/"/>
+    <updated>2013-09-16T03:28:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/16/ssh-add</id>
+    <content type="html"><![CDATA[<p>色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなく<code>ssh-add</code>が必要<br/>
+PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回</p>
+
+<pre><code>enter passphrase for key
+</code></pre>
+
+<p>って聞いてきて鍵登録してる意味ないやん、って思いながらパスをポチポチ打ってた。</p>
+
+<p>けどどう考えても鍵コピーした手間に見合った効果得られてないしなんだか損してるって気付いたので重い腰を上げて設定してみた。<br/>
+調べたところ、PC Aではssh-keygenしたからssh-agentに登録されてるけど、PC Bでは鍵がssh-agentに登録されてないのが原因ぽいことがわかった。<br/>
+そこで</p>
+
+<pre><code>$ eval `ssh-agent`
+$ ssh-add [keyのパス（デフォルトは~/.ssh/id_rsaだと思う）]
+</code></pre>
+
+<p>することで鍵を登録した。<br/>
+これでいろいろ捗るようになった。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[多段sshの方法]]></title>
@@ -314,43 +340,6 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
 	</ol>
 </div>
 </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[git clone --recursive]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/"/>
-    <updated>2013-08-31T13:06:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive</id>
-    <content type="html"><![CDATA[<p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
-
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
-
-<p>すれば良いらしいことがわかった。</p>
-
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
-
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
-
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
-
-<h2>ちなみに</h2>
-
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p></li>
-<li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
-</ul>
-
 ]]></content>
   </entry>
   

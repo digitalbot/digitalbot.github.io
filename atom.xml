@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-16T03:20:56+09:00</updated>
+  <updated>2013-09-16T03:34:36+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[複数PCでsshキーを共有する]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/"/>
+    <updated>2013-09-16T03:28:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/16/ssh-add</id>
+    <content type="html"><![CDATA[<p>色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなく<code>ssh-add</code>が必要<br/>
+PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回</p>
+
+<pre><code>enter passphrase for key
+</code></pre>
+
+<p>って聞いてきて鍵登録してる意味ないやん、って思いながらパスをポチポチ打ってた。</p>
+
+<p>けどどう考えても鍵コピーした手間に見合った効果得られてないしなんだか損してるって気付いたので重い腰を上げて設定してみた。<br/>
+調べたところ、PC Aではssh-keygenしたからssh-agentに登録されてるけど、PC Bでは鍵がssh-agentに登録されてないのが原因ぽいことがわかった。<br/>
+そこで</p>
+
+<pre><code>$ eval `ssh-agent`
+$ ssh-add [keyのパス（デフォルトは~/.ssh/id_rsaだと思う）]
+</code></pre>
+
+<p>することで鍵を登録した。<br/>
+これでいろいろ捗るようになった。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[多段sshの方法]]></title>

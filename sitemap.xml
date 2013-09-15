@@ -10,7 +10,7 @@
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/</loc>
-        <lastmod>2013-08-31T18:45:35+09:00</lastmod>
+        <lastmod>2013-09-16T03:30:39+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/</loc>
@@ -50,7 +50,7 @@
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/</loc>
-        <lastmod>2013-09-16T03:20:40+09:00</lastmod>
+        <lastmod>2013-09-16T03:30:23+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/09/11/about-percol/</loc>
@@ -61,15 +61,19 @@
         <lastmod>2013-09-15T19:41:30+09:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.digital-bot.com/blog/2013/09/16/ssh-add/</loc>
+        <lastmod>2013-09-16T03:34:11+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.digital-bot.com/about/</loc>
         <lastmod>2013-08-31T19:14:09+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/archives/</loc>
-        <lastmod>2013-09-16T03:20:40+09:00</lastmod>
+        <lastmod>2013-09-16T03:34:11+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/</loc>
-        <lastmod>2013-09-16T03:20:40+09:00</lastmod>
+        <lastmod>2013-09-16T03:34:11+09:00</lastmod>
     </url>
 </urlset>

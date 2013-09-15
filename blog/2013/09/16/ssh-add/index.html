@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: nginx - About Digital</title>
+  <title>複数PCでsshキーを共有する - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="Tag: nginx">
-  
+  <meta name="description" content="色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなくssh-addが必要
+PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回 enter passphrase for key って聞いてきて鍵登録してる意味ないやん、 &hellip;">
+  <meta name="keywords" content="ssh">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.comblog/tags/nginx/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -92,44 +93,156 @@ $(document).ready( function () {
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: nginx</h1>
+    
+      
+        <h1 class="entry-title">複数PCでsshキーを共有する</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-16T03:28:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2013</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
+
+
+<div class="entry-content"><p>色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなく<code>ssh-add</code>が必要<br/>
+PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回</p>
+
+<pre><code>enter passphrase for key
+</code></pre>
+
+<p>って聞いてきて鍵登録してる意味ないやん、って思いながらパスをポチポチ打ってた。</p>
+
+<p>けどどう考えても鍵コピーした手間に見合った効果得られてないしなんだか損してるって気付いたので重い腰を上げて設定してみた。<br/>
+調べたところ、PC Aではssh-keygenしたからssh-agentに登録されてるけど、PC Bでは鍵がssh-agentに登録されてないのが原因ぽいことがわかった。<br/>
+そこで</p>
+
+<pre><code>$ eval `ssh-agent`
+$ ssh-add [keyのパス（デフォルトは~/.ssh/id_rsaだと思う）]
+</code></pre>
+
+<p>することで鍵を登録した。<br/>
+これでいろいろ捗るようになった。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <div id="blog-archives" class="tag">
+
+<span class="byline author vcard">Posted by <span class="fn">digital_bot</span></span>
+
+      
 
 
 
-  
-  <h2>2013</h2>
 
-<article>
+
+
+
+
   
 
-<h1><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></h1>
-<time datetime="2013-08-31T18:01:00+09:00" pubdate><span class='month'>Aug</span> <span class='day'>31</span> <span class='year'>2013</span></time>
 
-<footer>
+<time datetime="2013-09-16T03:28:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  Posted in&nbsp;
   
-  <span class="categories">Posted in <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a></span>
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
   
+</span>
+
+
+      
+
+<span class="tags">
+  Tagged as&nbsp
   
+    <a class='tag' href='/blog/tags/ssh/'>ssh</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+  
+</span>
+
+
+    </p>
     
-    <span class="tags">, tagged as <a class='tag' href='/blog/tags/daemontools/'>daemontools</a>, <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/gitprep/'>gitprep</a>, <a class='tag' href='/blog/tags/nginx/'>nginx</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>, <a class='tag' href='/blog/tags/shell/'>shell</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a></span>
-    
+      <div class="sharing">
   
-</footer>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/09/15/how-ssh/" title="Previous Post: 多段sshの方法">&laquo; 多段sshの方法</a>
+      
+      
+    </p>
+  
+    <div class="related_posts">
+<h2>Related Posts...</h2>
+<div style="margin-left:30px;">
+<ul>
 
-</article>
+<li><a href="/blog/2013/09/15/how-ssh/">多段sshの方法</a></li>
 
+<li><a href="/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a></li>
+
+<li><a href="/blog/2013/09/11/about-percol/">percolが便利だけど、入れるにはpython2系のほうが良さそう</a></li>
+
+<li><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></li>
+
+<li><a href="/blog/2013/08/31/git-clone-recursive/">git clone --recursive</a></li>
+
+</ul>
+</div>
 </div>
 
   
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -229,7 +342,10 @@ $(document).ready( function () {
       var disqus_shortname = 'aboutdigital';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/16/ssh-add/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/16/ssh-add/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
