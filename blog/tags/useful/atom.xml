@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: useful | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-16T03:34:36+09:00</updated>
+  <updated>2013-09-16T03:36:41+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -18,8 +18,9 @@
     <link href="http://blog.digital-bot.com/blog/2013/09/16/ssh-add/"/>
     <updated>2013-09-16T03:28:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/09/16/ssh-add</id>
-    <content type="html"><![CDATA[<p>色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなく<code>ssh-add</code>が必要<br/>
-PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回</p>
+    <content type="html"><![CDATA[<p>色んなPCでsshの鍵を共有している場合、単に鍵をコピーするだけでなく<code>ssh-add</code>が必要。</p>
+
+<p>PC Aでssh-keygenしたキーをPC Bにコピーして使ってたんだけど、毎回</p>
 
 <pre><code>enter passphrase for key
 </code></pre>
