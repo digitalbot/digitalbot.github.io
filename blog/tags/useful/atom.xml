@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: useful | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/useful/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-11T01:25:38+09:00</updated>
+  <updated>2013-09-15T19:48:00+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[多段sshの方法]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/15/how-ssh/"/>
+    <updated>2013-09-15T19:37:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/15/how-ssh</id>
+    <content type="html"><![CDATA[<p>多段sshをするのは知ってれば結構簡単で</p>
+
+<pre><code>[digitalbot@local]$ ssh -t FOO ssh BAR
+</code></pre>
+
+<p>と<code>-t</code>オプションを使うことでssh先で後続のコマンドを実行してくれるので<code>local --&gt; FOO --&gt; BAR</code>と多段sshしてくれる。</p>
+
+<h2>途中でsudoをはさむ</h2>
+
+<p>途中でsudoを挟んで三段sshするときなんかは少しやっかい。</p>
+
+<pre><code>local --&gt; FOO --&gt; BAR --&gt; BAZ
+</code></pre>
+
+<p>でFOOからBARにsshする際に<code>sudo ssh BAR</code>しなきゃいけないとき。
+つまりワンライナーじゃなく順番にログインしていくと下記みたいになるやつ。</p>
+
+<pre><code>[digitalbot@local]$ ssh FOO
+[digitalbot@FOO]$ sudo ssh BAR
+[root@BAR]$ ssh BAZ
+</code></pre>
+
+<p>これは</p>
+
+<pre><code>[digitalbot@local]$ ssh -t FOO /usr/bin/sudo ssh -t BAR ssh BAZ
+</code></pre>
+
+<p>で一足飛びに途中でsudoを挟んで多段sshできる。sudoじゃなくても、途中で文字コード変換を挟んだりする場合も同じ要領でできるはず。</p>
+
+<p>これはどの環境でもそうなのかよくわからないけど、<code>sudo</code>をフルパスで書かないと<code>ssh -t</code>で仮想ログインしたシェルでパスが通ってなくてエラーがでてしまったので注意が必要。</p>
+
+<h2>.ssh/configでの設定</h2>
+
+<p>当然.ssh/config内で設定しといたほうが楽なので設定したいところなんだけど、途中でsudoを挟む場合の書き方がイマイチよくわかってない。<br/>
+途中でsudoがなければ</p>
+
+<pre><code>Host FOO
+    Hostname foo.com
+    User digitalbot
+
+Host BAR
+    Hostname bar.com
+    User digitalbot
+    ProxyCommand ssh FOO -W %h:%p
+</code></pre>
+
+<p>みたいにそれぞれに単純に書くだけで良いのだけど&hellip;<br/>
+だれかわかるようだったらsudoを挟む書き方を教えて。<br/>
+Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、できないことないと思うんだけど<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
+
+<h2>ちなみに</h2>
+
+<p>ProxyCommand内の-Wを使った書き方はOpenSSHのver.5.4以前では使えないのでその場合は<code>nc</code>を使えば良い。</p>
+
+<h4>参考</h4>
+
+<p><a href="http://blog.glidenote.com/blog/2012/02/19/ssh-proxycommand/">多段sshで4段先のサーバに一発ログイン</a></p>
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[percolが便利だけど、入れるにはpython2系のほうが良さそう]]></title>
@@ -277,40 +351,6 @@ $ git submodule update
 <li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[.inputrcの便利設定]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/"/>
-    <updated>2013-08-30T13:21:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc</id>
-    <content type="html"><![CDATA[<p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
-けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
-少しの設定だけど少し便利になったので公開してみる。</p>
-
-<p><div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
-
-<h2>おすすめ</h2>
-
-<p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>なんかは便利だと思う。</p>
-
-<p>それにしたって、BashやZshのモダンな設定とかはあるのに、2013現在のモダンなinputrcの設定や拡張が現れないのはなんでだろう。みんなZshいじってるからそれで満足なのかな。</p>
-
-<h4>参考</h4>
-
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc</a></p>
 ]]></content>
   </entry>
   
