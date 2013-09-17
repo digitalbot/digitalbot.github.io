@@ -58,11 +58,15 @@
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/09/15/how-ssh/</loc>
-        <lastmod>2013-09-15T19:41:30+09:00</lastmod>
+        <lastmod>2013-09-17T20:21:16+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/09/16/ssh-add/</loc>
         <lastmod>2013-09-16T03:36:07+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.digital-bot.com/blog/2013/09/17/emacs-and-vim/</loc>
+        <lastmod>2013-09-17T20:24:01+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/about/</loc>
@@ -70,10 +74,10 @@
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/archives/</loc>
-        <lastmod>2013-09-16T03:36:07+09:00</lastmod>
+        <lastmod>2013-09-17T20:24:01+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/</loc>
-        <lastmod>2013-09-16T03:36:07+09:00</lastmod>
+        <lastmod>2013-09-17T20:24:01+09:00</lastmod>
     </url>
 </urlset>

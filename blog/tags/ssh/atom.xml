@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: ssh | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/ssh/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-16T03:36:41+09:00</updated>
+  <updated>2013-09-17T20:24:09+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[emacs-and-vim]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/17/emacs-and-vim/"/>
+    <updated>2013-09-17T20:19:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/17/emacs-and-vim</id>
+    <content type="html"><![CDATA[<h3>ひとりごと</h3>
+
+<p><strong>Emacs</strong>はMacBookAirローカルでCocoaEmacsを動かして、<code>tramp</code>でサーバ上のファイルいじったりするから徹底的にいじってるけど、<strong>Vim</strong>は逆に<code>ssh</code>したサーバ上で動かすことが多いから出来るだけシンプル且つデフォルトの挙動とそこまで違う挙動をしないような設定をしてる。</p>
+
+<p>そういう意味では<code>C-h</code>が<code>delete-backward-char</code>にすらなってないような他人のEmacsは正直使うことが苦痛にすらなるレベル。ネット上のリポジトリの設定ファイルを手軽に読む方法とかないのかな。<code>git clone</code>とかせず、urlをしていするだけ、みたいな。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[複数PCでsshキーを共有する]]></title>
@@ -51,6 +64,9 @@ $ ssh-add [keyのパス（デフォルトは~/.ssh/id_rsaだと思う）]
 </code></pre>
 
 <p>と<code>-t</code>オプションを使うことでssh先で後続のコマンドを実行してくれるので<code>local --&gt; FOO --&gt; BAR</code>と多段sshしてくれる。</p>
+
+<!-- more -->
+
 
 <h2>途中でsudoをはさむ</h2>
 
