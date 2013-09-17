@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Etc | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/etc/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-17T20:24:09+09:00</updated>
+  <updated>2013-09-17T20:44:21+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[emacs-and-vim]]></title>
+    <title type="html"><![CDATA[emacsとvimの使い分け]]></title>
     <link href="http://blog.digital-bot.com/blog/2013/09/17/emacs-and-vim/"/>
     <updated>2013-09-17T20:19:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/09/17/emacs-and-vim</id>
