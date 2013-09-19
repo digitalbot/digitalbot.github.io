@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Etc | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/etc/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-17T20:44:21+09:00</updated>
+  <updated>2013-09-20T00:12:44+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[YAPC::ASIA 2013に行こう]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/20/go-yapc/"/>
+    <updated>2013-09-20T00:05:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/20/go-yapc</id>
+    <content type="html"><![CDATA[<p><a href="http://yapcasia.org/2013/">YAPC::ASIA</a>が始まった。</p>
+
+<ul>
+<li><p>慶応義塾大学日吉キャンパス(日吉駅そば)</p></li>
+<li><p>9/19 ~ 9/21</p></li>
+</ul>
+
+
+<p>20日は一日いる予定で、21はもしかした午前中しかいられないかも。けど楽しみ。学生チケットは¥0ってものうれしい。会場でよろしく。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[emacsとvimの使い分け]]></title>

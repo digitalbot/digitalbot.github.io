@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mountain Lionにjuliusをhomebrewで入れる - About Digital</title>
+  <title>YAPC::ASIA 2013に行こう - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="音声認識ソフトであるjuliusをMBAにインストールした。バージョンとしては2013年9月4日現在最新のjulius4.2.3になる。 環境によってたまにハマる場合もあるみたいだけど、基本的にはMacOS 10.8でMountain Lionの場合は PortAudio入れる
-Julius入れる &hellip;">
-  <meta name="keywords" content="juliusgitmachomebrew">
+  <meta name="description" content="YAPC::ASIAが始まった。 慶応義塾大学日吉キャンパス(日吉駅そば)
+9/19 ~ 9/21 20日は一日いる予定で、21はもしかした午前中しかいられないかも。けど楽しみ。学生チケットは¥0ってものうれしい。会場でよろしく。
+">
+  <meta name="keywords" content="perlyapcasia">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -19,7 +20,7 @@ Julius入れる &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/04/install-julius/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/20/go-yapc/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -98,7 +99,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">Mountain Lionにjuliusをhomebrewで入れる</h1>
+        <h1 class="entry-title">YAPC::ASIA 2013に行こう</h1>
       
     
     
@@ -115,13 +116,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-09-04T00:24:00+09:00" pubdate data-updated="true">Sep 4<span>th</span>, 2013</time> |&nbsp;
+<time datetime="2013-09-20T00:05:00+09:00" pubdate data-updated="true">Sep 20<span>th</span>, 2013</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -134,91 +135,15 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>音声認識ソフトである<a href="http://julius.sourceforge.jp/index.php">julius</a>をMBAにインストールした。バージョンとしては2013年9月4日現在最新のjulius4.2.3になる。</p>
-
-<!-- more -->
-
-
-<p>環境によってたまにハマる場合もあるみたいだけど、基本的にはMacOS 10.8でMountain Lionの場合は</p>
+<div class="entry-content"><p><a href="http://yapcasia.org/2013/">YAPC::ASIA</a>が始まった。</p>
 
 <ul>
-<li><p>PortAudio入れる</p></li>
-<li><p>Julius入れる(<code>--with-mictype=portaudio</code>する)</p></li>
-<li><p>DictationKit入れる</p></li>
+<li><p>慶応義塾大学日吉キャンパス(日吉駅そば)</p></li>
+<li><p>9/19 ~ 9/21</p></li>
 </ul>
 
 
-<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。そこらへんの話は前のブログ<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>で書いた。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
-
-<h2>INSTALL</h2>
-
-<p>んで、さっそくインストールしていくわけなんだけど、なんだか手順説明するのもおっくうだし、自分でも毎回同じ手順踏むの面倒なので<strong>Homebrew</strong>の<a href="https://github.com/digitalbot/homebrew-acoust/blob/master/julius.rb">Formula</a>にした。</p>
-
-<pre><code>$ brew tap digitalbot/homebrew-acoust
-$ brew install julius
-</code></pre>
-
-<p>で<code>--univarsal</code>な<code>portaudio</code>も先に入れてくれるし、肝心の<code>julius</code>コマンドがインストールされない問題も解決してくれるパッチも書いて入れた。</p>
-
-<h2>juliusコマンドがインストールされない件</h2>
-
-<pre><code>- if (j_adin_init(recog) == FALSE) return;
-+ if (j_adin_init(recog) == FALSE) return 0;
-</code></pre>
-
-<p>パッチを見てもらえればわかると思うけど、おそらくmountain lionのデフォルトコンパイラ(llvm-gccだっけ？)が<code>return;</code>で返す値をうまく解釈してくれてないんじゃないかと思う。詳しくはこれから追うけど、ともかくこのパッチを当てると<code>/usr/local/Cellar/julius/4.2.3/bin</code>以下に<code>julius</code>コマンドが入るし、homebrewがうまく<code>/usr/local/bin</code>にシンボリックリンク貼ってくれる。多分このパッチ当てなくても<code>gcc</code>を<code>homebrew-versions</code>で別途入れて使うように指定したらうまくいく気もする。</p>
-
-<h2>終わりに</h2>
-
-<p>今回はじめて<code>homebrew tap</code>を作ったし、<code>Formula</code>も書いた。簡単だったけど良い勉強になった。</p>
-
-<p>juliusは色々と情報が回っててそれぞれがそれぞれのコンパイルオプションやらパッチ当ててる感じあるけど、最低限動く感じだったら今回紹介したもので必要十分だと思う。ちなみに今回迷ったんだけど、DictationKitはhomebrewでのインストールを見送ったので自分で<a href="http://sourceforge.jp/projects/julius/downloads/59050/dictation-kit-v4.2.3.tar.gz/">ダウンロード</a>してきて使って欲しい。使用法はDictationKitのディレクトリで(というかfast.jconfを引数で指定して)juliusを実行するだけ。</p>
-
-<pre><code>$ cd dictation-kit-v4.2.3
-$ julius -C fast.jconf -charconv EUC-JP UTF-8
-</code></pre>
-
-<p>何かあったら絶賛プルリクエスト受付中なのでどうぞ。homebrew-acoustでは今後も音響関係のformulaを作っていければなぁと思っている。</p>
-
-<h2>追記</h2>
-
-<ul>
-<li>SnowLeopard
-
-<ul>
-<li>i686-apple-darwin10-gcc-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666) (dot 3)</li>
-</ul>
-</li>
-</ul>
-
-
-<p>でも今回作成したFormulaでビルド出来た。</p>
-
-<p>しかし、juliusってこれ、一応動いてるし精度悪いながらも音声認識できてるけど、完璧にインストールできてるかわかりづらいな。testが欲しい。</p>
-
-<ul>
-<li><a href="http://mac-os-forge.2317878.n4.nabble.com/MacPorts-32069-julius-4-2-1-kit-Julius-Compile-Failes-on-Lion-td61466.html">http://mac-os-forge.2317878.n4.nabble.com/MacPorts-32069-julius-4-2-1-kit-Julius-Compile-Failes-on-Lion-td61466.html</a></li>
-</ul>
-
-
-<p>↑こういう記事もあったけど、結局llmv-gccの問題っぽい。パッチもそれ系。</p>
-
-<hr />
-
-<div class="footnotes">
-    <ol>
-        <li id='fn:1'><p><a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
-  <a href='#fnref:1' rev='footnote'>↩</a></p>
-</li><li id='fn:2'><p><a href="http://qiita.com/ikesato/items/ffe1eff8440a995065fe">音声認識 Julius 4.2.3 + Mac OSX Mountain Lion 10.8.4 でビルドする方法</a>
-  <a href='#fnref:2' rev='footnote'>↩</a></p>
-</li><li id='fn:3'><p><a href="http://qiita.com/o_ame/items/1236b91b15d077e03525">HomebrewでOSXに音声解析エンジンJuliusを入れる</a>
-<a href='#fnref:3' rev='footnote'>↩</a></p>
-</li>
-    </ol>
-</div>
-
-
-
+<p>20日は一日いる予定で、21はもしかした午前中しかいられないかも。けど楽しみ。学生チケットは¥0ってものうれしい。会場でよろしく。</p>
 </div>
 
 
@@ -241,13 +166,13 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
   
 
 
-<time datetime="2013-09-04T00:24:00+09:00" pubdate data-updated="true">Sep 4<span>th</span>, 2013</time>
+<time datetime="2013-09-20T00:05:00+09:00" pubdate data-updated="true">Sep 20<span>th</span>, 2013</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -257,7 +182,7 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/gcc/'>gcc</a>, <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/github/'>github</a>, <a class='tag' href='/blog/tags/homebrew/'>homebrew</a>, <a class='tag' href='/blog/tags/julius/'>julius</a>, <a class='tag' href='/blog/tags/mac/'>mac</a>, <a class='tag' href='/blog/tags/portaudio/'>portaudio</a>, <a class='tag' href='/blog/tags/yin/'>音</a>
+    <a class='tag' href='/blog/tags/perl/'>perl</a>
   
 </span>
 
@@ -266,7 +191,7 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/04/install-julius/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/04/install-julius/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/20/go-yapc/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/20/go-yapc/" >Tweet</a>
   
   
   
@@ -277,10 +202,8 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/09/03/octopress-tips/" title="Previous Post: Octopressのカスタマイズ">&laquo; Octopressのカスタマイズ</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/09/17/emacs-and-vim/" title="Previous Post: emacsとvimの使い分け">&laquo; emacsとvimの使い分け</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/09/05/emacs-tramp/" title="Next Post: Emacs trampを使った多段リモートファイル操作">Emacs trampを使った多段リモートファイル操作 &raquo;</a>
       
     </p>
   
@@ -288,14 +211,6 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
 <h2>Related Posts...</h2>
 <div style="margin-left:30px;">
 <ul>
-
-<li><a href="/blog/2013/09/08/homebrew-cask/">homebrew-caskが良さそうなので導入してみた</a></li>
-
-<li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
-
-<li><a href="/blog/2013/09/07/cant-use-helm/">AnythingからHelmに移行できない</a></li>
-
-<li><a href="/blog/2013/09/03/octopress-tips/">Octopressのカスタマイズ</a></li>
 
 <li><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></li>
 
@@ -412,8 +327,8 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/04/install-julius/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/04/install-julius/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/20/go-yapc/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/20/go-yapc/';
         var disqus_script = 'embed.js';
       
     (function () {
