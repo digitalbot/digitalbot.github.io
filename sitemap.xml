@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://blog.digital-bot.com/blog/2013/08/30/test-post/</loc>
-        <lastmod>2013-09-01T18:29:16+09:00</lastmod>
-    </url>
-    <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/</loc>
         <lastmod>2013-09-01T18:33:43+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/</loc>
         <lastmod>2013-09-16T03:30:39+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.digital-bot.com/blog/2013/08/30/test-post/</loc>
+        <lastmod>2013-09-01T18:29:16+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/</loc>
@@ -69,15 +69,19 @@
         <lastmod>2013-09-17T20:44:16+09:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.digital-bot.com/blog/2013/09/20/go-yapc/</loc>
+        <lastmod>2013-09-20T00:11:13+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.digital-bot.com/about/</loc>
         <lastmod>2013-08-31T19:14:09+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/blog/archives/</loc>
-        <lastmod>2013-09-17T20:44:16+09:00</lastmod>
+        <lastmod>2013-09-20T00:11:13+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.digital-bot.com/</loc>
-        <lastmod>2013-09-17T20:44:16+09:00</lastmod>
+        <lastmod>2013-09-20T00:11:13+09:00</lastmod>
     </url>
 </urlset>
