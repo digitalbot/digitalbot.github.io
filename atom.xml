@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-20T00:16:23+09:00</updated>
+  <updated>2013-09-25T00:40:11+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[YAPCに行ってきた]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/25/went-yapc/"/>
+    <updated>2013-09-25T00:37:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/25/went-yapc</id>
+    <content type="html"><![CDATA[<p>YAPC::ASIAに行ってきた。</p>
+
+<p>結局明日からの音響学会の準備が会ったから一日目しかいれなかったけど、やはり参加してよかったし、来年以降も参加したいと思った。どうやら今回で@lestrratさん、@941さん体制が終わるらしいけど。Perlハッカーコミュニティの文化は本当に素晴らしいと思っていて、なんとか自分も貢献したいと思う。</p>
+
+<h2>印象に残った発表</h2>
+
+<h4>[学術分野におけるperl] by @papixさん</h4>
+
+<ul>
+<li>PerCUDA</li>
+</ul>
+
+
+<p>自分も信号処理で高速リアルタイム計算とかがやりたくてGPGPUとか一時期やってたし、とても興味がある話だった。けど、自分はリアルタイムで本当にコンママイクロ秒以下の世界で計算するためにGPGPUやってたから、そこをPerlのバインディングにしてその分GPU側との情報のやりとりとかに時間がかかるようだったら少しもったいないとも思った。</p>
+
+<ul>
+<li>その他研究のレガシーとモダンのこと</li>
+</ul>
+
+
+<p>Emacs使いとして尊敬する@syohexさんと同じ研究室と聞いて少しびっくり。研究自体もPerlでコンパイラのバグ検知とかすごい面白そうだと思った。</p>
+
+<h4>[社内開発簡単化と世界で戦う開発を考える技術] by @yappoさん</h4>
+
+<ul>
+<li><p>ミッションステートメント</p>
+
+<ul>
+<li>「やることやらないことを最初にまとめておくとあとでぶれない」</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これ、当たり前のことなんだけど、やっぱり当たり前に大事だと思うし、それを具体的にモジュールの例を上げて話してくれて説得力あった。</p>
+
+<ul>
+<li><p>普段コピペとかを嫌うのに、最初の設定ファイルはコピペとかしちゃう</p>
+
+<ul>
+<li><p>そういうのは秘伝のタレ化してしまうし、意味もわからなくつかってしまう</p></li>
+<li><p>コピペ元の人はコピペされることを意識して書いてない。そしてバグを直してもそれが追従されない</p></li>
+</ul>
+</li>
+</ul>
+
+
+<p>今回のYAPC::ASIAキーワード「秘伝のタレ」。これも考えてみれば当たり前なんだけど、やっぱりコロンブスの卵的な話だと思う。そしてその現状を打破するために自分でセットアップスクリプト書くってのはまさしくstfuawscを体現しててカッコ良いとおもった。</p>
+
+<h2>最後に</h2>
+
+<p>普段Blogとかで追ってるすごいプログラマ達を間近で見られてとてもよい経験になった。すごくモチベーションが上がった。Perl以外の分野でも活躍するタレント性のあるハッカー達をみると、Open&amp;ShareであったりブログやOSS活動を通じての体外活動が大事なのがよく分かる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[YAPCに行こう]]></title>
