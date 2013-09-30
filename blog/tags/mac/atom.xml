@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mac | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mac/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-25T00:44:54+09:00</updated>
+  <updated>2013-09-30T19:59:22+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MacVim Kaoriyaをhomebrewから入れた]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/"/>
+    <updated>2013-09-30T19:56:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya</id>
+    <content type="html"><![CDATA[<p>Emacsを愛用していて、システムデフォルトのではなくhomebrewで自前のEmacsを入れてるわけなんだけど、不公平な気もしたのでVimも自前のを入れることにした。</p>
+
+<h2>MacVim KaoriYa</h2>
+
+<p>やはりvimもGUI版があれば使いたいと思ったので<a href="http://code.google.com/p/macvim-kaoriya/">MacVim KaoriYa</a>を導入することにした。MacVim Kaoriyaのメリットは上記リンクに詳しく書いてあるし、なんだったらいろいろな設定方法も書いてある。</p>
+
+<p>環境としては</p>
+
+<ul>
+<li>MacOSX Mountain Lion, Intel Core i7, 8 GB RAM</li>
+</ul>
+
+
+<p>と、後述するSnowLeopardで導入した。</p>
+
+<!-- more -->
+
+
+<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
+
+<pre><code>$ brew tap supermomonga/homebrew-splhack
+$ brew install --HEAD cmigemo-mk
+$ brew install --HEAD ctags-objc-ja
+$ brew install --HEAD gettext-mk
+$ brew install --HEAD macvim-kaoriya
+$ brew linkapps
+</code></pre>
+
+<p>これだけでなんとかなるはず。<br/>
+emacsでも使うから<code>ctags</code>や<code>cmigemo</code>は標準フォーミュラの方でいれちゃったから</p>
+
+<pre><code>$ brew unlink cmigemo &amp;&amp; brew link -f cmigemo-mk
+</code></pre>
+
+<p>とかする必要があった。</p>
+
+<h2>SnowLeopardでの問題</h2>
+
+<p>ちなみに、もう一台のデスクトップはSnowLeopardなんだけど、SnowLeopard環境ではgccでのコンパイルにしくじるので<code>brew install --HEAD macvim-kaoriya</code>の前にフォーミュラを少し編集する必要がある。それについては <a href="http://kronus9.sblo.jp/article/71512104.html">MacVim KaoriYaをSnow Leopard + Homebrewでビルドした</a> にて詳しい方法が載っている。<br/>
+自分もエラーログ追っててclangを使うのはすぐわかったんだけど、<code>--use-clang</code>してもダメだから参ってた。</p>
+
+<h2>.vimrc</h2>
+
+<p>vimrcもいろいろ弄ったんだけど、まぁそこら辺は違うエントリにまとめるとする。</p>
+
+<h2>ちなみに</h2>
+
+<p>アイコンからGUIのMacVim KaoriYaを起動する分には問題ないけど、そのままじゃターミナルでパスが通ってないのでなんとかする必要がある。そこら辺についても他のエントリにまとめると思う。</p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[homebrew-caskが良さそうなので導入してみた]]></title>
