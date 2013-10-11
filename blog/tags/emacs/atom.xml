@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: emacs | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/emacs/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-30T19:59:22+09:00</updated>
+  <updated>2013-10-12T02:02:04+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vimを使いやすくする]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/12/improve-vim/"/>
+    <updated>2013-10-12T01:50:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/12/improve-vim</id>
+    <content type="html"><![CDATA[<p>Emacs派でEmacsは結構拡張してるけど、vimだってコマンドラインから結構手軽につかってる。なぜならEmacsは起動に時間がかかるし、CocoaEmacsに最適化した設定だからあまりターミナルから起動したくないから。もちろんそこらへんもいろいろ工夫はしてるけど、ほんとにさっくりファイルを弄りたいときなんかは結構vimで弄ったりする。</p>
+
+<p>これまではtabの設定とか最低限の設定をした.vimrcを使ってたんだけど、せっかくだからvimももう少し便利にすることにした。まぁ何かに行き詰まったときにこういう設定をすると仕事してる気になって落ち着くっていう悪い癖なだけな気もする。</p>
+
+<!-- more -->
+
+
+<h2>.vimrc</h2>
+
+<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
+
+<p>まぁだらだら書くのもあれなので手っ取り早く<strong>.vim</strong>を晒そう</p>
+
+<h3>リポジトリ</h3>
+
+<ul>
+<li><a href="https://github.com/digitalbot/dot-vim">dot-vim</a></li>
+</ul>
+
+
+<p>今回我ながらポイントだと思うのが、READMEのとおりにセットアップすれば大体どの環境(unix系)でも動く汎用的な設定ができたところ。Emacsの設定はとてもじゃないけど、現状自分のMac以外に持ち出せないのでここは少しこだわってみた。</p>
+
+<p>そしてそのセットアップもできる限り簡単に仕上げたつもり。基本的には<code>git clone --recursive</code>して<code>./setup.sh</code>するだけ。簡単。</p>
+
+<pre><code>$ git clone --recursive git://github.com/digitalbot/dot-vim.git
+$ cd dot-vim
+$ ./setup.sh
+$ vim +NeoBundleInstall +q
+</code></pre>
+
+<p>READMEからの引用だけど、これで元のvimの挙動をそんなにいじらないけど細かいところで便利なvimができあがる。</p>
+
+<p>ともかく、詳しい設定の内容は割愛するけど、<code>NeoBundle</code>、<code>Unite</code>、<code>Lightline</code>、<code>Quickrun</code>とか<code>Neocomplete</code>を導入した。これ以上増やすとEmacsみたいになるので、ここらへんが必要最低限だと思う。ちなみに、<code>if_lua</code>が効かない、つまり古めのvimでもそんときは<code>Neocomplete</code>じゃなく<code>Neocomplcache</code>を使うように条件分岐してるから、ほんとに大体の環境でこの<strong>.vim</strong>は動くはず。</p>
+
+<h2>おわりに</h2>
+
+<p>エディタの拡張は「どこまでやるか」のバランスがとてもむずかしいように思う。<strong>Emacs</strong>ではやりすぎて重たくなってしまってるし(それでもこの記事も<strong>Emacs</strong>で書いてるけど)、できるだけ必要最低限でポータビリティがあるのがカッコイイと最近は思い始めた。あと、全然環境の違う赤の他人が<code>git clone</code>して試せるかどうかを考えてるってもの個人的には渋くてかっこいいと思う。</p>
+
+<p>なお、Lightlineはコマンドラインから<code>mvim</code>してGUIで動かすと変なwarnを出すのでGUIではオフにしている。そこら辺のことはまた別のエントリにしようかと思ってる。</p>
+
+<p>あとvimは引数に<code>+command</code>するとそのコマンドを起動時に実行してくれるらしく、これのお陰で<code>vim +NeoBundleInstall +q</code>といった風にワンライナーでプラグインをインストールできるのが良いと思った。</p>
+
+<p>でもvim scriptはちょっとよくわかんないとも思った。<del>elispのほうが美しい</del></p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><code>if_lua</code>が大事らしい
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MacVim Kaoriyaをhomebrewから入れた]]></title>
@@ -214,67 +276,6 @@ Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、で
 <li><p><a href="https://github.com/emacs-helm/helm/issues/94">https://github.com/emacs-helm/helm/issues/94</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs trampを使った多段リモートファイル操作]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp/"/>
-    <updated>2013-09-05T00:03:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp</id>
-    <content type="html"><![CDATA[<p>Emacsでは<code>tramp</code>という、リモートのファイルやディレクトリをあたかもローカルにあるように扱うことができる拡張が標準で備えられてる。</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/hideden/20090108/1231395529">emacs + trampで多段SSHで接続したサーバー上のファイルを直接編集する時のメモ</a></li>
-</ul>
-
-
-<p>これは少し過去の情報だが、基本的にはこの通りだし、多段ssh、なかでもsudoを途中で挟む多段sshについて言及されているのでとても良い記事だと思う。そこで、自分への忘備録も兼ねて、使い方や補足をしたいと思う。ちなみに、環境としてはCocoaEmacs v24.3を想定しているが、Emacs v23以降だったら大体変わらないと思う。</p>
-
-<!-- more -->
-
-
-<h2>HOW TO USE</h2>
-
-<p>最初から入ってるので<code>.emacs</code>に</p>
-
-<pre><code>(require 'tramp)
-(setq tramp-default-method "ssh")
-</code></pre>
-
-<p>するだけ。あとはホントに<code>C-xC-f</code> <code>/user@hoge.com:~/fuga.txt</code>とかすると使える。<code>anything</code>や<code>helm</code>とも連携することができるし、<code>recentf</code>の設定にもよるけどパスを打つこと無く履歴から開くこともできる。ただ、<code>helm</code>越しだと現状いくつか問題があるので注意が必要(<code>helm-for-files</code>でエラーが起きたり、tramp上現在ディレクトリをソースに含めると重くなる)。</p>
-
-<p>注意点は普通<code>find-file</code>(<code>C-xC-f</code>)したときって、プロンプトが<code>~/</code>ってなってると思うんだけど、これを<code>/</code>にした上でサーバ名を書き始めること。最初の何もわかってなかった頃これを間違えて悩んでたときあった。</p>
-
-<p>で、しかもtrampはしっかりと<code>~/.ssh/config</code>まで読んでくれてるようなので、実は特別な設定をしないでも<code>~/.ssh/config</code>の方で設定が済んでいればホスト名などを省略して書くことができる。素晴らしい。</p>
-
-<h2>多段ssh</h2>
-
-<p>多段sshも<code>~/.ssh/config</code>の設定がしてあれば難なくできるはずだけど、個人的に一つ重宝している機能があって、sshの途中で<code>sudo</code>を挟めることがとても良い。以下にサンプルをのせてみる。</p>
-
-<p><div><script src='https://gist.github.com/6438514.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p><code>tramp-default-proxies-alist</code>に<code>("host" "user" "method")</code>を設定してtrampを実行した場合、<strong>method</strong>で記述した方法で一旦接続した後に<strong>user@host</strong>に接続を行う<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。これを利用して一段目のサーバで<code>sudo</code>して<em>root</em>として二段目のサーバにログインできているのがポイント高い。</p>
-
-<p>んでこの二段目のサーバに入るときにプロンプトからパスワードを要求されるので一段目でsudoするときのパスを入力すれば一気に三段目でも四段目でもファイルやディレクトリを開くことができる。</p>
-
-<h2>おわりに</h2>
-
-<p>このEmacsのtrampがあるからCocoaEmacsを使ってると行っても過言ではない。<code>perl-completion.el</code>や<code>key-combo.el</code>などの一部のelispと相性が悪いのが難点だけど、大変便利に使ってる。</p>
-
-<hr />
-
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><a href="http://dukeiizu.blogspot.jp/2011/05/emacs-tramp-sudo.html">emacs TRAMP で、リモート・サーバを sudo で接続する</a>
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: shell | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/shell/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-09-30T19:59:22+09:00</updated>
+  <updated>2013-10-12T02:02:04+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vimを使いやすくする]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/12/improve-vim/"/>
+    <updated>2013-10-12T01:50:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/12/improve-vim</id>
+    <content type="html"><![CDATA[<p>Emacs派でEmacsは結構拡張してるけど、vimだってコマンドラインから結構手軽につかってる。なぜならEmacsは起動に時間がかかるし、CocoaEmacsに最適化した設定だからあまりターミナルから起動したくないから。もちろんそこらへんもいろいろ工夫はしてるけど、ほんとにさっくりファイルを弄りたいときなんかは結構vimで弄ったりする。</p>
+
+<p>これまではtabの設定とか最低限の設定をした.vimrcを使ってたんだけど、せっかくだからvimももう少し便利にすることにした。まぁ何かに行き詰まったときにこういう設定をすると仕事してる気になって落ち着くっていう悪い癖なだけな気もする。</p>
+
+<!-- more -->
+
+
+<h2>.vimrc</h2>
+
+<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
+
+<p>まぁだらだら書くのもあれなので手っ取り早く<strong>.vim</strong>を晒そう</p>
+
+<h3>リポジトリ</h3>
+
+<ul>
+<li><a href="https://github.com/digitalbot/dot-vim">dot-vim</a></li>
+</ul>
+
+
+<p>今回我ながらポイントだと思うのが、READMEのとおりにセットアップすれば大体どの環境(unix系)でも動く汎用的な設定ができたところ。Emacsの設定はとてもじゃないけど、現状自分のMac以外に持ち出せないのでここは少しこだわってみた。</p>
+
+<p>そしてそのセットアップもできる限り簡単に仕上げたつもり。基本的には<code>git clone --recursive</code>して<code>./setup.sh</code>するだけ。簡単。</p>
+
+<pre><code>$ git clone --recursive git://github.com/digitalbot/dot-vim.git
+$ cd dot-vim
+$ ./setup.sh
+$ vim +NeoBundleInstall +q
+</code></pre>
+
+<p>READMEからの引用だけど、これで元のvimの挙動をそんなにいじらないけど細かいところで便利なvimができあがる。</p>
+
+<p>ともかく、詳しい設定の内容は割愛するけど、<code>NeoBundle</code>、<code>Unite</code>、<code>Lightline</code>、<code>Quickrun</code>とか<code>Neocomplete</code>を導入した。これ以上増やすとEmacsみたいになるので、ここらへんが必要最低限だと思う。ちなみに、<code>if_lua</code>が効かない、つまり古めのvimでもそんときは<code>Neocomplete</code>じゃなく<code>Neocomplcache</code>を使うように条件分岐してるから、ほんとに大体の環境でこの<strong>.vim</strong>は動くはず。</p>
+
+<h2>おわりに</h2>
+
+<p>エディタの拡張は「どこまでやるか」のバランスがとてもむずかしいように思う。<strong>Emacs</strong>ではやりすぎて重たくなってしまってるし(それでもこの記事も<strong>Emacs</strong>で書いてるけど)、できるだけ必要最低限でポータビリティがあるのがカッコイイと最近は思い始めた。あと、全然環境の違う赤の他人が<code>git clone</code>して試せるかどうかを考えてるってもの個人的には渋くてかっこいいと思う。</p>
+
+<p>なお、Lightlineはコマンドラインから<code>mvim</code>してGUIで動かすと変なwarnを出すのでGUIではオフにしている。そこら辺のことはまた別のエントリにしようかと思ってる。</p>
+
+<p>あとvimは引数に<code>+command</code>するとそのコマンドを起動時に実行してくれるらしく、これのお陰で<code>vim +NeoBundleInstall +q</code>といった風にワンライナーでプラグインをインストールできるのが良いと思った。</p>
+
+<p>でもvim scriptはちょっとよくわかんないとも思った。<del>elispのほうが美しい</del></p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><code>if_lua</code>が大事らしい
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[percolが便利だけど、入れるにはpython2系のほうが良さそう]]></title>
