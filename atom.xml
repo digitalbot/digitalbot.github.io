@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-12T02:07:14+09:00</updated>
+  <updated>2013-10-12T03:35:10+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,449 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Macを購入したら絶対に使いたい！超オススメアプリ10選！決定版]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/12/terminal/"/>
+    <updated>2013-10-12T02:23:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/12/terminal</id>
+    <content type="html"><![CDATA[<p>さて本日は、MacBookAirを今年に買いかえてから、数々のフリーソフト・シェアウェアを使い続けてきた私が、MacBookを買ったら「絶対に」導入したい、超厳選アプリをランキング形式でご紹介したいと思います！今回は無料で使えるものばかり集めてみましたので、シェアウェアに関しては後日またご紹介したいと思います（＾＾）</p>
+
+<p>それでは、ご覧ください！</p>
+
+<p>↓↓</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第10位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>まずは定番、Terminalですね。知る人ぞ知る端末エミュレータです。なんとMac OS Xには<strong>最初から入っています！</strong>端末エミュレータの記事ではないので詳しい説明は避けますが、Terminalはなんと、<strong>マウスを使わずに操作できるという魔法のような操作方法</strong>により世界中に多くのユーザがいます。カフェでドヤ顔したい方はぜひ導入すべきと言えるアプリでしょう。</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第9位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>Macと言えばApple、AppleといえばiPod、iPodといえば音楽です。 そう、せっかくMacを買ったからには、音楽を楽しまなければいけません。デフォルトでインストールされている「iTunes」でもよいのですが、ここはキーボードから小気味よく選曲などの操作をして音楽を聴きたいところです。そんなあなたにオススメなのが、このTerminalというアプリ！なんと、<code>afplay</code>と入力して<em>ごにょごにょ</em>するだけで音楽を聞くことが出来ます！また、Terminalには、おまけとして<a href="http://gyazo.com/3f227e2e46c8b0fee1199f899b2709dd">黒い画面にSLを走らせる</a>！機能も付いているので、カフェでの仕事が捗りますね。</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第8位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>さて、次におすすめしたいのが、Terminalというアプリです。このアプリはいわゆる「テキストエディタ」とも言えます。<code>vim</code>とか<code>emacs</code>とか、よくわからないですけど、ともかくテキストをエディットできます。よくわからないですけど、どちらも使えるので世界は平和です。</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第7位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>さて、WindowsでもMacでも変わらない現代の必須ソフト、それは「ウェブブラウザ」ですね。WindowsだとInternetExplorer、通称IEが標準でインストールされていますが、IEは「ブラウザをダウンロードするための便利なソフト」と揶揄されていたりします（苦笑）</p>
+
+<p>Macに標準でインストールされているブラウザであるSafariはそれほど酷評されているわけではありませんが、やはり自分の手に馴染むブラウザを選択して使っていきたいですよね。</p>
+
+<p><strong>そこでTerminalというアプリです（＾＾）</strong></p>
+
+<p><code>w3m</code>とかいうやつをなんとかどうにかインストールみたいなことすれば、そう、ウェブブラウザです！</p>
+
+<p>あと、<a href="http://gyazo.com/3f227e2e46c8b0fee1199f899b2709dd">SLを走らせたりもできます</a>！</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第6位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>Macには最初からMail.appがインストールされています。しかし、アカウントだの同期だのと面倒ですよね。何も気にせず気持よくメールを送りたいときもあるじゃないですか！</p>
+
+<p>そんなときはTerminalというアプリです。</p>
+
+<p><code>sendmail</code>とか適当に<em>ごにょごにょ</em>すれば、そう、メーラーです！</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第5位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>みなさん！twitterはやってますか？？？</p>
+
+<p>今回5位にランク・インしたのはTerminalというツイッタークライアントです！<code>tw</code>とかを<em>ごにょごにょ</em>すればなんかうまくやってくれるみたいです！</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第4位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>4位です</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第3位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>いよいよトップスリー！第3位は「Terminal」です！世界にはEmacsとVim、2種類のエディタしかないことは有名ですが、Terminalなら両方使えます！</p>
+
+<p>さて、この第3位のTerminalというアプリなのですが、第4位のTerminalと、どちらを3位にしようか、最後まですっご〜〜〜〜〜く悩みました！（笑）（＾＾；） それくらい、TerminalとTerminal、どちらもすごくいいアプリなんです！</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第2位</h2>
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminal</h3>
+
+<p>さて、惜しくも1位を逃すこととなった第2位は、「Terminl」です！</p>
+
+<p>「Terminal」、中には初めて耳にした方も居るかもしれませんね。一般的に、PCを使う場合は、マウスを使わないと操作することが出来ませんが、このTerminalでは<strong>マウスを使わずにPCを操作すること</strong>が可能とされています。ファイル操作や書類の印刷、なんでもできます！それもそのはず！Terminalは端末エミュレータなんです！端末をエミュレートしてるんですから便利なのはあたりまえかな？</p>
+
+<p>世間には多くの端末エミュレータがありますが、私がおすすめしたいのは、やはりTerminalです。最終的に他の端末エミュレータ、例えばiTermなどを使っていくにしても、「マウスを使わずに色々できる」ことを突き詰めることができるTerminalを経験するのはあなたのPCライフにおいて非情に有意義なものとなるでしょう。</p>
+
+<p><strong>ダウンロードはする必要がありません</strong>！</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<h2>第1位</h2>
+
+<p>そして栄えある第1位は&hellip;</p>
+
+<br />  
+
+
+
+
+<br />  
+
+
+
+
+<br />  
+
+
+<p><img src="http://blog.digital-bot.com/images/terminal.png" alt="terminal" /></p>
+
+<h3>Terminalです！！！！！！</h3>
+
+<br />  
+
+
+
+
+<br />  
+
+
+<hr />
+
+<h5>元ネタ</h5>
+
+<ul>
+<li><p><a href="http://samuraism.com/2013/10/11/1554">Macを購入したら絶対に導入したい！Windowsを購入しても絶対に導入したい！Linuxをインストールしても絶対に導入したい！超オススメアプリ10選！</a></p></li>
+<li><p><a href="http://blog.supermomonga.com/articles/vim/startdash-with-mac.html">Macを購入したら絶対に導入したい！私が3年間で厳選した超オススメアプリ10選！</a></p></li>
+<li><p><a href="http://blog.id774.net/post/2013/10/11/408/">Mac を購入したら絶対に導入したい！超オススメアプリ 10 選！</a></p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[vimを使いやすくする]]></title>
@@ -1204,41 +1647,6 @@ $ git submodule update
 <p>もう一個運用してるほうのサーバではpdns使ってる。<br/>
 これも日本語の情報がそんな多くはないから最初大変だった。<br/>
 時間があれば記事にしたい。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[.inputrcの便利設定]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc/"/>
-    <updated>2013-08-30T13:21:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/30/more-useful-inputrc</id>
-    <content type="html"><![CDATA[<p>readlineの設定ファイルである<code>$HOME/.inputrc</code>をうまく設定するとコマンドラインでの生活が豊かになる。<br/>
-けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
-少しの設定だけど少し便利になったので公開してみる。</p>
-
-<div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-
-
-<p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
-
-<h2>おすすめ</h2>
-
-<p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="s2">&quot;\C-^&quot;</span>: <span class="s2">&quot;~/&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なんかは便利だと思う。</p>
-
-<p>それにしたって、BashやZshのモダンな設定とかはあるのに、2013現在のモダンなinputrcの設定や拡張が現れないのはなんでだろう。みんなZshいじってるからそれで満足なのかな。</p>
-
-<h4>参考</h4>
-
-<p><a href="http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc">http://x68000.q-e-d.net/~68user/unix/pickup?~%2F.inputrc</a></p>
 ]]></content>
   </entry>
   
