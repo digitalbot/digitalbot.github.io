@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mac | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mac/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-12T02:02:04+09:00</updated>
+  <updated>2013-10-12T02:07:14+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -48,7 +48,7 @@ $ ./setup.sh
 $ vim +NeoBundleInstall +q
 </code></pre>
 
-<p>READMEからの引用だけど、これで元のvimの挙動をそんなにいじらないけど細かいところで便利なvimができあがる。</p>
+<p>READMEからの引用だけど、これで元のvimの挙動をそんなにいじらないけど細かいところで便利なvimができあがる。git cloneの<code>--recursive</code>については<a href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/">以前書いたとおり</a>。</p>
 
 <p>ともかく、詳しい設定の内容は割愛するけど、<code>NeoBundle</code>、<code>Unite</code>、<code>Lightline</code>、<code>Quickrun</code>とか<code>Neocomplete</code>を導入した。これ以上増やすとEmacsみたいになるので、ここらへんが必要最低限だと思う。ちなみに、<code>if_lua</code>が効かない、つまり古めのvimでもそんときは<code>Neocomplete</code>じゃなく<code>Neocomplcache</code>を使うように条件分岐してるから、ほんとに大体の環境でこの<strong>.vim</strong>は動くはず。</p>
 
