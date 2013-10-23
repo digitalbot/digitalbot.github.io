@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: homebrew | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/homebrew/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-23T23:21:45+09:00</updated>
+  <updated>2013-10-23T23:45:23+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -73,6 +73,14 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 <h2>おわりに</h2>
 
 <p>手元のMacBookAir(MountainLion)はもうちょっと人柱が出て、色々アプリやらなんやらが対応してからアップデートしようと思ってる。</p>
+
+<h4>ちなみに</h4>
+
+<p>アクティビティモニタのDockでメモリ使用量表示するの地味に便利に使ってたんだけど、Mavricksで出来なくなっててちょっとショック。</p>
+
+<p><img src="/images/activitie_monitor.png" alt="ActivitieMonitor" /></p>
+
+<p>↑これね。</p>
 ]]></content>
   </entry>
   
