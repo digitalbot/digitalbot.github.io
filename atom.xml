@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-12T16:00:16+09:00</updated>
+  <updated>2013-10-23T23:19:49+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X MavericksにSnow Leopardからアップデートした]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/23/install-mavericks/"/>
+    <updated>2013-10-23T22:44:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/23/install-mavericks</id>
+    <content type="html"><![CDATA[<p>手元のMacBookAir Mid 2013はまだMountainLionだけど、職場で使ってるSnowLeopard機をMavericksにアップデートしてみた。</p>
+
+<blockquote><p><a href="http://news.livedoor.com/article/detail/8183029/">アップル、「OS X Mavericks」を無料公開！</a></p>
+
+<blockquote><p>アップルは22日（現地時間）、OS Xの最新バージョン「Mavericks」の公開を開始した。互換性があるMacユーザーであれば無料でアップロード可能となっている。</p></blockquote></blockquote>
+
+<p>これまでのOS X(例えばLion)は安いとはいえ無料じゃなかったので、アップデートをするには会社のシステム管理者的な人に申請をして話を通す必要があったのでこれまでアップデートを面倒臭がってしていなかった。が、しかしいい加減MacBookAirと環境が大きく違うのが地味にストレスになっていたのでこの<strong>無料アップデート</strong>に飛びついてみた。</p>
+
+<h2>環境</h2>
+
+<ul>
+<li><p>Mac OS X Snow Leopard</p></li>
+<li><p>1GB HDD</p></li>
+<li><p>4GB RAM</p></li>
+</ul>
+
+
+<p>ちょっと今自宅だし詳細なデータはないけど、一応環境はこんなもんだと思う。</p>
+
+<h2>前準備</h2>
+
+<p>会社のだし、とくにタイムマシーンとかでバックアップとかもとってないので、いきなりアップデートするのは怖い。そこで大事なファイルのバックアップをとったり、<strong>homebrew</strong>で入れたもののリストを作ったりした。</p>
+
+<pre><code>$ mkdir -p ~/.brew
+$ T=`date +%Y%m%d`
+$ brew list &gt; ~/.brew/list$T.txt
+$ brew list | xargs brew info &gt; ~/.brew/info$T.txt
+</code></pre>
+
+<p>入れたものリスト(<code>brew list</code>)だけではコンパイルオプションとか残らないから、念のためそれぞれの情報(<code>brew info</code>)も残しておいた。</p>
+
+<h2>インストール</h2>
+
+<p>インストール自体はApp Storeからすんなり行く。最初に<strong>残り44分</strong>て出るけど、まぁ実際は一時間くらいかかったかな。特に躓くことはないはず。SnowLeopardでも。今回、SnowLeopard &ndash;> Lion &ndash;> MountainLion &ndash;> Mavericksとか段階を踏まずに一発でMavericksを入れられるのが地味にうれしいところ。</p>
+
+<h2>セットアップ</h2>
+
+<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>互換性のないフォルダ</strong>みたいなところに移動されたとかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。</p>
+
+<p>あとは<strong>Xcode</strong>を改めて入れたり、<strong>Java</strong>を入れたりで、割と時間がかかってしまった。SnowLeopardからのアップデートだったので色々とシステム環境設定から細かい挙動をいじるのも少し大変だった(スクロールはナチュラルじゃダメ派)。</p>
+
+<p>実際のところ、ターミナルと<strong>Emacs</strong>さえ動けば良いのでそこら辺の挙動しかまだ確かめてないけど、特に問題なく使えてると思う。ただ、<code>brew upgrade</code>したら、一部のhomebrewで入れたツールが<strong>libc++で入れなおしてくれ</strong>見たいなこと言うので、次の出社時にはそれの対応をしなきゃいけないっぽい(まだ入れなおしてない)。</p>
+
+<p>libc++といえば、</p>
+
+<ul>
+<li>(Mac OS X環境でclangを使ってC++11をboostとともに使う環境を構築するの巻)[<a href="http://beatsync.net/main/log20131021.html">http://beatsync.net/main/log20131021.html</a>]</li>
+</ul>
+
+
+<p>ちょうど今日この記事を見たので貼っておく。なんか関係有るのかな。</p>
+
+<h2>おわりに</h2>
+
+<p>手元のMacBookAir(MountainLion)はもうちょっと人柱が出て、色々アプリやらなんやらが対応してからアップデートしようと思ってる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macを購入したら絶対に使いたい！超オススメアプリ10選！決定版]]></title>
@@ -1755,23 +1818,6 @@ $ git submodule update
 <li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[さくらインターネットのドメイン設定]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/"/>
-    <updated>2013-08-30T22:36:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/30/sakura-domain</id>
-    <content type="html"><![CDATA[<p>これは自分の責任なんだけど、さくらインターネットのドメインサービスで、管理画面から新しいCNAMEの設定をしてから、さらに左カラムにある「変更を反映させる」的なものを押さなきゃ設定が反映されないのに気付かなくて一時間くらいハマってた。<br/>
-ただでさえDNSの設定は即時反映とも行かなくてわけわかんないことになりやすいからもうちょっと目立つ感じにしてくれても良いのにとおもった。<br/>
-まぁ設定間違いとかもあるからああいうUIなこと自体には文句付けないけど。</p>
-
-<h4>ちなみに</h4>
-
-<p>もう一個運用してるほうのサーバではpdns使ってる。<br/>
-これも日本語の情報がそんな多くはないから最初大変だった。<br/>
-時間があれば記事にしたい。</p>
 ]]></content>
   </entry>
   

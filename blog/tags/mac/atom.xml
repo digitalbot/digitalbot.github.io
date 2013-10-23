@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mac | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mac/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-12T16:00:16+09:00</updated>
+  <updated>2013-10-23T23:19:49+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X MavericksにSnow Leopardからアップデートした]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/23/install-mavericks/"/>
+    <updated>2013-10-23T22:44:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/23/install-mavericks</id>
+    <content type="html"><![CDATA[<p>手元のMacBookAir Mid 2013はまだMountainLionだけど、職場で使ってるSnowLeopard機をMavericksにアップデートしてみた。</p>
+
+<blockquote><p><a href="http://news.livedoor.com/article/detail/8183029/">アップル、「OS X Mavericks」を無料公開！</a></p>
+
+<blockquote><p>アップルは22日（現地時間）、OS Xの最新バージョン「Mavericks」の公開を開始した。互換性があるMacユーザーであれば無料でアップロード可能となっている。</p></blockquote></blockquote>
+
+<p>これまでのOS X(例えばLion)は安いとはいえ無料じゃなかったので、アップデートをするには会社のシステム管理者的な人に申請をして話を通す必要があったのでこれまでアップデートを面倒臭がってしていなかった。が、しかしいい加減MacBookAirと環境が大きく違うのが地味にストレスになっていたのでこの<strong>無料アップデート</strong>に飛びついてみた。</p>
+
+<h2>環境</h2>
+
+<ul>
+<li><p>Mac OS X Snow Leopard</p></li>
+<li><p>1GB HDD</p></li>
+<li><p>4GB RAM</p></li>
+</ul>
+
+
+<p>ちょっと今自宅だし詳細なデータはないけど、一応環境はこんなもんだと思う。</p>
+
+<h2>前準備</h2>
+
+<p>会社のだし、とくにタイムマシーンとかでバックアップとかもとってないので、いきなりアップデートするのは怖い。そこで大事なファイルのバックアップをとったり、<strong>homebrew</strong>で入れたもののリストを作ったりした。</p>
+
+<pre><code>$ mkdir -p ~/.brew
+$ T=`date +%Y%m%d`
+$ brew list &gt; ~/.brew/list$T.txt
+$ brew list | xargs brew info &gt; ~/.brew/info$T.txt
+</code></pre>
+
+<p>入れたものリスト(<code>brew list</code>)だけではコンパイルオプションとか残らないから、念のためそれぞれの情報(<code>brew info</code>)も残しておいた。</p>
+
+<h2>インストール</h2>
+
+<p>インストール自体はApp Storeからすんなり行く。最初に<strong>残り44分</strong>て出るけど、まぁ実際は一時間くらいかかったかな。特に躓くことはないはず。SnowLeopardでも。今回、SnowLeopard &ndash;> Lion &ndash;> MountainLion &ndash;> Mavericksとか段階を踏まずに一発でMavericksを入れられるのが地味にうれしいところ。</p>
+
+<h2>セットアップ</h2>
+
+<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>互換性のないフォルダ</strong>みたいなところに移動されたとかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。</p>
+
+<p>あとは<strong>Xcode</strong>を改めて入れたり、<strong>Java</strong>を入れたりで、割と時間がかかってしまった。SnowLeopardからのアップデートだったので色々とシステム環境設定から細かい挙動をいじるのも少し大変だった(スクロールはナチュラルじゃダメ派)。</p>
+
+<p>実際のところ、ターミナルと<strong>Emacs</strong>さえ動けば良いのでそこら辺の挙動しかまだ確かめてないけど、特に問題なく使えてると思う。ただ、<code>brew upgrade</code>したら、一部のhomebrewで入れたツールが<strong>libc++で入れなおしてくれ</strong>見たいなこと言うので、次の出社時にはそれの対応をしなきゃいけないっぽい(まだ入れなおしてない)。</p>
+
+<p>libc++といえば、</p>
+
+<ul>
+<li>(Mac OS X環境でclangを使ってC++11をboostとともに使う環境を構築するの巻)[<a href="http://beatsync.net/main/log20131021.html">http://beatsync.net/main/log20131021.html</a>]</li>
+</ul>
+
+
+<p>ちょうど今日この記事を見たので貼っておく。なんか関係有るのかな。</p>
+
+<h2>おわりに</h2>
+
+<p>手元のMacBookAir(MountainLion)はもうちょっと人柱が出て、色々アプリやらなんやらが対応してからアップデートしようと思ってる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macを購入したら絶対に使いたい！超オススメアプリ10選！決定版]]></title>
@@ -763,53 +826,6 @@ $ brew install brew-cask
 
 
 <p>くらいかなぁ。今もともと入れてるアプリを置き換えるかどうかは少し迷うかな。ちょっといろいろ試してみようかと思う。いずれにせよ、これをうまく使いこなせばマックブックを買い換えた時なんかに絶大な威力を発揮する気がする。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[AnythingからHelmに移行できない]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm/"/>
-    <updated>2013-09-07T02:30:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/07/cant-use-helm</id>
-    <content type="html"><![CDATA[<p><code>Anything</code>から<code>Helm</code>に移行できない。わざわざ移行する必要も確かに無いんだけど、移行できるもんなら移行したいってもん。だけど、Anythingだと快適に使えるEmacsも、Helmに切り替えるとどうにも使い勝手が悪くなる。</p>
-
-<p>自分は<strong>Mac OS 10.8 mountain lion</strong>と<strong>Mac OS 10.6 snow leopard</strong>の環境で同じ<strong>CocoaEmacs</strong>・同じ<strong>.emacs</strong>を使ってるんだけど、Anythingだと両方のマシンで問題なく動くのに、Helmだとsnow leopardで動かないってことがあって割と困ってる。しかも、そもそもどちらの環境でもうまく動かないHelmの機能もいくつかあってさらに困ってる。</p>
-
-<p>だからHelmのほうはブランチを切って(当然.emacsは<code>git</code>管理してる。ちなみにCentOS上のgitolite)ちょくちょく修正を加えては試して、ダメだからmasterにもどってAnythingを使ってって感じになってる。具体的には</p>
-
-<ul>
-<li><p><code>helm-gtags</code>が意図通りの挙動をしない</p></li>
-<li><p><code>helm-show-kill-ring</code>の画面分割がおかしい</p>
-
-<ul>
-<li>しかも<code>popwin.el</code>に登録できない</li>
-</ul>
-</li>
-<li><p><code>helm-show-kill-ring</code>がsnow leopardで複数行を一行ずつと解釈する</p></li>
-<li><p><code>helm-for-files</code>で<code>tramp</code>使ってファイル開こうとすると落ちる</p></li>
-<li><p><code>tramp</code>使ってリモートに入ってるときにfile系helmの機能使うと、カレントディレクトリのソースを取ってくるのに手間取って固まる</p></li>
-</ul>
-
-
-<p>あたりが現状問題視しているもの。詳しい話(具体的な設定など)はまた次の機会に書くとして、あくまでメモとしてここにとりあえず書いとく。自分でも忘れちゃうから。</p>
-
-<p>そもそも、Helmが色々置き換え過ぎだし、デフォルトの挙動が色々ちょっときもいのもどうなのかなぁと思ってる。</p>
-
-<p>しかし、Anythingにも問題があって、いつからかregionがactiveなときに<code>anything-*</code>するとそのanythingバッファの中で<code>delete-backward-char</code>が出来なくなってしまってる。つまり、例えば仮にある範囲内の文字を置換したくて、範囲を選択した状態で<code>replace-string</code>すべく<code>M-x</code>してから<code>reprace</code>とかtypoしたのを<code>C-h</code>(に<code>delete-backward-char</code>をバインドしてる)で修正出来ない。まぁここらへんも別にまたまとめよう。</p>
-
-<h2>おわりに</h2>
-
-<p>こういう<strong>「**できない」</strong>って書いてあるだけのエントリは後にそれがどうなったかわからないし、解決策や問題が起きた具体例がないと何も進展しないってことで悪いとされてるみたいだけど、まぁ何書こうが良いだろう。それぞれの問題が何に起因しているかは大体当たりはついてるけどその話はまた今度。まぁともかく今回は自分への忘備録として、色々ハマったときに参考にしたサイトでも上げておこうかと思う。</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><p><a href="http://www49.atwiki.jp/ntemacs/pages/32.html">http://www49.atwiki.jp/ntemacs/pages/32.html</a></p></li>
-<li><p><a href="http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97">http://qiita.com/akisute3@github/items/7c8ea3970e4cbb7baa97</a></p></li>
-<li><p><a href="http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html">http://sleepboy-zzz.blogspot.jp/2013/02/helm-migemo.html</a></p></li>
-<li><p><a href="https://github.com/emacs-helm/helm/issues/94">https://github.com/emacs-helm/helm/issues/94</a></p></li>
-</ul>
-
 ]]></content>
   </entry>
   
