@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-23T23:19:49+09:00</updated>
+  <updated>2013-10-23T23:21:45+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -55,11 +55,11 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 
 <h2>セットアップ</h2>
 
-<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>互換性のないフォルダ</strong>みたいなところに移動されたとかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。</p>
+<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>「互換性のないフォルダ</strong>みたいなところに移動しました」とかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。</p>
 
 <p>あとは<strong>Xcode</strong>を改めて入れたり、<strong>Java</strong>を入れたりで、割と時間がかかってしまった。SnowLeopardからのアップデートだったので色々とシステム環境設定から細かい挙動をいじるのも少し大変だった(スクロールはナチュラルじゃダメ派)。</p>
 
-<p>実際のところ、ターミナルと<strong>Emacs</strong>さえ動けば良いのでそこら辺の挙動しかまだ確かめてないけど、特に問題なく使えてると思う。ただ、<code>brew upgrade</code>したら、一部のhomebrewで入れたツールが<strong>libc++で入れなおしてくれ</strong>見たいなこと言うので、次の出社時にはそれの対応をしなきゃいけないっぽい(まだ入れなおしてない)。</p>
+<p>実際のところ、ターミナルと<strong>Emacs</strong>さえ動けば良いのでそこら辺の挙動しかまだ確かめてないけど、特に問題なく使えてると思う。ただ、<code>brew upgrade</code>したら、一部のhomebrewで入れたツールが<strong>「libc++で入れなおしてくれ」</strong>みたいなこと言うので、次の出社時にはそれの対応をしなきゃいけないっぽい(まだ入れなおしてない)。</p>
 
 <p>libc++といえば、</p>
 
