@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-24T02:17:12+09:00</updated>
+  <updated>2013-10-24T14:17:04+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -64,7 +64,7 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 <p>libc++といえば、</p>
 
 <ul>
-<li>(Mac OS X環境でclangを使ってC++11をboostとともに使う環境を構築するの巻)[<a href="http://beatsync.net/main/log20131021.html">http://beatsync.net/main/log20131021.html</a>]</li>
+<li><a href="http://beatsync.net/main/log20131021.html">Mac OS X環境でclangを使ってC++11をboostとともに使う環境を構築するの巻</a></li>
 </ul>
 
 
