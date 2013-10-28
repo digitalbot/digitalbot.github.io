@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: emacs | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/emacs/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-24T14:17:04+09:00</updated>
+  <updated>2013-10-29T01:45:52+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -27,7 +27,7 @@
 
 <h2>.vimrc</h2>
 
-<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
+<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰{% footnote_ref 1%}でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
 
 <p>まぁだらだら書くのもあれなので手っ取り早く<strong>.vim</strong>を晒そう</p>
 
@@ -64,14 +64,9 @@ $ vim +NeoBundleInstall +q
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><code>if_lua</code>が大事らしい
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+  {% fn %}<code>if_lua</code>が大事らしい
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   
@@ -98,7 +93,7 @@ $ vim +NeoBundleInstall +q
 <!-- more -->
 
 
-<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
+<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる{% footnote_ref 1 %}。</p>
 
 <pre><code>$ brew tap supermomonga/homebrew-splhack
 $ brew install --HEAD cmigemo-mk
@@ -131,14 +126,9 @@ emacsでも使うから<code>ctags</code>や<code>cmigemo</code>は標準フォ�
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+  {% fn %}<a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   
@@ -211,7 +201,7 @@ Host BAR
 
 <p>みたいにそれぞれに単純に書くだけで良いのだけど&hellip;<br/>
 だれかわかるようだったらsudoを挟む書き方を教えて。<br/>
-Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、できないことないと思うんだけど<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
+Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、できないことないと思うんだけど{% footnote_ref 1 %}。</p>
 
 <h2>ちなみに</h2>
 
@@ -221,14 +211,9 @@ Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、で
 
 <p><a href="http://blog.glidenote.com/blog/2012/02/19/ssh-proxycommand/">多段sshで4段先のサーバに一発ログイン</a></p>
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><a href="http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a>
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+{% fn %}<a href="http://blog.digital-bot.com/blog/2013/09/05/emacs-tramp/">Emacs trampを使った多段リモートファイル操作</a>
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   

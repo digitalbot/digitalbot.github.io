@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: cpanm | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/cpanm/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-10-29T01:45:52+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Web::Queryのtestがコケた話]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/"/>
+    <updated>2013-10-28T15:09:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/28/install-web-query</id>
+    <content type="html"><![CDATA[<p>先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然<code>Carton</code>なんか使ってないし、モジュールはそれぞれのサーバに入って直接<code>cpanm</code>する形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者)のためだと感じた。</p>
+
+<p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
+
+<p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
+
+<!-- more -->
+
+
+<h2>HTML::Element</h2>
+
+<p>結論からいうと<strong>HTML::Element</strong>が入ってなかった。</p>
+
+<p>Web::Queryの依存モジュールに入ってないから必ずしもHTML::Elementが必要なわけではないのだろうけど(というか依存モジュール入れる時点で入りそうなもんだけど)、これがないと何故か'\n'が<code>wq-&gt;as_html</code>だかの結果に入り込んでテスト結果が誤判定？されてしまっていた。<code>cpanm --look Web::Query</code>してテストを自分で書き換えたりもしてみたら、どうにもやはりこの"\n"が問題のようなんだけど、これはなんでだろう。</p>
+
+<p>「これは何かおかしい」と思って、適当に関係しそうっぽいモジュールを入れてから再度<code>cpanm</code>すると、今度は何事もなかったかのようにインストールされた。それが<strong>HTML::Element</strong>だった。他にもHTML::ParserとかXML::LibXMLとか色々入れなおしたけど、やっかいなのはこれな気がする。</p>
+
+<p>何が面倒かって、特にモジュールが足りてない(Can&rsquo;t locate~)とか言われずに、淡々とテストの文字列比較で落ちてるのが面倒だった。</p>
+
+<h2>おわりに</h2>
+
+<p>一応エラーのログを貼っておこうかと思う。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+
+<p>ちなみに、このWeb::Query、とても便利。</p>
+
+<p>{% gist 7200263 %}</p>
+]]></content>
+  </entry>
+  
+</feed>

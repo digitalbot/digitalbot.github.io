@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: bash | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/bash/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-24T14:17:04+09:00</updated>
+  <updated>2013-10-29T01:45:52+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -22,10 +22,7 @@
 けど何故かあまり情報が多くなく、バインドの設定を変更するとき少し困った。<br/>
 少しの設定だけど少し便利になったので公開してみる。</p>
 
-<p><div><script src='https://gist.github.com/6386407.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
+<p>{% gist 6386407 %}</p>
 
 <p>ポイントは<code>$if Bash</code>など、分岐が可能なところ。他にも<code>$if Mysql</code>とかできるみたい。</p>
 
@@ -33,9 +30,9 @@
 
 <p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:sh %}
+&ldquo;\C-^&rdquo;: &ldquo;~/&rdquo;
+{% endcodeblock %}</p>
 
 <p>なんかは便利だと思う。</p>
 

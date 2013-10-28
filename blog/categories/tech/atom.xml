@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-24T14:17:04+09:00</updated>
+  <updated>2013-10-29T01:45:52+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web::Queryのtestがコケた話]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/"/>
+    <updated>2013-10-28T15:09:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/28/install-web-query</id>
+    <content type="html"><![CDATA[<p>先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然<code>Carton</code>なんか使ってないし、モジュールはそれぞれのサーバに入って直接<code>cpanm</code>する形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者)のためだと感じた。</p>
+
+<p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
+
+<p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
+
+<!-- more -->
+
+
+<h2>HTML::Element</h2>
+
+<p>結論からいうと<strong>HTML::Element</strong>が入ってなかった。</p>
+
+<p>Web::Queryの依存モジュールに入ってないから必ずしもHTML::Elementが必要なわけではないのだろうけど(というか依存モジュール入れる時点で入りそうなもんだけど)、これがないと何故か'\n'が<code>wq-&gt;as_html</code>だかの結果に入り込んでテスト結果が誤判定？されてしまっていた。<code>cpanm --look Web::Query</code>してテストを自分で書き換えたりもしてみたら、どうにもやはりこの"\n"が問題のようなんだけど、これはなんでだろう。</p>
+
+<p>「これは何かおかしい」と思って、適当に関係しそうっぽいモジュールを入れてから再度<code>cpanm</code>すると、今度は何事もなかったかのようにインストールされた。それが<strong>HTML::Element</strong>だった。他にもHTML::ParserとかXML::LibXMLとか色々入れなおしたけど、やっかいなのはこれな気がする。</p>
+
+<p>何が面倒かって、特にモジュールが足りてない(Can&rsquo;t locate~)とか言われずに、淡々とテストの文字列比較で落ちてるのが面倒だった。</p>
+
+<h2>おわりに</h2>
+
+<p>一応エラーのログを貼っておこうかと思う。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+
+<p>ちなみに、このWeb::Query、とても便利。</p>
+
+<p>{% gist 7200263 %}</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X MavericksにSnow Leopardからアップデートした]]></title>
@@ -668,7 +702,7 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 
 <h2>.vimrc</h2>
 
-<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
+<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰{% footnote_ref 1%}でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
 
 <p>まぁだらだら書くのもあれなので手っ取り早く<strong>.vim</strong>を晒そう</p>
 
@@ -705,14 +739,9 @@ $ vim +NeoBundleInstall +q
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><code>if_lua</code>が大事らしい
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
+<p>{% footnotes %}
+  {% fn %}<code>if_lua</code>が大事らしい
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   
@@ -739,7 +768,7 @@ $ vim +NeoBundleInstall +q
 <!-- more -->
 
 
-<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
+<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる{% footnote_ref 1 %}。</p>
 
 <pre><code>$ brew tap supermomonga/homebrew-splhack
 $ brew install --HEAD cmigemo-mk
@@ -772,59 +801,9 @@ emacsでも使うから<code>ctags</code>や<code>cmigemo</code>は標準フォ�
 
 <hr />
 
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p><a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[YAPCに行ってきた]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/25/went-yapc/"/>
-    <updated>2013-09-25T00:37:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/25/went-yapc</id>
-    <content type="html"><![CDATA[<p>YAPC::ASIAに行ってきた。</p>
-
-<p>結局明日からの音響学会の準備が会ったから一日目しかいれなかったけど、やはり参加してよかったし、来年以降も参加したいと思った。どうやら今回で@lestrratさん、@941さん体制が終わるらしいけど。Perlハッカーコミュニティの文化は本当に素晴らしいと思っていて、なんとか自分も貢献したいと思う。</p>
-
-<p>以下、印象に残った発表</p>
-
-<hr />
-
-<h2>[学術分野におけるperl] by @papixさん</h2>
-
-<blockquote><p>PerCUDA</p></blockquote>
-
-<p>自分も信号処理で高速リアルタイム計算とかがやりたくてGPGPUとか一時期やってたし、とても興味がある話だった。けど、自分はリアルタイムで本当にコンママイクロ秒以下の世界で計算するためにGPGPUやってたから、そこをPerlのバインディングにしてその分GPU側との情報のやりとりとかに時間がかかるようだったら少しもったいないとも思った。</p>
-
-<blockquote><p>その他研究のレガシーとモダンのこと</p></blockquote>
-
-<p>Emacs使いとして尊敬する@syohexさんと同じ研究室と聞いて少しびっくり。研究自体もPerlでコンパイラのバグ検知とかすごい面白そうだと思った。</p>
-
-<h2>[社内開発簡単化と世界で戦う開発を考える技術] by @yappoさん</h2>
-
-<blockquote><p>ミッションステートメント</p>
-
-<blockquote><p>「やることやらないことを最初にまとめておくとあとでぶれない」</p></blockquote></blockquote>
-
-<p>これ、当たり前のことなんだけど、やっぱり当たり前に大事だと思うし、それを具体的にモジュールの例を上げて話してくれて説得力あった。</p>
-
-<blockquote><p>普段コピペとかを嫌うのに、最初の設定ファイルはコピペとかしちゃう</p>
-
-<blockquote><p>そういうのは秘伝のタレ化してしまうし、意味もわからなくつかってしまう</p>
-
-<p>コピペ元の人はコピペされることを意識して書いてない。そしてバグを直してもそれが追従されない</p></blockquote></blockquote>
-
-<p>今回のYAPC::ASIAキーワード「秘伝のタレ」。これも考えてみれば当たり前なんだけど、やっぱりコロンブスの卵的な話だと思う。そしてその現状を打破するために自分でセットアップスクリプト書くってのはまさしくstfuawscを体現しててカッコ良いとおもった。</p>
-
-<h2>最後に</h2>
-
-<p>普段Blogとかで追ってるすごいプログラマ達を間近で見られてとてもよい経験になった。すごくモチベーションが上がった。Perl以外の分野でも活躍するタレント性のあるハッカー達をみると、Open&amp;ShareであったりブログやOSS活動を通じての体外活動が大事なのがよく分かる。</p>
+<p>{% footnotes %}
+  {% fn %}<a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
+{% endfootnotes %}</p>
 ]]></content>
   </entry>
   
