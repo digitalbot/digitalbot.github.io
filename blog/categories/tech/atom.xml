@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:49:30+09:00</updated>
+  <updated>2013-10-29T01:52:58+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -23,6 +23,33 @@
 <p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
 
 <p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
+
+<p>サマリーだけ抜き出すとこんな感じ</p>
+
+<p>```</p>
+
+<h2>Failed Test        Stat Wstat Total Fail  Failed  List of Failed</h2>
+
+<p>t/07_remove.t         2   512    10    2  20.00%  2-3
+t/08_indent.t         1   256     2    1  50.00%  1
+t/09_as_html.t        8  2048     8    8 100.00%  1-8
+t/add.t               4  1024     8    4  50.00%  1-4
+t/add_class.t         2   512     4    2  50.00%  1-2
+t/after.t             1   256     2    1  50.00%  1
+t/append.t            1   256     2    1  50.00%  1
+t/before.t            1   256     2    1  50.00%  1
+t/clone.t             1   256     2    1  50.00%  1
+t/contents.t          2   512     4    2  50.00%  1-2
+t/detach.t            2   512     6    2  33.33%  1-2
+t/insert_after.t      1   256     2    1  50.00%  1
+t/insert_before.t     1   256     2    1  50.00%  1
+t/prepend.t           1   256     2    1  50.00%  1
+t/remove_class.t      2   512     6    2  33.33%  2-3
+t/replace_with.t      4  1024     8    4  50.00%  1-4
+t/store_comments.t    2   512     4    2  50.00%  1-2
+Failed 17/28 test scripts, 39.29% okay. 36/135 subtests failed, 73.33% okay.
+FAIL
+```</p>
 
 <!-- more -->
 
