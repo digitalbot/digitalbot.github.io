@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-24T14:17:04+09:00</updated>
+  <updated>2013-10-29T01:49:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web::Queryのtestがコケた話]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/"/>
+    <updated>2013-10-28T15:09:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/10/28/install-web-query</id>
+    <content type="html"><![CDATA[<p>先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然<code>Carton</code>なんか使ってないし、モジュールはそれぞれのサーバに入って直接<code>cpanm</code>する形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者)のためだと感じた。</p>
+
+<p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
+
+<p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
+
+<!-- more -->
+
+
+<h2>HTML::Element</h2>
+
+<p>結論からいうと<strong>HTML::Element</strong>が入ってなかった。</p>
+
+<p>Web::Queryの依存モジュールに入ってないから必ずしもHTML::Elementが必要なわけではないのだろうけど(というか依存モジュール入れる時点で入りそうなもんだけど)、これがないと何故か&#8217;\n&#8217;が<code>wq-&gt;as_html</code>だかの結果に入り込んでテスト結果が誤判定？されてしまっていた。<code>cpanm --look Web::Query</code>してテストを自分で書き換えたりもしてみたら、どうにもやはりこの&#8221;\n&#8221;が問題のようなんだけど、これはなんでだろう。</p>
+
+<p>「これは何かおかしい」と思って、適当に関係しそうっぽいモジュールを入れてから再度<code>cpanm</code>すると、今度は何事もなかったかのようにインストールされた。それが<strong>HTML::Element</strong>だった。他にもHTML::ParserとかXML::LibXMLとか色々入れなおしたけど、やっかいなのはこれな気がする。</p>
+
+<p>何が面倒かって、特にモジュールが足りてない(Can&rsquo;t locate~)とか言われずに、淡々とテストの文字列比較で落ちてるのが面倒だった。</p>
+
+<h2>おわりに</h2>
+
+<p><a href="https://gist.github.com/digitalbot/7200263">一応エラーのログを貼っておこうかと思う</a>。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+
+<p>ちなみに、このWeb::Query、とても便利。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X MavericksにSnow Leopardからアップデートした]]></title>
@@ -1790,43 +1822,6 @@ $ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
 </div>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[git clone --recursive]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/"/>
-    <updated>2013-08-31T13:06:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive</id>
-    <content type="html"><![CDATA[<p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
-
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
-
-<p>すれば良いらしいことがわかった。</p>
-
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
-
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
-
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
-
-<h2>ちなみに</h2>
-
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p></li>
-<li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
-</ul>
 
 ]]></content>
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: homebrew | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/homebrew/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:47:04+09:00</updated>
+  <updated>2013-10-29T01:49:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -109,7 +109,7 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 <!-- more -->
 
 
-<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる{% footnote_ref 1 %}。</p>
+<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
 
 <pre><code>$ brew tap supermomonga/homebrew-splhack
 $ brew install --HEAD cmigemo-mk
@@ -142,9 +142,14 @@ emacsでも使うから<code>ctags</code>や<code>cmigemo</code>は標準フォ�
 
 <hr />
 
-<p>{% footnotes %}
-  {% fn %}<a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   
@@ -223,7 +228,7 @@ $ brew install brew-cask
 </ul>
 
 
-<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。そこらへんの話は前のブログ{% footnote_ref 1 %}で書いた。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
+<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。そこらへんの話は前のブログ<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>で書いた。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
 
 <h2>INSTALL</h2>
 
@@ -280,11 +285,18 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
 
 <hr />
 
-<p>{% footnotes %}
-  {% fn %}<a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
-  {% fn %}<a href="http://qiita.com/ikesato/items/ffe1eff8440a995065fe">音声認識 Julius 4.2.3 + Mac OSX Mountain Lion 10.8.4 でビルドする方法</a>
-  {% fn %}<a href="http://qiita.com/o_ame/items/1236b91b15d077e03525">HomebrewでOSXに音声解析エンジンJuliusを入れる</a>
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p><a href="http://qiita.com/ikesato/items/ffe1eff8440a995065fe">音声認識 Julius 4.2.3 + Mac OSX Mountain Lion 10.8.4 でビルドする方法</a>
+  <a href='#fnref:2' rev='footnote'>↩</a></p>
+</li><li id='fn:3'><p><a href="http://qiita.com/o_ame/items/1236b91b15d077e03525">HomebrewでOSXに音声解析エンジンJuliusを入れる</a>
+<a href='#fnref:3' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   

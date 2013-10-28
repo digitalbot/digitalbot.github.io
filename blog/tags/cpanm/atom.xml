@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: cpanm | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/cpanm/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:47:04+09:00</updated>
+  <updated>2013-10-29T01:49:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -39,11 +39,9 @@
 
 <h2>おわりに</h2>
 
-<p>一応エラーのログを貼っておこうかと思う。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+<p><a href="https://gist.github.com/digitalbot/7200263">一応エラーのログを貼っておこうかと思う</a>。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
 
 <p>ちなみに、このWeb::Query、とても便利。</p>
-
-<p>{% gist 7200263 %}</p>
 ]]></content>
   </entry>
   

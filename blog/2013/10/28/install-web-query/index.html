@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>git clone --recursive - About Digital</title>
+  <title>Web::Queryのtestがコケた話 - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="この前サブモジュールを含んだリポジトリをgit cloneしてきてなんかうまく動かなくて困った。
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。
-そういうときは $ git clone git://hoge/fuga.git
-$ git submodule &hellip;">
-  <meta name="keywords" content="gitusefulunixshell">
+  <meta name="description" content="先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然Cartonなんか使ってないし、モジュールはそれぞれのサーバに入って直接cpanmする形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者) &hellip;">
+  <meta name="keywords" content="perlwebquery">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -21,7 +18,7 @@ $ git submodule &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -100,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">git clone --recursive</h1>
+        <h1 class="entry-title">Web::Queryのtestがコケた話</h1>
       
     
     
@@ -117,13 +114,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time> |&nbsp;
+<time datetime="2013-10-28T15:09:00+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -136,35 +133,30 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
+<div class="entry-content"><p>先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然<code>Carton</code>なんか使ってないし、モジュールはそれぞれのサーバに入って直接<code>cpanm</code>する形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者)のためだと感じた。</p>
 
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
+<p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
 
-<p>すれば良いらしいことがわかった。</p>
+<p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
 
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
+<!-- more -->
 
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
 
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
+<h2>HTML::Element</h2>
 
-<h2>ちなみに</h2>
+<p>結論からいうと<strong>HTML::Element</strong>が入ってなかった。</p>
 
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
+<p>Web::Queryの依存モジュールに入ってないから必ずしもHTML::Elementが必要なわけではないのだろうけど(というか依存モジュール入れる時点で入りそうなもんだけど)、これがないと何故か&#8217;\n&#8217;が<code>wq-&gt;as_html</code>だかの結果に入り込んでテスト結果が誤判定？されてしまっていた。<code>cpanm --look Web::Query</code>してテストを自分で書き換えたりもしてみたら、どうにもやはりこの&#8221;\n&#8221;が問題のようなんだけど、これはなんでだろう。</p>
 
-<h4>参考</h4>
+<p>「これは何かおかしい」と思って、適当に関係しそうっぽいモジュールを入れてから再度<code>cpanm</code>すると、今度は何事もなかったかのようにインストールされた。それが<strong>HTML::Element</strong>だった。他にもHTML::ParserとかXML::LibXMLとか色々入れなおしたけど、やっかいなのはこれな気がする。</p>
 
-<ul>
-<li><p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p></li>
-<li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
-</ul>
+<p>何が面倒かって、特にモジュールが足りてない(Can&rsquo;t locate~)とか言われずに、淡々とテストの文字列比較で落ちてるのが面倒だった。</p>
 
+<h2>おわりに</h2>
+
+<p><a href="https://gist.github.com/digitalbot/7200263">一応エラーのログを貼っておこうかと思う</a>。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+
+<p>ちなみに、このWeb::Query、とても便利。</p>
 </div>
 
 
@@ -187,13 +179,13 @@ $ git submodule update
   
 
 
-<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+<time datetime="2013-10-28T15:09:00+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -203,7 +195,7 @@ $ git submodule update
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/shell/'>shell</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+    <a class='tag' href='/blog/tags/cpanm/'>cpanm</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>
   
 </span>
 
@@ -212,7 +204,7 @@ $ git submodule update
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/" >Tweet</a>
   
   
   
@@ -223,10 +215,8 @@ $ git submodule update
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/08/30/sakura-domain/" title="Previous Post: さくらインターネットのドメイン設定">&laquo; さくらインターネットのドメイン設定</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/10/23/install-mavericks/" title="Previous Post: OS X MavericksにSnow Leopardからアップデートした">&laquo; OS X MavericksにSnow Leopardからアップデートした</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/08/31/gitprep-intro/" title="Next Post: GitPrep導入してみた">GitPrep導入してみた &raquo;</a>
       
     </p>
   
@@ -235,15 +225,11 @@ $ git submodule update
 <div style="margin-left:30px;">
 <ul>
 
+<li><a href="/blog/2013/09/25/went-yapc/">YAPCに行ってきた</a></li>
+
+<li><a href="/blog/2013/09/20/go-yapc/">YAPCに行こう</a></li>
+
 <li><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></li>
-
-<li><a href="/blog/2013/10/12/improve-vim/">vimを使いやすくする</a></li>
-
-<li><a href="/blog/2013/09/11/about-percol/">percolが便利だけど、入れるにはpython2系のほうが良さそう</a></li>
-
-<li><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></li>
-
-<li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
 
 </ul>
 </div>
@@ -358,8 +344,8 @@ $ git submodule update
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/10/28/install-web-query/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/10/28/install-web-query/';
         var disqus_script = 'embed.js';
       
     (function () {

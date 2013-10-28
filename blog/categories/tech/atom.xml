@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:47:04+09:00</updated>
+  <updated>2013-10-29T01:49:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -39,11 +39,9 @@
 
 <h2>おわりに</h2>
 
-<p>一応エラーのログを貼っておこうかと思う。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
+<p><a href="https://gist.github.com/digitalbot/7200263">一応エラーのログを貼っておこうかと思う</a>。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
 
 <p>ちなみに、このWeb::Query、とても便利。</p>
-
-<p>{% gist 7200263 %}</p>
 ]]></content>
   </entry>
   
@@ -702,7 +700,7 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 
 <h2>.vimrc</h2>
 
-<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰{% footnote_ref 1%}でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
+<p><a href="http://blog.digital-bot.com/blog/2013/09/30/macvim-kaoriya/">前回</a>、最新のVim7.4のMacVim-Kaoriyaを入れたお陰<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>でどうやらいくつかのプラグインが強化されてるらしい。まぁ詳しい説明は<a href="http://qiita.com/">Qiita</a>なんかにまかせる。</p>
 
 <p>まぁだらだら書くのもあれなので手っ取り早く<strong>.vim</strong>を晒そう</p>
 
@@ -739,9 +737,14 @@ $ vim +NeoBundleInstall +q
 
 <hr />
 
-<p>{% footnotes %}
-  {% fn %}<code>if_lua</code>が大事らしい
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><code>if_lua</code>が大事らしい
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   
@@ -768,7 +771,7 @@ $ vim +NeoBundleInstall +q
 <!-- more -->
 
 
-<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる{% footnote_ref 1 %}。</p>
+<p>ここで、後に入れるプラグインのためにも、<strong>v7.4</strong>, <strong>if_lua</strong> に対応していることが求められる。デフォルトではhomebrewのレシピが無いんだけど、世の中奇特な人はいるもんで、レシピを用意してくれてる人がいる<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。</p>
 
 <pre><code>$ brew tap supermomonga/homebrew-splhack
 $ brew install --HEAD cmigemo-mk
@@ -801,9 +804,14 @@ emacsでも使うから<code>ctags</code>や<code>cmigemo</code>は標準フォ�
 
 <hr />
 
-<p>{% footnotes %}
-  {% fn %}<a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
-{% endfootnotes %}</p>
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://supermomonga.com/2013/06/15/macvim_kaoriya_homebrew/">homebrewを使ってちょっと新しめのMacVim KaoriYaを使おう</a>
+<a href='#fnref:1' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
 ]]></content>
   </entry>
   

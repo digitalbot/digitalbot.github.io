@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/python/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:47:04+09:00</updated>
+  <updated>2013-10-29T01:49:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -42,7 +42,10 @@ $ pyenv versions
 
 <p>した。これでターミナル上でanythingライクな操作が可能になり、平和にまた一歩近づいた。めでたし。ついでに設定ファイルも載せておこう。</p>
 
-<p>{% gist 6511590 %}</p>
+<p><div><script src='https://gist.github.com/6511590.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
 
 <h4>参考</h4>
 
