@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-10-29T01:52:58+09:00</updated>
+  <updated>2013-10-31T17:00:08+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -135,7 +135,7 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 
 <h2>セットアップ</h2>
 
-<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>「互換性のないフォルダ</strong>みたいなところに移動しました」とかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。</p>
+<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>「互換性のないフォルダ</strong>みたいなところに移動しました」とかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。(※最下部追記あり)</p>
 
 <p>あとは<strong>Xcode</strong>を改めて入れたり、<strong>Java</strong>を入れたりで、割と時間がかかってしまった。SnowLeopardからのアップデートだったので色々とシステム環境設定から細かい挙動をいじるのも少し大変だった(スクロールはナチュラルじゃダメ派)。</p>
 
@@ -163,6 +163,10 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 <p><img src="http://blog.digital-bot.com/images/activitie_monitor.png" alt="ActivitieMonitor" /></p>
 
 <p>↑これね。</p>
+
+<h2>※追記(2013/10/31)</h2>
+
+<p>TotalFinderはアップデートによりMavericksに対応したので今は快適に使ってる。</p>
 ]]></content>
   </entry>
   
