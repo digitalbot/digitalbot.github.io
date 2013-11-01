@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perl | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-01T23:52:20+09:00</updated>
+  <updated>2013-11-02T04:43:37+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,355 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DBD::mysqlがMySQL5.6、OS X Mavericksに入らない]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/11/02/dbd-mysql-on-mavericks/"/>
+    <updated>2013-11-02T04:03:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/11/02/dbd-mysql-on-mavericks</id>
+    <content type="html"><![CDATA[<p><a href="https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a>">https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a></a></p>
+
+<p>MacOS 10.9にしたiMacでもPerlとMySQLを使った開発がしたくなったのだが、DBD::mysqlがうまく入らなくてこまってる。あと、MySQL自体をHomebrewから入れるときに少し躓いたからそのこともメモとして残しておく。</p>
+
+<ul>
+<li><p>環境</p>
+
+<ul>
+<li><p>OS X Mavericks (SnowLeopardからアップデート、過去に一度mysqlのdmgインストール歴有り)</p></li>
+<li><p>MySQL5.6 (by Homebrew)</p></li>
+<li><p>Perl5.18.1 (by plenv)</p></li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>MySQL5.6</h2>
+
+<pre><code>$ brew install mysql
+</code></pre>
+
+<p>これでmysql自体は入るのだが、恐らくSnowLeorpardからアップデートした影響があり、<code>/etc/my.cnf</code>がmysql5.6で扱えないオプションを含んでいて起動ができない。具体的には</p>
+
+<pre><code>$ unset TMPDIR
+$ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+</code></pre>
+
+<p>これに失敗する。しょうがないからログをみながら<code>/etc/my.cnf</code>の中の怒られているオプションに<code>loose-</code>をつけていく<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>。<code>/usr/local/etc/my.cnf</code>に5.6に対応してる<code>my.cnf</code>をちゃんと置いたんだけど、どうやら<code>/etc/my.cnf</code>も見ているようで、そっちの中のエラー箇所を対応する必要があった。</p>
+
+<p>まぁそんなこんなしてると</p>
+
+<pre><code>$ mysql.server start
+</code></pre>
+
+<p>ができるようになるので、あとはとりあえずrootのパスワードだとかセキュリティの設定をすればOK<sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>。</p>
+
+<h2>DBD::mysql</h2>
+
+<p>普通に</p>
+
+<pre><code>$ cpanm DBI
+$ cpanm DBD::mysql
+</code></pre>
+
+<p>したわけだけど、DBIはうまく入ったみたいだけどDBD::mysqlのテストでコケる。テストでコケるだけじゃなくてなんか他にも<code>clang</code>がcレベルのエラーを吐いてる。正直コレにはこまってて未だに解決してない。誰か解決策がわかるならおしえてほしい。<code>cpanm --look</code>して環境変数いじったりとかしてみたけど改善されなかった。</p>
+
+<p>エラーログのgistを載せておこうと思う。</p>
+
+<p><div><script src='https://gist.github.com/7261559.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>$ cpanm DBD::mysql -v
+cpanm (App::cpanminus) 1.7001 on perl 5.018001 built for darwin-thread-multi-2level
+Work directory is /Users/digitalbot/.cpanm/work/1383286511.59902
+You have make /usr/bin/make
+You have LWP 6.05
+You have /usr/bin/tar: bsdtar 2.8.3 - libarchive 2.8.3
+You have /usr/bin/unzip
+Searching DBD::mysql on cpanmetadb ...
+--&gt; Working on DBD::mysql
+Fetching http://www.cpan.org/authors/id/C/CA/CAPTTOFU/DBD-mysql-4.024.tar.gz ... OK
+Unpacking DBD-mysql-4.024.tar.gz
+x DBD-mysql-4.024/
+x DBD-mysql-4.024/mysql.bs
+x DBD-mysql-4.024/pm_to_blib
+x DBD-mysql-4.024/MYMETA.yml
+x DBD-mysql-4.024/Makefile.PL
+x DBD-mysql-4.024/README.OSX
+x DBD-mysql-4.024/MANIFEST.SKIP
+x DBD-mysql-4.024/mysql.xs
+x DBD-mysql-4.024/myld
+x DBD-mysql-4.024/t/
+x DBD-mysql-4.024/t/40nulls_prepare.t
+x DBD-mysql-4.024/t/60leaks.t
+x DBD-mysql-4.024/t/55utf8.t
+x DBD-mysql-4.024/t/40keyinfo.t
+x DBD-mysql-4.024/t/50chopblanks.t
+x DBD-mysql-4.024/t/mem_leak.pl
+x DBD-mysql-4.024/t/42bindparam.t
+x DBD-mysql-4.024/t/32insert_error.t
+x DBD-mysql-4.024/t/85init_command.t
+x DBD-mysql-4.024/t/87async.t
+x DBD-mysql-4.024/t/pod.t
+x DBD-mysql-4.024/t/40numrows.t
+x DBD-mysql-4.024/t/65types.t
+x DBD-mysql-4.024/t/81procs.t
+x DBD-mysql-4.024/t/40server_prepare_error.t
+x DBD-mysql-4.024/t/40listfields.t
+x DBD-mysql-4.024/t/31insertid.t
+x DBD-mysql-4.024/t/40catalog.t
+x DBD-mysql-4.024/t/50commit.t
+x DBD-mysql-4.024/t/70takeimp.t
+x DBD-mysql-4.024/t/52comment.t
+x DBD-mysql-4.024/t/40bindparam2.t
+x DBD-mysql-4.024/t/86_bug_36972.t
+x DBD-mysql-4.024/t/10connect.t
+x DBD-mysql-4.024/t/76multi_statement.t
+x DBD-mysql-4.024/t/mysql.mtest
+x DBD-mysql-4.024/t/30insertfetch.t
+x DBD-mysql-4.024/t/53comment.t
+x DBD-mysql-4.024/t/lib.pl
+x DBD-mysql-4.024/t/29warnings.t
+x DBD-mysql-4.024/t/80procs.t
+x DBD-mysql-4.024/t/20createdrop.t
+x DBD-mysql-4.024/t/88async-multi-stmts.t
+x DBD-mysql-4.024/t/75supported_sql.t
+x DBD-mysql-4.024/t/99_bug_server_prepare_blob_null.t
+x DBD-mysql-4.024/t/35prepare.t
+x DBD-mysql-4.024/t/25lockunlock.t
+x DBD-mysql-4.024/t/90no-async.t
+x DBD-mysql-4.024/t/15reconnect.t
+x DBD-mysql-4.024/t/43count_params.t
+x DBD-mysql-4.024/t/89async-method-check.t
+x DBD-mysql-4.024/t/40server_prepare.t
+x DBD-mysql-4.024/t/35limit.t
+x DBD-mysql-4.024/t/40blobs.t
+x DBD-mysql-4.024/t/41bindparam.t
+x DBD-mysql-4.024/t/00base.t
+x DBD-mysql-4.024/t/40nulls.t
+x DBD-mysql-4.024/t/51bind_type_guessing.t
+x DBD-mysql-4.024/t/71impdata.t
+x DBD-mysql-4.024/t/40types.t
+x DBD-mysql-4.024/t/65segfault.t
+x DBD-mysql-4.024/t/41blobs_prepare.t
+x DBD-mysql-4.024/t/mysql.dbtest
+x DBD-mysql-4.024/t/40bindparam.t
+x DBD-mysql-4.024/t/91errcheck.t
+x DBD-mysql-4.024/dbdimp.o
+x DBD-mysql-4.024/constants.h
+x DBD-mysql-4.024/pod2htmd.tmp
+x DBD-mysql-4.024/mysql.c
+x DBD-mysql-4.024/META.yml
+x DBD-mysql-4.024/dbdimp.c
+x DBD-mysql-4.024/ChangeLog
+x DBD-mysql-4.024/Makefile.PL.embedded
+x DBD-mysql-4.024/mysql.o
+x DBD-mysql-4.024/eg/
+x DBD-mysql-4.024/eg/proc_example2.pl
+x DBD-mysql-4.024/eg/bug21028.pl
+x DBD-mysql-4.024/eg/proc_example2a.pl
+x DBD-mysql-4.024/eg/bug14979.pl
+x DBD-mysql-4.024/eg/proc_example4.pl
+x DBD-mysql-4.024/eg/bug30033pg.pl
+x DBD-mysql-4.024/eg/proc_example1.pl
+x DBD-mysql-4.024/eg/proc_example2b.pl
+x DBD-mysql-4.024/eg/bigint_quotes.pl
+x DBD-mysql-4.024/eg/bug30033.pl
+x DBD-mysql-4.024/eg/decimal_test.pl
+x DBD-mysql-4.024/eg/prepare_memory_usage.pl
+x DBD-mysql-4.024/eg/issue21946.pl
+x DBD-mysql-4.024/eg/proc_example3.pl
+x DBD-mysql-4.024/pod2htmi.tmp
+x DBD-mysql-4.024/README
+x DBD-mysql-4.024/TODO
+x DBD-mysql-4.024/dbdimp.h
+x DBD-mysql-4.024/lib/
+x DBD-mysql-4.024/lib/DBD/
+x DBD-mysql-4.024/lib/DBD/mysql.pm
+x DBD-mysql-4.024/lib/DBD/mysql/
+x DBD-mysql-4.024/lib/DBD/mysql/GetInfo.pm
+x DBD-mysql-4.024/lib/DBD/mysql/INSTALL.pod
+x DBD-mysql-4.024/lib/Bundle/
+x DBD-mysql-4.024/lib/Bundle/DBD/
+x DBD-mysql-4.024/lib/Bundle/DBD/mysql.pm
+x DBD-mysql-4.024/INSTALL.html
+x DBD-mysql-4.024/MANIFEST
+x DBD-mysql-4.024/mysql.xsi
+Entering DBD-mysql-4.024
+Checking configure dependencies from META.yml
+Checking if you have DBI 1.08 ... Yes (1.630)
+Running Makefile.PL
+Configuring DBD-mysql-4.024 ...
+
+PLEASE NOTE:
+
+For 'make test' to run properly, you must ensure that the
+database user 'digitalbot' can connect to your MySQL server
+and has the proper privileges that these tests require such
+as 'drop table', 'create table', 'drop procedure', 'create procedure'
+as well as others.
+
+mysql&gt; grant all privileges on test.* to 'digitalbot'@'localhost' identified by 's3kr1t';
+
+You can also optionally set the user to run 'make test' with:
+
+perl Makefile.PL --testuser=username
+
+I will use the following settings for compiling and testing:
+
+  cflags        (mysql_config) = -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing
+  embedded      (mysql_config) =
+  ldflags       (mysql_config) =
+  libs          (mysql_config) = -L/usr/local/Cellar/mysql/5.6.13/lib -lmysqlclient
+  mysql_config  (guessed     ) = mysql_config
+  nocatchstderr (default     ) = 0
+  nofoundrows   (default     ) = 0
+  ssl           (guessed     ) = 0
+  testdb        (default     ) = test
+  testhost      (default     ) =
+  testpassword  (default     ) =
+  testport      (default     ) =
+  testsocket    (default     ) =
+  testuser      (guessed     ) = digitalbot
+
+To change these settings, see 'perl Makefile.PL --help' and
+'perldoc INSTALL'.
+
+Checking if your kit is complete...
+Warning: the following files are missing in your kit:
+	MYMETA.json
+Please inform the author.
+Using DBI 1.63 (for perl 5.018001 on darwin-thread-multi-2level) installed in /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI/
+Writing Makefile for DBD::mysql
+Writing MYMETA.yml and MYMETA.json
+OK
+Checking dependencies from MYMETA.json ...
+Checking if you have Test::Deep 0 ... Yes (0.110)
+Checking if you have Data::Dumper 0 ... Yes (2.145)
+Checking if you have Test::More 0 ... Yes (0.98)
+Checking if you have DBI 1.08 ... Yes (1.630)
+Building and testing DBD-mysql-4.024 ... cp lib/Bundle/DBD/mysql.pm blib/lib/Bundle/DBD/mysql.pm
+cp lib/DBD/mysql/GetInfo.pm blib/lib/DBD/mysql/GetInfo.pm
+cp lib/DBD/mysql.pm blib/lib/DBD/mysql.pm
+cp lib/DBD/mysql/INSTALL.pod blib/lib/DBD/mysql/INSTALL.pod
+cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   dbdimp.c
+dbdimp.c:3651:22: warning: incompatible pointer types assigning to 'my_bool *' (aka 'char *') from 'bool *'
+      [-Wincompatible-pointer-types]
+      buffer-&gt;is_null= &amp;(fbh-&gt;is_null);
+                     ^ ~~~~~~~~~~~~~~~
+1 warning generated.
+/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/xsubpp  -typemap /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/typemap  mysql.xs &gt; mysql.xsc &amp;&amp; mv mysql.xsc mysql.c
+Warning: duplicate function definition 'do' detected in mysql.xs, line 244
+Warning: duplicate function definition 'rows' detected in mysql.xs, line 756
+cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   mysql.c
+mysql.xs:935:38: warning: format specifies type 'int' but the argument has type 'SV *' (aka 'struct sv *') [-Wformat]
+                croak(&quot;Unknown SQL Info type: %i&quot;,dbh);
+                                              ~~  ^~~
+1 warning generated.
+Running Mkbootstrap for DBD::mysql ()
+chmod 644 mysql.bs
+rm -f blib/arch/auto/DBD/mysql/mysql.bundle
+LD_RUN_PATH=&quot;/usr/local/Cellar/mysql/5.6.13/lib&quot; /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 myld env MACOSX_DEPLOYMENT_TARGET=10.3 cc -arch x86_64  -bundle -undefined dynamic_lookup -L/usr/local/lib -fstack-protector dbdimp.o mysql.o  -o blib/arch/auto/DBD/mysql/mysql.bundle 	\
+	   -L/usr/local/Cellar/mysql/5.6.13/lib -lmysqlclient  	\
+
+chmod 755 blib/arch/auto/DBD/mysql/mysql.bundle
+cp mysql.bs blib/arch/auto/DBD/mysql/mysql.bs
+chmod 644 blib/arch/auto/DBD/mysql/mysql.bs
+Manifying blib/man3/DBD::mysql::INSTALL.3
+Manifying blib/man3/DBD::mysql.3
+Manifying blib/man3/Bundle::DBD::mysql.3
+PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-e&quot; &quot;test_harness(0, 'blib/lib', 'blib/arch')&quot; t/*.t
+t/00base.t ........................... 1/6 Assertion failed: (PL_valid_types_PVX[SvTYPE(_svcur) &amp; SVt_MASK] || SvTYPE(_svcur) == SVt_REGEXP), function err_hash, file DBI.xs, line 866.
+t/00base.t ........................... Failed 1/6 subtests
+t/10connect.t ........................ ok
+t/15reconnect.t ...................... ok
+t/20createdrop.t ..................... ok
+t/25lockunlock.t ..................... ok
+t/29warnings.t ....................... ok
+t/30insertfetch.t .................... ok
+t/31insertid.t ....................... ok
+t/32insert_error.t ................... ok
+t/35limit.t .......................... ok
+t/35prepare.t ........................ ok
+t/40bindparam.t ...................... ok
+t/40bindparam2.t ..................... ok
+t/40blobs.t .......................... ok
+t/40catalog.t ........................ 1/78 Use of uninitialized value $numTests in concatenation (.) or string at t/lib.pl line 213.
+t/40catalog.t ........................ ok
+t/40keyinfo.t ........................ ok
+t/40listfields.t ..................... ok
+t/40nulls.t .......................... ok
+t/40nulls_prepare.t .................. ok
+t/40numrows.t ........................ ok
+t/40server_prepare.t ................. ok
+t/40server_prepare_error.t ........... ok
+t/40types.t .......................... ok
+t/41bindparam.t ...................... ok
+t/41blobs_prepare.t .................. ok
+t/42bindparam.t ...................... ok
+t/43count_params.t ................... ok
+t/50chopblanks.t ..................... ok
+t/50commit.t ......................... ok
+t/51bind_type_guessing.t ............. ok
+t/52comment.t ........................ ok
+t/53comment.t ........................ ok
+t/55utf8.t ........................... ok
+t/60leaks.t .......................... skipped: Skip $ENV{SLOW_TESTS} is not set
+t/65segfault.t ....................... ok
+t/65types.t .......................... ok
+t/70takeimp.t ........................ ok
+t/71impdata.t ........................ ok
+t/75supported_sql.t .................. ok
+t/76multi_statement.t ................ 1/25 # Testing multicall against SQL_DBMS_VER: 5.6.13-log
+t/76multi_statement.t ................ ok
+t/80procs.t .......................... ok
+t/81procs.t .......................... ok
+t/85init_command.t ................... ok
+t/86_bug_36972.t ..................... ok
+t/87async.t .......................... ok
+t/88async-multi-stmts.t .............. ok
+t/89async-method-check.t ............. ok
+t/90no-async.t ....................... skipped: Async support was built into this version of DBD::mysql
+t/91errcheck.t ....................... ok
+t/99_bug_server_prepare_blob_null.t .. ok
+t/pod.t .............................. skipped: Test::Pod 1.00 required for testing POD
+
+Test Summary Report
+-------------------
+t/00base.t                         (Wstat: 6 Tests: 5 Failed: 0)
+  Non-zero wait status: 6
+  Parse errors: Bad plan.  You planned 6 tests but ran 5.
+Files=51, Tests=1265, 27 wallclock secs ( 0.36 usr  0.13 sys +  4.31 cusr  0.64 csys =  5.44 CPU)
+Result: FAIL
+Failed 1/51 test programs. 0/1265 subtests failed.
+make: *** [test_dynamic] Error 255
+FAIL
+! Installing DBD::mysql failed. See /Users/digitalbot/.cpanm/work/1383286511.59902/build.log for details. Retry with --force to force install it.
+</code></pre></noscript></div>
+</p>
+
+<p>なんすか</p>
+
+<pre><code>t/00base.t ........................... 1/6 Assertion failed: (PL_valid_types_PVX[SvTYPE(_svcur) &amp; SVt_MASK] || SvTYPE(_svcur) == SVt_REGEXP), function err_hash, file DBI.xs, line 866.
+</code></pre>
+
+<p>って。<code>DBI.xs</code>でのエラー？ちょっとそういうのやめてもらいたいのですが。</p>
+
+<hr />
+
+<p><div class="footnotes">
+	<ol>
+		<li id='fn:1'><p><a href="http://blog.kamipo.net/entry/2013/02/07/234050">MySQL の unknown option エラーはオプションに loose- プレフィックスをつけると回避できる</a>
+  <a href='#fnref:1' rev='footnote'>↩</a></p>
+</li><li id='fn:2'><p><a href="http://www.karakaram.com/install-mysql56-homebrew">HomebrewでMySQL 5.6をインストール。開発用my.cnfもさらす</a>
+<a href='#fnref:2' rev='footnote'>↩</a></p>
+</li>
+	</ol>
+</div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[PerlでJSONを出力する。JSONとJSON::Syckの違い]]></title>
@@ -252,136 +601,6 @@ FAIL
 
 
 <p>20日は一日いる予定で、21はもしかした午前中しかいられないかも。けど楽しみ。学生チケットは¥0ってものうれしい。会場でよろしく。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GitPrep導入してみた]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro/"/>
-    <updated>2013-08-31T18:01:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/08/31/gitprep-intro</id>
-    <content type="html"><![CDATA[<p>最近、研究室用にgitリポジトリとgitブラウザが欲しいと思って<a href="http://gitprep.org/">GitPrep</a>を導入した。</p>
-
-<p>正直総合力で見てはGithubには劣るけど、逆にあそこまで大掛かりじゃなくシンプルなものが欲しい人にとっては向いてると思う。
-けどまぁ最近出来たてのプロダクトってこともあっていくつかはまったことがあるのでここに書いておく。</p>
-
-<p>ちなみに、GitPrepはPerl製GitHubクローンで、この記事は<strong>Perl</strong>や<strong>local::lib</strong><sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>、<strong>Carton</strong><sup id='fnref:2'><a href='#fn:2' rel='footnote'>2</a></sup>、<strong>Plenv</strong><sup id='fnref:3'><a href='#fn:3' rel='footnote'>3</a></sup>などが大体わかってる前提で書いてる。でもわからなくても雰囲気でなんとかなる。</p>
-
-<p>あ、ちなみに作業環境としては<strong>CentOS6.3</strong>になる。perlはplenvで個別に入れた<strong>perl5.18</strong>。</p>
-
-<!-- more -->
-
-
-<h2>install</h2>
-
-<p>基本的には<a href="https://github.com/yuki-kimoto/gitprep/blob/master/README.md">README</a>通りにやれば良いんだけど、<code>git clone</code>してきて、<code>plackup</code>すれば良いと思ったらそうでも無いらしくて困った。
-なんていうか、初心者も手軽に使えるようにしてる分、煩雑になってる部分もあると思う。</p>
-
-<p>んじゃまぁとりあえず、と思って<code>carton install</code>すると、確かに<code>local/lib/perl5</code>にモジュールが入るんだけど、それが<code>@INC</code>に入ってないし、<code>carton exec</code>しても実行スクリプトがなんかラップされてるからうまく効かない。</p>
-
-<p>仕方ないから素直に<code>./setup.sh</code>を叩くわけだけど、最初はうまくいったけど、後述するアップデート後になんかうまく動かなくなった。</p>
-
-<p>から、結局</p>
-
-<pre><code>$ rm -rf GITPREPDIR/extlib/lib/perl5
-$ mv GITPREPDIR/local/lib/perl5 GITPREPDIR/extlib/lib/
-</code></pre>
-
-<p>して、cartonで入れたモジュールを強引に使うようにした。</p>
-
-<p>ひとまずこれで</p>
-
-<pre><code>$ gitprep
-</code></pre>
-
-<p>すれば動くようになった。</p>
-
-<h2>daemontools</h2>
-
-<p><code>supervisor</code>も使ってみたかったけど、ここは<code>daemontools</code>にした。</p>
-
-<p>daemontools自体のインストールは<a href="http://upsnap.jp/archives/show/96">ココ</a>とかが参考になる。
-で、ともかくデーモン化して運用したいわけだけど、daemontools久しぶりに設定したせいですごいハマってた。
-具体的には、daemontoolsでデーモン化するにはフォアグラウンドのプロセスじゃなきゃだめなこと忘れてた。</p>
-
-<p>幸いにも、実行スクリプトである<code>gitprep</code>(これは実際には<code>hypnotoad</code>のラップ)にもフォアグラウンドオプションがありそれをつけることで解決。</p>
-
-<p>ついでに書いたrunスクリプトを貼っておく。</p>
-
-<p><div><script src='https://gist.github.com/670631b4bd8e6751ffdc.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<h2>update</h2>
-
-<p><code>revision:a80b1a7209</code>あたりからREADMEがマークダウンに対応したのでgitprepをアップデートした。ドキュメントを見る限り、そのまま置き換えたりアップデートしても大丈夫そうなのでそうした。</p>
-
-<pre><code>$ git pull
-</code></pre>
-
-<p>するとやはり特に不自由なくgitprepが最新になった。</p>
-
-<p>しかし、これでさらに捗るぞと思って改めてブラウザからリポジトリにアクセスしたらエラーが出てしまった。こういうときはログを見るに限る。</p>
-
-<pre><code>$ less GITPREPDIR/log/production.log
-</code></pre>
-
-<p>もちろん<code>tail -f</code>でもいいけど、ともかくログをみると<code>Text::Markdown</code>モジュールが無くて死んでるっぽいので再度<code>./setup.sh</code>を動かすことに。
-しかしなんだか謎のエラーを吐いてモジュールがインストールできない。もちろんインストール先は必ずしも<code>extlib</code>以下じゃなくてもいいんだけど、ここまで来たらうまいことまとめたい。
-そこで#installの項にも書いたけど<code>carton install</code>してそれを<code>mv</code>することで解決した。</p>
-
-<h2>Basic Auth</h2>
-
-<p>GitPrepを導入した理由に、プライベートで決められた人だけに公開できるgitリポジトリが欲しいっていうのがあったので認証をかけたかったんだけど、このGitPrep、サインインなどのシステムはあるもののリポジトリそのものを見えなくしたり、cloneを防いだりする機構は現在無いみたい。</p>
-
-<p>そこで<code>nginx</code><sup id='fnref:4'><a href='#fn:4' rel='footnote'>4</a></sup>側でベーシック認証をかけることにした。</p>
-
-<p><div><script src='https://gist.github.com/d4fd11c829066925bfb9.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>基本的には</p>
-
-<pre><code>auth_basic "hoge";
-auth_basic_user_file "/path/to/file";
-</code></pre>
-
-<p>を書くだけでnginxではベーシック認証がかかるみたい。だもんで</p>
-
-<pre><code>$ mkdir -p /usr/local/nginx/htpasswd
-$ htpasswd -nb user pass &gt; /usr/local/nginx/htpasswd/gitprep
-</code></pre>
-
-<p>とでもして、上gistの中のでのファイルパスに指定するだけ。</p>
-
-<p>nginxのconfの書き方自体は適当にググって欲しい。とりあえず自分はprefixを<code>/usr/local/nginx</code>にしてたり、<code>general.conf</code>に共通設定をまとめたりしてる。
-あと当然gitprepはリバースプロキシで動いてるからその設定が最下部のブロックになる。</p>
-
-<h2>以上</h2>
-
-<p>つらつらとGitPrep導入にあたって何をしたか書いてみたけど思ったより長くなってしまった。
-あまり調べずに結構適当に書いてしまったので、もしかしたらもっとうまい方法やそもそもやり方がおかしい部分もあるかもしれない。</p>
-
-<p>実際他にもよくわかってないところや不具合なんかもあるんだけど、それはまた別にまとめるとする。</p>
-
-<hr />
-
-<p><div class="footnotes">
-	<ol>
-		<li id='fn:1'><p>perlでモジュールを任意の場所にインストール・使用するモジュール。<a href="http://gihyo.jp/dev/serial/01/modern-perl/0018">参考URL</a>
-  <a href='#fnref:1' rev='footnote'>↩</a></p>
-</li><li id='fn:2'><p>perlでwebアプリごとにモジュールをインストール・管理するモジュール。<a href="http://blog.64p.org/entry/2013/08/06/112350">参考URL</a>
-  <a href='#fnref:2' rev='footnote'>↩</a></p>
-</li><li id='fn:3'><p>perl自体を簡単にインストール・管理するツール。<a href="http://blog.papix.net/entry/2013/01/21/210327">参考URL</a>
-  <a href='#fnref:3' rev='footnote'>↩</a></p>
-</li><li id='fn:4'><p>webサーバ。なんかモダンだってことで最近はApacheより使うかも。<a href="http://nginx.org/ja/">参考URL</a>
-<a href='#fnref:4' rev='footnote'>↩</a></p>
-</li>
-	</ol>
-</div>
-</p>
 ]]></content>
   </entry>
   
