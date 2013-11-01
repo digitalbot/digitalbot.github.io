@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-01T23:38:42+09:00</updated>
+  <updated>2013-11-01T23:52:20+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -18,7 +18,10 @@
     <link href="http://blog.digital-bot.com/blog/2013/11/01/json-cmp/"/>
     <updated>2013-11-01T22:34:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/11/01/json-cmp</id>
-    <content type="html"><![CDATA[<p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。</p>
+    <content type="html"><![CDATA[<p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。わりとゆるふわっとしてるので間違いあるかも。</p>
+
+<!-- more -->
+
 
 <h2>JSONとSyckで同じ出力を得る</h2>
 
@@ -73,7 +76,7 @@ done_testing;
 </code></pre></noscript></div>
 </p>
 
-<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う。</p>
+<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う場合がある。</p>
 
 <p>```perl</p>
 

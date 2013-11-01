@@ -9,7 +9,7 @@
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。 JSONとSyckで同じ出力を得る #!/usr/bin/env perl &hellip;">
+  <meta name="description" content="PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。わりとゆるふわっとしてるので間違いあるかも。 JSONとSyckで同じ出力を得る &hellip;">
   <meta name="keywords" content="perljson">
 
   <!-- http://t.co/dKP3o1e -->
@@ -133,7 +133,10 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。</p>
+<div class="entry-content"><p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。わりとゆるふわっとしてるので間違いあるかも。</p>
+
+<!-- more -->
+
 
 <h2>JSONとSyckで同じ出力を得る</h2>
 
@@ -188,7 +191,7 @@ done_testing;
 </code></pre></noscript></div>
 
 
-<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う。</p>
+<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う場合がある。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
