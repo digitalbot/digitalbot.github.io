@@ -5,18 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>test-post - About Digital</title>
+  <title>PerlでJSONを出力する。JSONとJSON::Syckの違い - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="test this is a test. table left clumn center clumn right clumn a
-a
-a b
-b
-c 日本語 日本語はかけるかな
-1 これでどうだ
-↩ ">
-  <meta name="keywords" content="test">
+  <meta name="description" content="PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。 JSONとSyckで同じ出力を得る #!/usr/bin/env perl &hellip;">
+  <meta name="keywords" content="perljson">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -24,7 +18,7 @@ c 日本語 日本語はかけるかな
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/08/30/test-post/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/11/01/json-cmp/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -103,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">test-post</h1>
+        <h1 class="entry-title">PerlでJSONを出力する。JSONとJSON::Syckの違い</h1>
       
     
     
@@ -120,13 +114,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-08-30T11:50:00+09:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> |&nbsp;
+<time datetime="2013-11-01T22:34:00+09:00" pubdate data-updated="true">Nov 1<span>st</span>, 2013</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/test/'>test</a>
+    <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -139,52 +133,118 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><h2>test</h2>
+<div class="entry-content"><p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。</p>
 
-<p>this is a test.</p>
+<h2>JSONとSyckで同じ出力を得る</h2>
 
-<!-- more -->
+<div><script src='https://gist.github.com/7265507.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>#!/usr/bin/env perl
+use strict;
+use warnings;
+use feature qw/say/;
+use Encode qw//;
+use Encode::JavaScript::UCS;
+use Data::Dumper;
+use JSON qw//;
+use JSON::Syck;
+use Test::More;
+
+sub _json {
+    my @data = @_;
+    my $json = JSON-&gt;new-&gt;ascii-&gt;utf8(0)-&gt;encode(\@data);
+    $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
+    return $json;
+}
+sub _syck {
+    my @data = @_;
+    my $json = Encode::encode('JavaScript-UCS', JSON::Syck::Dump(\@data));
+    $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
+    return $json;
+}
+
+my @members = ({
+    age =&gt; 41,
+    name =&gt; '[倉持]',
+}, {
+    age =&gt; 42,
+    name =&gt; '&quot;浅沼&quot;/\/',
+}, {
+    age =&gt; 49,
+    name =&gt; '&quot;\&quot;&lt;恩田&gt;',
+}, {
+    age =&gt; 49,
+    name =&gt; ';{五十嵐};',
+});
+
+ok(_json eq _syck);
+done_testing;
+
+# say _json(@members);
+##=&gt; [{&quot;age&quot;:41,&quot;name&quot;:&quot;[\u00e5\u0080\u0089\u00e6\u008c\u0081]&quot;},{&quot;name&quot;:&quot;\&quot;\u00e6\u00b5\u0085\u00e6\u00b2\u00bc\&quot;\u002f\\\u002f&quot;,&quot;age&quot;:42},{&quot;name&quot;:&quot;\&quot;\\\&quot;\u003c\u00e6\u0081\u00a9\u00e7\u0094\u00b0\u003e&quot;,&quot;age&quot;:49},{&quot;age&quot;:49,&quot;name&quot;:&quot;;{\u00e4\u00ba\u0094\u00e5\u008d\u0081\u00e5\u00b5\u0090};&quot;}]
+
+# say _syck(@members);
+##=&gt; [{&quot;age&quot;:41,&quot;name&quot;:&quot;[\u00e5\u0080\u0089\u00e6\u008c\u0081]&quot;},{&quot;name&quot;:&quot;\&quot;\u00e6\u00b5\u0085\u00e6\u00b2\u00bc\&quot;\u002f\\\u002f&quot;,&quot;age&quot;:42},{&quot;name&quot;:&quot;\&quot;\\\&quot;\u003c\u00e6\u0081\u00a9\u00e7\u0094\u00b0\u003e&quot;,&quot;age&quot;:49},{&quot;age&quot;:49,&quot;name&quot;:&quot;;{\u00e4\u00ba\u0094\u00e5\u008d\u0081\u00e5\u00b5\u0090};&quot;}]
+</code></pre></noscript></div>
 
 
-<h2>table</h2>
+<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う。</p>
 
-<table>
-<thead>
-<tr>
-<th align="left">left clumn </th>
-<th align="center"> center clumn </th>
-<th align="right"> right clumn</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">a</td>
-<td align="center">a</td>
-<td align="right">a</td>
-</tr>
-<tr>
-<td align="left">b</td>
-<td align="center">b</td>
-<td align="right">c</td>
-</tr>
-</tbody>
-</table>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#JSON</span>
+</span><span class='line'><span class="n">JSON</span><span class="o">-&gt;</span><span class="k">new</span><span class="o">-&gt;</span><span class="n">ascii</span><span class="o">-&gt;</span><span class="n">utf8</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">encode</span><span class="p">(</span><span class="o">\</span><span class="nv">@data</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>日本語</h1>
+<p>Unicode文字列を&#8221;%uXXXX&#8221;形式にエンコードしたいから、<strong>JSON</strong>では<code>ascii</code>オプションをつける。<code>utf8(0)</code>はデフォルトの挙動なので無くても良い。</p>
 
-<p>日本語はかけるかな
-<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
-
-<div class="footnotes">
-    <ol>
-        <li id='fn:1'><p> これでどうだ
-<a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-    </ol>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#JSON::Syck</span>
+</span><span class='line'><span class="nn">Encode::</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;JavaScript-UCS&#39;</span><span class="p">,</span> <span class="nn">JSON::Syck::</span><span class="n">Dump</span><span class="p">(</span><span class="o">\</span><span class="nv">@data</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>こちら<strong>JSON::Syck</strong>では<code>Encode::JavaScript::UCS</code>を使うことでそれを実現する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="nv">$json</span> <span class="o">=~</span> <span class="sr">s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>それだけじゃ「&lt;、>、+」がそのままなので、置換しておく。それぞれこうすると安全なJSON文字列を得ることができる。これさえ覚えておけばプロジェクトによってどちらが使われていても、同じ結果が得られるAPIが書けるはず。</p>
+
+<h2>渡す文字列</h2>
+
+<p>euc-jpでencodedな文字列でもsjisでencodedな文字列でも(つまりutf8フラグ無し)、decodedな文字列(utf8フラグ有り)でもなんでも渡せる。</p>
+
+<h2>返ってくる文字列</h2>
+
+<p><code>"%uXXXX"</code>形式にエンコードされたutf8文字列が返ってくる。これを普通のutf8文字列(utf8フラグ無し)にしたければ</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="nn">Encode::</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;JavaScript-UCS&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>すれば良いし、あとはeuc-jpとかで欲しければ普通に</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="nn">Encode::</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;euc-jp&#39;</span><span class="p">,</span> <span class="nn">Encode::</span><span class="n">decode_utf8</span><span class="p">(</span><span class="nn">Encode::</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;JavaScript-UCS&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>すれば良いはず。違ったら教えて。</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><p><a href="http://d.hatena.ne.jp/hasegawayosuke/20110706/p1">SONのエスケープをどこまでやるか問題</a></p></li>
+<li><p><a href="http://d.hatena.ne.jp/minesouta/20071005/p1">JSON::Syck &ndash; あえて言おう、JSONはYAMLであると。</a></p></li>
+<li><p><a href="http://kawa.at.webry.info/200801/article_6.html">JSON モジュールの utf8 フラグ周りの仕様 tips 注意点</a></p></li>
+<li><p><a href="http://blog.64p.org/entry/20111125/1322185155">Amon2とJSONとセキュリティ</a></p></li>
+</ul>
 
 </div>
 
@@ -208,13 +268,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-08-30T11:50:00+09:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
+<time datetime="2013-11-01T22:34:00+09:00" pubdate data-updated="true">Nov 1<span>st</span>, 2013</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/test/'>test</a>
+    <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -224,7 +284,7 @@ $(document).ready( function () {
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/test/'>test</a>
+    <a class='tag' href='/blog/tags/json/'>json</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>
   
 </span>
 
@@ -233,7 +293,7 @@ $(document).ready( function () {
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/08/30/test-post/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/08/30/test-post/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/11/01/json-cmp/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/11/01/json-cmp/" >Tweet</a>
   
   
   
@@ -244,8 +304,8 @@ $(document).ready( function () {
     
     <p class="meta">
       
+        <a class="basic-alignment left articlenav" href="/blog/2013/10/28/install-web-query/" title="Previous Post: Web::Queryのtestがコケた話">&laquo; Web::Queryのtestがコケた話</a>
       
-        <a class="basic-alignment right articlenav" href="/blog/2013/08/30/more-useful-inputrc/" title="Next Post: .inputrcの便利設定">.inputrcの便利設定 &raquo;</a>
       
     </p>
   
@@ -253,6 +313,14 @@ $(document).ready( function () {
 <h2>Related Posts...</h2>
 <div style="margin-left:30px;">
 <ul>
+
+<li><a href="/blog/2013/10/28/install-web-query/">Web::Queryのtestがコケた話</a></li>
+
+<li><a href="/blog/2013/09/25/went-yapc/">YAPCに行ってきた</a></li>
+
+<li><a href="/blog/2013/09/20/go-yapc/">YAPCに行こう</a></li>
+
+<li><a href="/blog/2013/08/31/gitprep-intro/">GitPrep導入してみた</a></li>
 
 </ul>
 </div>
@@ -367,8 +435,8 @@ $(document).ready( function () {
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/08/30/test-post/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/08/30/test-post/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/11/01/json-cmp/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/11/01/json-cmp/';
         var disqus_script = 'embed.js';
       
     (function () {

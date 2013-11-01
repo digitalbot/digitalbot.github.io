@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: json | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/json/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2013-11-01T23:38:42+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PerlでJSONを出力する。JSONとJSON::Syckの違い]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/11/01/json-cmp/"/>
+    <updated>2013-11-01T22:34:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/11/01/json-cmp</id>
+    <content type="html"><![CDATA[<p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。</p>
+
+<h2>JSONとSyckで同じ出力を得る</h2>
+
+<p><div><script src='https://gist.github.com/7265507.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>#!/usr/bin/env perl
+use strict;
+use warnings;
+use feature qw/say/;
+use Encode qw//;
+use Encode::JavaScript::UCS;
+use Data::Dumper;
+use JSON qw//;
+use JSON::Syck;
+use Test::More;
+
+sub _json {
+    my @data = @_;
+    my $json = JSON-&gt;new-&gt;ascii-&gt;utf8(0)-&gt;encode(\@data);
+    $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
+    return $json;
+}
+sub _syck {
+    my @data = @_;
+    my $json = Encode::encode('JavaScript-UCS', JSON::Syck::Dump(\@data));
+    $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
+    return $json;
+}
+
+my @members = ({
+    age =&gt; 41,
+    name =&gt; '[倉持]',
+}, {
+    age =&gt; 42,
+    name =&gt; '&quot;浅沼&quot;/\/',
+}, {
+    age =&gt; 49,
+    name =&gt; '&quot;\&quot;&lt;恩田&gt;',
+}, {
+    age =&gt; 49,
+    name =&gt; ';{五十嵐};',
+});
+
+ok(_json eq _syck);
+done_testing;
+
+# say _json(@members);
+##=&gt; [{&quot;age&quot;:41,&quot;name&quot;:&quot;[\u00e5\u0080\u0089\u00e6\u008c\u0081]&quot;},{&quot;name&quot;:&quot;\&quot;\u00e6\u00b5\u0085\u00e6\u00b2\u00bc\&quot;\u002f\\\u002f&quot;,&quot;age&quot;:42},{&quot;name&quot;:&quot;\&quot;\\\&quot;\u003c\u00e6\u0081\u00a9\u00e7\u0094\u00b0\u003e&quot;,&quot;age&quot;:49},{&quot;age&quot;:49,&quot;name&quot;:&quot;;{\u00e4\u00ba\u0094\u00e5\u008d\u0081\u00e5\u00b5\u0090};&quot;}]
+
+# say _syck(@members);
+##=&gt; [{&quot;age&quot;:41,&quot;name&quot;:&quot;[\u00e5\u0080\u0089\u00e6\u008c\u0081]&quot;},{&quot;name&quot;:&quot;\&quot;\u00e6\u00b5\u0085\u00e6\u00b2\u00bc\&quot;\u002f\\\u002f&quot;,&quot;age&quot;:42},{&quot;name&quot;:&quot;\&quot;\\\&quot;\u003c\u00e6\u0081\u00a9\u00e7\u0094\u00b0\u003e&quot;,&quot;age&quot;:49},{&quot;age&quot;:49,&quot;name&quot;:&quot;;{\u00e4\u00ba\u0094\u00e5\u008d\u0081\u00e5\u00b5\u0090};&quot;}]
+</code></pre></noscript></div>
+</p>
+
+<p>念頭にあるのは「安全で文字コードの違いなどを意識せずに扱いたい」ということ。JSONとJSON::Syckでは当然だけどデフォルトの挙動がいくらか違うし、出力されるJSON自体も違う。</p>
+
+<p>```perl</p>
+
+<h1>JSON</h1>
+
+<p>JSON->new->ascii->utf8(0)&ndash;>encode(\@data);
+```</p>
+
+<p>Unicode文字列を"%uXXXX"形式にエンコードしたいから、<strong>JSON</strong>では<code>ascii</code>オプションをつける。<code>utf8(0)</code>はデフォルトの挙動なので無くても良い。</p>
+
+<p>```perl</p>
+
+<h1>JSON::Syck</h1>
+
+<p>Encode::encode(&lsquo;JavaScript-UCS&rsquo;, JSON::Syck::Dump(\@data));
+```</p>
+
+<p>こちら<strong>JSON::Syck</strong>では<code>Encode::JavaScript::UCS</code>を使うことでそれを実現する。</p>
+
+<p><code>perl
+$json =~ s/([&lt;&gt;\/\+])/sprintf("\\u%04x",ord($1))/eg;
+</code></p>
+
+<p>それだけじゃ「&lt;、>、+」がそのままなので、置換しておく。それぞれこうすると安全なJSON文字列を得ることができる。これさえ覚えておけばプロジェクトによってどちらが使われていても、同じ結果が得られるAPIが書けるはず。</p>
+
+<h2>渡す文字列</h2>
+
+<p>euc-jpでencodedな文字列でもsjisでencodedな文字列でも(つまりutf8フラグ無し)、decodedな文字列(utf8フラグ有り)でもなんでも渡せる。</p>
+
+<h2>返ってくる文字列</h2>
+
+<p><code>"%uXXXX"</code>形式にエンコードされたutf8文字列が返ってくる。これを普通のutf8文字列(utf8フラグ無し)にしたければ</p>
+
+<p><code>perl
+Encode::decode('JavaScript-UCS', $str);
+</code></p>
+
+<p>すれば良いし、あとはeuc-jpとかで欲しければ普通に</p>
+
+<p><code>perl
+Encode::encode('euc-jp', Encode::decode_utf8(Encode::decode('JavaScript-UCS', $str)));
+</code></p>
+
+<p>すれば良いはず。違ったら教えて。</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><p><a href="http://d.hatena.ne.jp/hasegawayosuke/20110706/p1">SONのエスケープをどこまでやるか問題</a></p></li>
+<li><p><a href="http://d.hatena.ne.jp/minesouta/20071005/p1">JSON::Syck &ndash; あえて言おう、JSONはYAMLであると。</a></p></li>
+<li><p><a href="http://kawa.at.webry.info/200801/article_6.html">JSON モジュールの utf8 フラグ周りの仕様 tips 注意点</a></p></li>
+<li><p><a href="http://blog.64p.org/entry/20111125/1322185155">Amon2とJSONとセキュリティ</a></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
