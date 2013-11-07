@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: octopress | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/octopress/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-02T04:43:37+09:00</updated>
+  <updated>2013-11-07T21:13:54+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OctopressにOEmbedプラグインを導入した]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/11/07/oembed/"/>
+    <updated>2013-11-07T21:10:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/11/07/oembed</id>
+    <content type="html"><![CDATA[<p><a href="https://twitter.com/shogo82148/status/233612741670207488">https://twitter.com/shogo82148/status/233612741670207488</a>">https://twitter.com/shogo82148/status/233612741670207488">https://twitter.com/shogo82148/status/233612741670207488</a></a></p>
+
+<ul>
+<li><a href="http://shogo82148.github.io/blog/2012/08/09/oembed/">Octopress用OEmbedプラグインを作ってみた</a></li>
+</ul>
+
+
+<p>とのことだったので導入した。非情に便利だと思う。今のところ特に問題はない。@shogo82148氏に感謝</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopressのカスタマイズ]]></title>
