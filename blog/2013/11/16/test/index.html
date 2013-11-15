@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Octopress使ってブログはじめた - About Digital</title>
+  <title>test - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="そういえばだけどOctopressを使ってブログを書き始めた。 前にもブログを書いてたこともあるし、mixiちゃんとやってたころなんかは毎日日記を書いてた。けど最近はブログを続けてられなかった。 なんでか考えてみたら、多分文章を書くことのハードルが高いのが良くないんだと気付いた。 例えば、 &hellip;">
-  <meta name="keywords" content="octopressblog">
+  <meta name="description" content="TEST #include &lt;stdio.h&gt; void func_a(int (*ref_array)[10]) { printf(&quot;[func called]\n&quot;); printf(&quot;sizeof *ref_array: %lu\n&quot;, &hellip;">
+  <meta name="keywords" content="test">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/11/16/test/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -97,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">Octopress使ってブログはじめた</h1>
+        <h1 class="entry-title">test</h1>
       
     
     
@@ -114,13 +114,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-09-01T17:02:00+09:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time> |&nbsp;
+<time datetime="2013-11-16T00:46:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2013</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/etc/'>Etc</a>
+    <a class='category' href='/blog/categories/test/'>test</a>
   
 </span>
 
@@ -133,32 +133,53 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>そういえばだけどOctopressを使ってブログを書き始めた。</p>
+<div class="entry-content"><h3>TEST</h3>
 
-<p>前にもブログを書いてたこともあるし、mixiちゃんとやってたころなんかは毎日日記を書いてた。けど最近はブログを続けてられなかった。</p>
+<div><script src='https://gist.github.com/7332987.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
 
-<p>なんでか考えてみたら、多分文章を書くことのハードルが高いのが良くないんだと気付いた。</p>
+void func_a(int (*ref_array)[10]) {
+    printf(&quot;[func called]\n&quot;);
+    printf(&quot;sizeof *ref_array: %lu\n&quot;, sizeof *ref_array);
+    printf(&quot;sizeof (*ref_array)[0]: %lu\n&quot;, sizeof (*ref_array)[0]);
+    printf(&quot;sizeof *ref_array / sizeof (*ref_array)[0]: %lu\n&quot;, sizeof *ref_array / sizeof (*ref_array)[0]);
+    for (int i=0; i&lt;sizeof *ref_array / sizeof (*ref_array)[0]; i++) {
+        printf(&quot;%d: %d\n&quot;, i, (*ref_array)[i]);
+    }
+}
 
-<p>例えば、前のブログは管理画面からHTMLを書くことで記事を投稿する一般的なものだったけど、正直管理画面へアクセスするのもだるければ、HTMLタグを打つのもだるい。</p>
+void func_b(int *array) {
+    printf(&quot;[func called]\n&quot;);
+    printf(&quot;sizeof array: %lu\n&quot;, sizeof array);
+    printf(&quot;sizeof array[0]: %lu\n&quot;, sizeof array[0]);
+    printf(&quot;sizeof array / sizeof array[0]: %lu\n&quot;, sizeof array / sizeof array[0]);
+    printf(&quot;%d: %d\n&quot;, 0, array[0]);
+    printf(&quot;%d: %d\n&quot;, 1, array[1]);
+}
 
-<p>もちろん、マークダウンとかで書いたのを変換してから貼り付けても良いんだけど、なんとなくやっぱり手間だ。
-その点OctopressはEmacsを使って文章をかけるし、記法もマークダウン。記事の投稿もコマンドラインからできるからなんか良い。</p>
+int main(int argc, char *argv[]) {
+    int array[10];
+    printf(&quot;sizeof array: %lu\n&quot;, sizeof array);
+    printf(&quot;sizeof array[0]: %lu\n&quot;, sizeof array[0]);
+    printf(&quot;sizeof array / sizeof array[0]: %lu\n&quot;, sizeof array / sizeof array[0]);
+    for (int i=0; i&lt;sizeof array / sizeof array[0]; i++) {
+        printf(&quot;%d\n&quot;, i);
+        array[i] = i + 100;
+    }
+    func_a(&amp;array);
+    func_b(array);
+    return 0;
+}
+</code></pre></noscript></div>
 
-<p>あと、思ったのは「良いものを書こう」とするとダメ。<br/>
-適当にそのとき感じたことや、やったことの忘備録程度にすれば手軽に投稿できて良いと思う。</p>
 
-<p>そういうわけで実験的に文体も「です・ます」体でなくかなり適当な感じでやってみてる。</p>
+<ul>
+<li>layout ok?</li>
+</ul>
 
-<h3>内容</h3>
 
-<p>技術的なものを中心にそのとき思ったことを書く。</p>
-
-<p>twitterじゃ文字足りないなくらいなときに適当に書く。<br/>
-twitterってのは結構良いんだけど、アレのせいで世の中の文章書く人が減ったと思う。</p>
-
-<h2>目標</h2>
-
-<p>別にホッテントリとか無くていいから、ちゃんと続けて、誰か（後の自分含め）に有用な記事を残せればと思う。</p>
+<p>octopressをアップデートしたからテストしてるだけ。gistにも特に意味は無い。</p>
 </div>
 
 
@@ -181,13 +202,13 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
   
 
 
-<time datetime="2013-09-01T17:02:00+09:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
+<time datetime="2013-11-16T00:46:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2013</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/etc/'>Etc</a>
+    <a class='category' href='/blog/categories/test/'>test</a>
   
 </span>
 
@@ -197,7 +218,7 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/blog/'>blog</a>, <a class='tag' href='/blog/tags/emacs/'>emacs</a>, <a class='tag' href='/blog/tags/octopress/'>octopress</a>, <a class='tag' href='/blog/tags/twitter/'>twitter</a>
+    <a class='tag' href='/blog/tags/test/'>test</a>
   
 </span>
 
@@ -206,7 +227,7 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/01/start-octopress/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/11/16/test/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/11/16/test/" >Tweet</a>
   
   
   
@@ -217,10 +238,8 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/08/31/gitprep-intro/" title="Previous Post: GitPrep導入してみた">&laquo; GitPrep導入してみた</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/11/07/oembed/" title="Previous Post: OctopressにOEmbedプラグインを導入した">&laquo; OctopressにOEmbedプラグインを導入した</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/09/01/tb-intro-vim/" title="Next Post: Emacsユーザが実践Vimを読んでを読んで">Emacsユーザが実践Vimを読んでを読んで &raquo;</a>
       
     </p>
   
@@ -229,15 +248,7 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
 <div style="margin-left:30px;">
 <ul>
 
-<li><a href="/blog/2013/09/03/octopress-tips/">Octopressのカスタマイズ</a></li>
-
-<li><a href="/blog/2013/11/07/oembed/">OctopressにOEmbedプラグインを導入した</a></li>
-
-<li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
-
-<li><a href="/blog/2013/08/30/sakura-domain/">さくらインターネットのドメイン設定</a></li>
-
-<li><a href="/blog/2013/10/12/improve-vim/">vimを使いやすくする</a></li>
+<li><a href="/blog/2013/08/30/test-post/">test-post</a></li>
 
 </ul>
 </div>
@@ -352,8 +363,8 @@ twitterってのは結構良いんだけど、アレのせいで世の中の文�
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/01/start-octopress/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/01/start-octopress/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/11/16/test/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2013/11/16/test/';
         var disqus_script = 'embed.js';
       
     (function () {

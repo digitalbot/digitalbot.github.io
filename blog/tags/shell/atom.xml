@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: shell | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/shell/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-07T21:15:32+09:00</updated>
+  <updated>2013-11-16T00:55:55+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -306,7 +306,7 @@ $ git submodule update
 
 <p>zshだとキーバインドも簡単に設定できるみたいだけど、bashだとそうもいかない。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'>&amp;ldquo;<span class="se">\C</span>-^&amp;rdquo;: &amp;ldquo;~/&amp;rdquo;
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: test | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/test/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-07T21:15:32+09:00</updated>
+  <updated>2013-11-16T00:55:55+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/11/16/test/"/>
+    <updated>2013-11-16T00:46:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/11/16/test</id>
+    <content type="html"><![CDATA[<h3>TEST</h3>
+
+<p><div><script src='https://gist.github.com/7332987.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
+
+void func_a(int (*ref_array)[10]) {
+    printf(&quot;[func called]\n&quot;);
+    printf(&quot;sizeof *ref_array: %lu\n&quot;, sizeof *ref_array);
+    printf(&quot;sizeof (*ref_array)[0]: %lu\n&quot;, sizeof (*ref_array)[0]);
+    printf(&quot;sizeof *ref_array / sizeof (*ref_array)[0]: %lu\n&quot;, sizeof *ref_array / sizeof (*ref_array)[0]);
+    for (int i=0; i&lt;sizeof *ref_array / sizeof (*ref_array)[0]; i++) {
+        printf(&quot;%d: %d\n&quot;, i, (*ref_array)[i]);
+    }
+}
+
+void func_b(int *array) {
+    printf(&quot;[func called]\n&quot;);
+    printf(&quot;sizeof array: %lu\n&quot;, sizeof array);
+    printf(&quot;sizeof array[0]: %lu\n&quot;, sizeof array[0]);
+    printf(&quot;sizeof array / sizeof array[0]: %lu\n&quot;, sizeof array / sizeof array[0]);
+    printf(&quot;%d: %d\n&quot;, 0, array[0]);
+    printf(&quot;%d: %d\n&quot;, 1, array[1]);
+}
+
+int main(int argc, char *argv[]) {
+    int array[10];
+    printf(&quot;sizeof array: %lu\n&quot;, sizeof array);
+    printf(&quot;sizeof array[0]: %lu\n&quot;, sizeof array[0]);
+    printf(&quot;sizeof array / sizeof array[0]: %lu\n&quot;, sizeof array / sizeof array[0]);
+    for (int i=0; i&lt;sizeof array / sizeof array[0]; i++) {
+        printf(&quot;%d\n&quot;, i);
+        array[i] = i + 100;
+    }
+    func_a(&amp;array);
+    func_b(array);
+    return 0;
+}
+</code></pre></noscript></div>
+</p>
+
+<ul>
+<li>layout ok?</li>
+</ul>
+
+
+<p>octopressをアップデートしたからテストしてるだけ。gistにも特に意味は無い。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[test-post]]></title>
