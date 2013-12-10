@@ -205,7 +205,11 @@ $(document).ready( function () {
 </ul>
 
 
-<p>stream からつなぐときはいくつか方法があるんだけど、今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
+<p>マイク入力からWeb Audio APIを使うにはいくつか方法があるんだけど</p>
+
+<p>今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。</p>
+
+<p>マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
 
 <p>※ちなみにネット上によくあるサンプルなどのsouce.noteOn()はduplicatedのもよう。</p>
 
