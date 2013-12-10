@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mysql | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mysql/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-16T00:55:55+09:00</updated>
+  <updated>2013-12-11T02:34:58+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -195,15 +195,15 @@ Configuring DBD-mysql-4.024 ...
 
 PLEASE NOTE:
 
-For 'make test' to run properly, you must ensure that the
-database user 'digitalbot' can connect to your MySQL server
+For &#39;make test&#39; to run properly, you must ensure that the
+database user &#39;digitalbot&#39; can connect to your MySQL server
 and has the proper privileges that these tests require such
-as 'drop table', 'create table', 'drop procedure', 'create procedure'
+as &#39;drop table&#39;, &#39;create table&#39;, &#39;drop procedure&#39;, &#39;create procedure&#39;
 as well as others.
 
-mysql&gt; grant all privileges on test.* to 'digitalbot'@'localhost' identified by 's3kr1t';
+mysql&gt; grant all privileges on test.* to &#39;digitalbot&#39;@&#39;localhost&#39; identified by &#39;s3kr1t&#39;;
 
-You can also optionally set the user to run 'make test' with:
+You can also optionally set the user to run &#39;make test&#39; with:
 
 perl Makefile.PL --testuser=username
 
@@ -224,8 +224,8 @@ I will use the following settings for compiling and testing:
   testsocket    (default     ) =
   testuser      (guessed     ) = digitalbot
 
-To change these settings, see 'perl Makefile.PL --help' and
-'perldoc INSTALL'.
+To change these settings, see &#39;perl Makefile.PL --help&#39; and
+&#39;perldoc INSTALL&#39;.
 
 Checking if your kit is complete...
 Warning: the following files are missing in your kit:
@@ -245,16 +245,16 @@ cp lib/DBD/mysql/GetInfo.pm blib/lib/DBD/mysql/GetInfo.pm
 cp lib/DBD/mysql.pm blib/lib/DBD/mysql.pm
 cp lib/DBD/mysql/INSTALL.pod blib/lib/DBD/mysql/INSTALL.pod
 cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   dbdimp.c
-dbdimp.c:3651:22: warning: incompatible pointer types assigning to 'my_bool *' (aka 'char *') from 'bool *'
+dbdimp.c:3651:22: warning: incompatible pointer types assigning to &#39;my_bool *&#39; (aka &#39;char *&#39;) from &#39;bool *&#39;
       [-Wincompatible-pointer-types]
       buffer-&gt;is_null= &amp;(fbh-&gt;is_null);
                      ^ ~~~~~~~~~~~~~~~
 1 warning generated.
 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/xsubpp  -typemap /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/typemap  mysql.xs &gt; mysql.xsc &amp;&amp; mv mysql.xsc mysql.c
-Warning: duplicate function definition 'do' detected in mysql.xs, line 244
-Warning: duplicate function definition 'rows' detected in mysql.xs, line 756
+Warning: duplicate function definition &#39;do&#39; detected in mysql.xs, line 244
+Warning: duplicate function definition &#39;rows&#39; detected in mysql.xs, line 756
 cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   mysql.c
-mysql.xs:935:38: warning: format specifies type 'int' but the argument has type 'SV *' (aka 'struct sv *') [-Wformat]
+mysql.xs:935:38: warning: format specifies type &#39;int&#39; but the argument has type &#39;SV *&#39; (aka &#39;struct sv *&#39;) [-Wformat]
                 croak(&quot;Unknown SQL Info type: %i&quot;,dbh);
                                               ~~  ^~~
 1 warning generated.
@@ -270,7 +270,7 @@ chmod 644 blib/arch/auto/DBD/mysql/mysql.bs
 Manifying blib/man3/DBD::mysql::INSTALL.3
 Manifying blib/man3/DBD::mysql.3
 Manifying blib/man3/Bundle::DBD::mysql.3
-PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-e&quot; &quot;test_harness(0, 'blib/lib', 'blib/arch')&quot; t/*.t
+PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-e&quot; &quot;test_harness(0, &#39;blib/lib&#39;, &#39;blib/arch&#39;)&quot; t/*.t
 t/00base.t ........................... 1/6 Assertion failed: (PL_valid_types_PVX[SvTYPE(_svcur) &amp; SVt_MASK] || SvTYPE(_svcur) == SVt_REGEXP), function err_hash, file DBI.xs, line 866.
 t/00base.t ........................... Failed 1/6 subtests
 t/10connect.t ........................ ok

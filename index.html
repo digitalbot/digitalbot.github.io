@@ -9,7 +9,7 @@
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="TEST #include &lt;stdio.h&gt; void func_a(int (*ref_array)[10]) { printf(&quot;[func called]\n&quot;); printf(&quot;sizeof *ref_array: %lu\n&quot;, &hellip;">
+  <meta name="description" content="2013/12/10時点での話 Firefox に Web Audio API が採用され、Web が完全なゲームプラットフォームになりました Web Audio API W3C Editor&rsquo;s Draft ということだったので触ってみた。 環境 Mac OS X &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +93,131 @@ $(document).ready( function () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/12/11/web-audio/">Web Audio APIを使ってストリーム入出力してみた</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-11T02:17:00+09:00" pubdate data-updated="true">Dec 11<span>th</span>, 2013</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="/blog/2013/12/11/web-audio/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>2013/12/10時点での話</h3>
+
+<blockquote><p><a href="http://www.mozilla.jp/blog/entry/10338/">Firefox に Web Audio API が採用され、Web が完全なゲームプラットフォームになりました</a></p>
+
+<p><a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio API W3C Editor&rsquo;s Draft</a></p></blockquote>
+
+<p>ということだったので触ってみた。</p>
+
+<ul>
+<li><p>環境</p>
+
+<ul>
+<li><p>Mac OS X MountainLion</p></li>
+<li><p>FireFox 25.0.1</p></li>
+</ul>
+</li>
+</ul>
+
+
+<div><script src='https://gist.github.com/7894336.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;SAMPLE&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;audio id=&quot;audio&quot;&gt;ok?&lt;/audio&gt;
+    &lt;script&gt;
+     navigator.getUserMedia = navigator.getUserMedia
+     || navigator.webkitGetUserMedia
+     || navigator.mozGetUserMedia;
+     window.AudioContext = window.AudioContext
+     || window.webkitAudioContext
+     || window.mozAudioContext;
+
+     navigator.getUserMedia({audio:true}, function(stream) {
+       var audio = document.getElementById(&#39;audio&#39;);
+       var context = new AudioContext();
+       var mediaStreamSource = context.createMediaStreamSource(stream);
+       var filter = context.createBiquadFilter();
+       mediaStreamSource.connect(filter);
+       filter.type = 0;
+       filter.frequency.value = 1000;
+       var delay = context.createDelay(1.0);
+       filter.connect(delay);
+       delay.connect(context.destination);
+     }, function() {
+       alert(&#39;error&#39;);
+     });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></noscript></div>
+
+
+<h2>注意点</h2>
+
+<ul>
+<li><p>ブラウザやバージョンによって本当に挙動が違う</p>
+
+<ul>
+<li>fire fox 25でもなんだかたまに不安定(な気がする)</li>
+</ul>
+</li>
+</ul>
+
+
+<p>stream からつなぐときはいくつか方法があるんだけど、今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
+
+<p>※ちなみにネット上によくあるサンプルなどのsouce.noteOn()はduplicatedのもよう。</p>
+
+<h2>まとめ</h2>
+
+<p>本格的な信号処理も可能のようだし、WebRTCをガッツリ触ってP2Pで情報のやりとりとかできればなかなかおもしろいことができそう。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -788,92 +913,6 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/09/25/went-yapc/">YAPCに行ってきた</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-25T00:37:00+09:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time> |&nbsp;
-        
-
-<span class="categories">
-  Posted in&nbsp;
-  
-    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
-  
-</span>
-
-
-        
-         | <a href="/blog/2013/09/25/went-yapc/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>YAPC::ASIAに行ってきた。</p>
-
-<p>結局明日からの音響学会の準備が会ったから一日目しかいれなかったけど、やはり参加してよかったし、来年以降も参加したいと思った。どうやら今回で@lestrratさん、@941さん体制が終わるらしいけど。Perlハッカーコミュニティの文化は本当に素晴らしいと思っていて、なんとか自分も貢献したいと思う。</p>
-
-<p>以下、印象に残った発表</p>
-
-<hr />
-
-<h2>[学術分野におけるperl] by @papixさん</h2>
-
-<blockquote><p>PerCUDA</p></blockquote>
-
-<p>自分も信号処理で高速リアルタイム計算とかがやりたくてGPGPUとか一時期やってたし、とても興味がある話だった。けど、自分はリアルタイムで本当にコンママイクロ秒以下の世界で計算するためにGPGPUやってたから、そこをPerlのバインディングにしてその分GPU側との情報のやりとりとかに時間がかかるようだったら少しもったいないとも思った。</p>
-
-<blockquote><p>その他研究のレガシーとモダンのこと</p></blockquote>
-
-<p>Emacs使いとして尊敬する@syohexさんと同じ研究室と聞いて少しびっくり。研究自体もPerlでコンパイラのバグ検知とかすごい面白そうだと思った。</p>
-
-<h2>[社内開発簡単化と世界で戦う開発を考える技術] by @yappoさん</h2>
-
-<blockquote><p>ミッションステートメント</p>
-
-<blockquote><p>「やることやらないことを最初にまとめておくとあとでぶれない」</p></blockquote></blockquote>
-
-<p>これ、当たり前のことなんだけど、やっぱり当たり前に大事だと思うし、それを具体的にモジュールの例を上げて話してくれて説得力あった。</p>
-
-<blockquote><p>普段コピペとかを嫌うのに、最初の設定ファイルはコピペとかしちゃう</p>
-
-<blockquote><p>そういうのは秘伝のタレ化してしまうし、意味もわからなくつかってしまう</p>
-
-<p>コピペ元の人はコピペされることを意識して書いてない。そしてバグを直してもそれが追従されない</p></blockquote></blockquote>
-
-<p>今回のYAPC::ASIAキーワード「秘伝のタレ」。これも考えてみれば当たり前なんだけど、やっぱりコロンブスの卵的な話だと思う。そしてその現状を打破するために自分でセットアップスクリプト書くってのはまさしくstfuawscを体現しててカッコ良いとおもった。</p>
-
-<h2>最後に</h2>
-
-<p>普段Blogとかで追ってるすごいプログラマ達を間近で見られてとてもよい経験になった。すごくモチベーションが上がった。Perl以外の分野でも活躍するタレント性のあるハッカー達をみると、Open&amp;ShareであったりブログやOSS活動を通じての体外活動が大事なのがよく分かる。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -897,6 +936,10 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/11/web-audio/">Web Audio APIを使ってストリーム入出力してみた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/16/test/">test</a>
       </li>
     
@@ -912,19 +955,15 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
         <a href="/blog/2013/11/01/json-cmp/">PerlでJSONを出力する。JSONとJSON::Syckの違い</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/10/28/install-web-query/">Web::Queryのtestがコケた話</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (2)</a></li><li><a href='/blog/categories/etc/'>Etc (7)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (6)</a></li><li><a href='/blog/categories/tech/'>Tech (25)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (2)</a></li><li><a href='/blog/categories/etc/'>Etc (7)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (6)</a></li><li><a href='/blog/categories/tech/'>Tech (26)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 106.0%'>bash(1)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/cpanm' style='font-size: 112.0%'>cpanm(2)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 148.0%'>emacs(8)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 130.0%'>git(5)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 142.0%'>mac(7)</a> <a href='/blog/tags/mavericks' style='font-size: 112.0%'>mavericks(2)</a> <a href='/blog/tags/mysql' style='font-size: 106.0%'>mysql(1)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/perl' style='font-size: 136.0%'>perl(6)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(5)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 106.0%'>bash(1)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/cpanm' style='font-size: 112.0%'>cpanm(2)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 148.0%'>emacs(8)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 130.0%'>git(5)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/html' style='font-size: 106.0%'>html(1)</a> <a href='/blog/tags/javascript' style='font-size: 106.0%'>javascript(1)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 142.0%'>mac(7)</a> <a href='/blog/tags/mavericks' style='font-size: 112.0%'>mavericks(2)</a> <a href='/blog/tags/mysql' style='font-size: 106.0%'>mysql(1)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/perl' style='font-size: 136.0%'>perl(6)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(5)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/web-audio' style='font-size: 106.0%'>web_audio(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
 </section>
 
 <section>

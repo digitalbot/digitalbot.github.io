@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: json | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/json/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-16T00:55:55+09:00</updated>
+  <updated>2013-12-11T02:34:58+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -46,23 +46,23 @@ sub _json {
 }
 sub _syck {
     my @data = @_;
-    my $json = Encode::encode('JavaScript-UCS', JSON::Syck::Dump(\@data));
+    my $json = Encode::encode(&#39;JavaScript-UCS&#39;, JSON::Syck::Dump(\@data));
     $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
     return $json;
 }
 
 my @members = ({
     age =&gt; 41,
-    name =&gt; '[倉持]',
+    name =&gt; &#39;[倉持]&#39;,
 }, {
     age =&gt; 42,
-    name =&gt; '&quot;浅沼&quot;/\/',
+    name =&gt; &#39;&quot;浅沼&quot;/\/&#39;,
 }, {
     age =&gt; 49,
-    name =&gt; '&quot;\&quot;&lt;恩田&gt;',
+    name =&gt; &#39;&quot;\&quot;&lt;恩田&gt;&#39;,
 }, {
     age =&gt; 49,
-    name =&gt; ';{五十嵐};',
+    name =&gt; &#39;;{五十嵐};&#39;,
 });
 
 ok(_json eq _syck);

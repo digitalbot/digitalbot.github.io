@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-11-16T00:55:55+09:00</updated>
+  <updated>2013-12-11T02:34:58+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web Audio APIを使ってストリーム入出力してみた]]></title>
+    <link href="http://blog.digital-bot.com/blog/2013/12/11/web-audio/"/>
+    <updated>2013-12-11T02:17:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2013/12/11/web-audio</id>
+    <content type="html"><![CDATA[<h3>2013/12/10時点での話</h3>
+
+<blockquote><p><a href="http://www.mozilla.jp/blog/entry/10338/">Firefox に Web Audio API が採用され、Web が完全なゲームプラットフォームになりました</a></p>
+
+<p><a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio API W3C Editor&rsquo;s Draft</a></p></blockquote>
+
+<p>ということだったので触ってみた。</p>
+
+<ul>
+<li><p>環境</p>
+
+<ul>
+<li><p>Mac OS X MountainLion</p></li>
+<li><p>FireFox 25.0.1</p></li>
+</ul>
+</li>
+</ul>
+
+
+<div><script src='https://gist.github.com/7894336.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;SAMPLE&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;audio id=&quot;audio&quot;&gt;ok?&lt;/audio&gt;
+    &lt;script&gt;
+     navigator.getUserMedia = navigator.getUserMedia
+     || navigator.webkitGetUserMedia
+     || navigator.mozGetUserMedia;
+     window.AudioContext = window.AudioContext
+     || window.webkitAudioContext
+     || window.mozAudioContext;
+
+     navigator.getUserMedia({audio:true}, function(stream) {
+       var audio = document.getElementById(&#39;audio&#39;);
+       var context = new AudioContext();
+       var mediaStreamSource = context.createMediaStreamSource(stream);
+       var filter = context.createBiquadFilter();
+       mediaStreamSource.connect(filter);
+       filter.type = 0;
+       filter.frequency.value = 1000;
+       var delay = context.createDelay(1.0);
+       filter.connect(delay);
+       delay.connect(context.destination);
+     }, function() {
+       alert(&#39;error&#39;);
+     });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></noscript></div>
+
+
+<h2>注意点</h2>
+
+<ul>
+<li><p>ブラウザやバージョンによって本当に挙動が違う</p>
+
+<ul>
+<li>fire fox 25でもなんだかたまに不安定(な気がする)</li>
+</ul>
+</li>
+</ul>
+
+
+<p>stream からつなぐときはいくつか方法があるんだけど、今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
+
+<p>※ちなみにネット上によくあるサンプルなどのsouce.noteOn()はduplicatedのもよう。</p>
+
+<h2>まとめ</h2>
+
+<p>本格的な信号処理も可能のようだし、WebRTCをガッツリ触ってP2Pで情報のやりとりとかできればなかなかおもしろいことができそう。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[test]]></title>
@@ -274,15 +358,15 @@ Configuring DBD-mysql-4.024 ...
 
 PLEASE NOTE:
 
-For 'make test' to run properly, you must ensure that the
-database user 'digitalbot' can connect to your MySQL server
+For &#39;make test&#39; to run properly, you must ensure that the
+database user &#39;digitalbot&#39; can connect to your MySQL server
 and has the proper privileges that these tests require such
-as 'drop table', 'create table', 'drop procedure', 'create procedure'
+as &#39;drop table&#39;, &#39;create table&#39;, &#39;drop procedure&#39;, &#39;create procedure&#39;
 as well as others.
 
-mysql&gt; grant all privileges on test.* to 'digitalbot'@'localhost' identified by 's3kr1t';
+mysql&gt; grant all privileges on test.* to &#39;digitalbot&#39;@&#39;localhost&#39; identified by &#39;s3kr1t&#39;;
 
-You can also optionally set the user to run 'make test' with:
+You can also optionally set the user to run &#39;make test&#39; with:
 
 perl Makefile.PL --testuser=username
 
@@ -303,8 +387,8 @@ I will use the following settings for compiling and testing:
   testsocket    (default     ) =
   testuser      (guessed     ) = digitalbot
 
-To change these settings, see 'perl Makefile.PL --help' and
-'perldoc INSTALL'.
+To change these settings, see &#39;perl Makefile.PL --help&#39; and
+&#39;perldoc INSTALL&#39;.
 
 Checking if your kit is complete...
 Warning: the following files are missing in your kit:
@@ -324,16 +408,16 @@ cp lib/DBD/mysql/GetInfo.pm blib/lib/DBD/mysql/GetInfo.pm
 cp lib/DBD/mysql.pm blib/lib/DBD/mysql.pm
 cp lib/DBD/mysql/INSTALL.pod blib/lib/DBD/mysql/INSTALL.pod
 cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   dbdimp.c
-dbdimp.c:3651:22: warning: incompatible pointer types assigning to 'my_bool *' (aka 'char *') from 'bool *'
+dbdimp.c:3651:22: warning: incompatible pointer types assigning to &#39;my_bool *&#39; (aka &#39;char *&#39;) from &#39;bool *&#39;
       [-Wincompatible-pointer-types]
       buffer-&gt;is_null= &amp;(fbh-&gt;is_null);
                      ^ ~~~~~~~~~~~~~~~
 1 warning generated.
 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/xsubpp  -typemap /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/typemap  mysql.xs &gt; mysql.xsc &amp;&amp; mv mysql.xsc mysql.c
-Warning: duplicate function definition 'do' detected in mysql.xs, line 244
-Warning: duplicate function definition 'rows' detected in mysql.xs, line 756
+Warning: duplicate function definition &#39;do&#39; detected in mysql.xs, line 244
+Warning: duplicate function definition &#39;rows&#39; detected in mysql.xs, line 756
 cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.13/include  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.024\&quot; -DXS_VERSION=\&quot;4.024\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   mysql.c
-mysql.xs:935:38: warning: format specifies type 'int' but the argument has type 'SV *' (aka 'struct sv *') [-Wformat]
+mysql.xs:935:38: warning: format specifies type &#39;int&#39; but the argument has type &#39;SV *&#39; (aka &#39;struct sv *&#39;) [-Wformat]
                 croak(&quot;Unknown SQL Info type: %i&quot;,dbh);
                                               ~~  ^~~
 1 warning generated.
@@ -349,7 +433,7 @@ chmod 644 blib/arch/auto/DBD/mysql/mysql.bs
 Manifying blib/man3/DBD::mysql::INSTALL.3
 Manifying blib/man3/DBD::mysql.3
 Manifying blib/man3/Bundle::DBD::mysql.3
-PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-e&quot; &quot;test_harness(0, 'blib/lib', 'blib/arch')&quot; t/*.t
+PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-e&quot; &quot;test_harness(0, &#39;blib/lib&#39;, &#39;blib/arch&#39;)&quot; t/*.t
 t/00base.t ........................... 1/6 Assertion failed: (PL_valid_types_PVX[SvTYPE(_svcur) &amp; SVt_MASK] || SvTYPE(_svcur) == SVt_REGEXP), function err_hash, file DBI.xs, line 866.
 t/00base.t ........................... Failed 1/6 subtests
 t/10connect.t ........................ ok
@@ -476,23 +560,23 @@ sub _json {
 }
 sub _syck {
     my @data = @_;
-    my $json = Encode::encode('JavaScript-UCS', JSON::Syck::Dump(\@data));
+    my $json = Encode::encode(&#39;JavaScript-UCS&#39;, JSON::Syck::Dump(\@data));
     $json =~ s/([&lt;&gt;\/\+])/sprintf(&quot;\\u%04x&quot;,ord($1))/eg;
     return $json;
 }
 
 my @members = ({
     age =&gt; 41,
-    name =&gt; '[倉持]',
+    name =&gt; &#39;[倉持]&#39;,
 }, {
     age =&gt; 42,
-    name =&gt; '&quot;浅沼&quot;/\/',
+    name =&gt; &#39;&quot;浅沼&quot;/\/&#39;,
 }, {
     age =&gt; 49,
-    name =&gt; '&quot;\&quot;&lt;恩田&gt;',
+    name =&gt; &#39;&quot;\&quot;&lt;恩田&gt;&#39;,
 }, {
     age =&gt; 49,
-    name =&gt; ';{五十嵐};',
+    name =&gt; &#39;;{五十嵐};&#39;,
 });
 
 ok(_json eq _syck);
@@ -1906,217 +1990,6 @@ $ julius -C fast.jconf -charconv EUC-JP UTF-8
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopressのカスタマイズ]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/03/octopress-tips/"/>
-    <updated>2013-09-03T17:03:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/03/octopress-tips</id>
-    <content type="html"><![CDATA[<p>Octopress、ただ単に入れただけじゃ物足りないので、当然いろいろ設定をいじったり、プラグインを入れたりした。</p>
-
-<h2>3rd Party Settings</h2>
-
-<p>デフォルトで拡張できる3rd Party Settingsでは</p>
-
-<ul>
-<li><p>Github repositories</p></li>
-<li><p>Twitter</p></li>
-<li><p>Google Analytics</p></li>
-<li><p>DISQUS</p></li>
-</ul>
-
-
-<p>を設定した。特にGoogle AnalyticsとDISQUSは新しくアカウントを取らなきゃいけないから面倒だと最初は思ったんだけど、アカウントとったら一瞬で設定できたから<strong>すごい！</strong>と思った。</p>
-
-<!-- more -->
-
-
-<h2>プラグインなど</h2>
-
-<ul>
-<li><a href="http://rcmdnk.github.io/blog/2013/03/23/octopress/">Octopress Tips</a></li>
-</ul>
-
-
-<p>基本的にはこのサイトに書いてあることをそのまま実行すれば良い感じになる。けどここのサイト、とても詳しくて良いんだけど、現状いくつかうまくいかない部分があったのでハマったところを書き残しておく。</p>
-
-<h3>自分のpostへのリンク</h3>
-
-<p>これは上記サイトで紹介されている<strong>post_url.rb</strong>が404になっていて困った。んで<strong>post_url octopress</strong>なんかでググったらそれっぽいリポジトリが見つかって導入してみるもうまく動かなかったので結局あきらめた。検索結果を見ると外国人が「動かないぜ！」っていくつか悲鳴を上げてるエントリも見つけた。まぁ別になくてもそんなに困らない気もしてるから良いや。</p>
-
-<h3>見出し目次の追加</h3>
-
-<p>これもなんだかうまく動かなかった。日本語を使わないと確かにうまくいったんだけど、<a href="https://github.com/Kinvey/jekyll/commit/21325ce2b71ad138be66748b8df7290dd3438ba4">ココ</a>の通りにやってもなんかダメだったので結局これも諦めた。というか見出し目次使わないって気付いた。</p>
-
-<h3>footnote</h3>
-
-<p>これはうまくいった。ただ、上記サイトでは<code>footnote.rb</code>だけ<code>plugins/</code>に入れれば良いっぽい書き方してるけど、<a href="https://github.com/fcy/footnote-octopress">作者のGitHub</a>では<code>footnote.js</code>と<code>_footnote.scss</code>もちゃんと配置しろって書いてあるから注意が必要。このfootnoteも便利なんだけど、ぶっちゃけポップアップはスタイルによっては綺麗に見えないし、indexで複数の記事が出てるときにポップアップさせると、その記事のじゃないノートが表示されちゃうから微妙っちゃ微妙。</p>
-
-<h3>関連記事</h3>
-
-<p>これは上記サイト通りにやると自分の環境ではだめだった。何がダメだったかというと、<code>_config.yml</code>に</p>
-
-<pre><code># Related post
-related_posts: true
-related_posts_limit: 5
-</code></pre>
-
-<p>を<strong>書き足してはいけなかった</strong>。これを書き足すと出なくて、なんかおかしいなと思ってこの記述を消したら関連記事が出るようになった。</p>
-
-<p>他の</p>
-
-<ul>
-<li><p>table</p></li>
-<li><p>markdownの拡張子</p></li>
-<li><p>タグクラウド</p></li>
-</ul>
-
-
-<p>に関しては問題なく設定できて、</p>
-
-<ul>
-<li><p>favicon</p></li>
-<li><p>404</p></li>
-<li><p>画像の挿入</p></li>
-</ul>
-
-
-<p>なんかはあんまり興味なかったのでいじらなかった。しかも<code>favicon</code>は入れたテーマ<code>darkstripe</code>で勝手に設定された。</p>
-
-<ul>
-<li>テンプレート変更</li>
-</ul>
-
-
-<p>これなんかも重要なんだけど、これは後述する。</p>
-
-<h2>タグとカテゴリ</h2>
-
-<p>&ndash;<a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグの運用</a></p>
-
-<p>またこのサイトにある通り、タグとカテゴリの運用を分けた。これもまたこのブログのとおりにやれば動くはず。けど、<strong>注意点があって</strong>、<code>archive_post.html</code>にミスがあるのと、テーマによっては<code>post.html</code>のなかで<code>include post/tags.html</code>するとタイトルと被ってスタイルが崩れることがあるのでそこはうまくやる必要がある。<code>archive_post.html</code>は正しくは下記になる。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{% capture category %}{{ post.categories | size }}{% endcapture %}
-</span><span class='line'>{% capture tag %}{{ post.tags | size }}{% endcapture %}
-</span><span class='line'>&lt;h1>&lt;a href="{{ root_url }}{{ post.url }}">{{post.title}}&lt;/a>&lt;/h1>
-</span><span class='line'>&lt;time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date | date: "&lt;span class='month'>%b&lt;/span> &lt;span class='day'>%d&lt;/span> &lt;span class='year'>%Y&lt;/span>"}}&lt;/time>
-</span><span class='line'>{% if category != '0' || if tag != '0' %}
-</span><span class='line'>&lt;footer>
-</span><span class='line'>  {% if category != '0' %}
-</span><span class='line'>  &lt;span class="categories">Posted in {{ post.categories | category_links }}&lt;/span>
-</span><span class='line'>  {% endif %}
-</span><span class='line'>  {% if tag != '0' %}
-</span><span class='line'>    {% if category != '0' %}
-</span><span class='line'>    &lt;span class="tags">, tagged as {{ post.tags | tag_links }}&lt;/span>
-</span><span class='line'>    {% else %}
-</span><span class='line'>    &lt;span class="tags">Tagged as {{ post.tags | tag_links }}&lt;/span>
-</span><span class='line'>    {% endif %}
-</span><span class='line'>  {% endif %}   # here!!
-</span><span class='line'>&lt;/footer>
-</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>具体的にリンク元と何が違うかというと、<code>if tag != '0'</code>に対応する<code>endif</code>を追加しただけ。でもこれがないと普通にエラーになるので注意が必要。</p>
-
-<p><code>post/tags.html</code>と<code>post/categories.html</code>をどこでインクルードするかは多分人それぞれだと思う。自分は記事下にだけ置くことにした。</p>
-
-<h4>Rakefile</h4>
-
-<p>んで<strong>後述する</strong>って上で書いたけど、Rakefileの中でこのタグとカテゴリについてなどを新しいポストを生成するとき書きやすくする。</p>
-
-<div><script src='https://gist.github.com/6421832.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-
-
-<p><a href="https://github.com/rcmdnk">@rcmdnk</a>さんの<a href="https://gist.github.com/rcmdnk/5372744">gist</a>も見て自分なりにやると良いと思う。</p>
-
-<h2>gistの表示バグ</h2>
-
-<p>なんだか<a href="http://octopress.org/docs/plugins/gist-tag/">公式サイト</a>みてもわかると思うんだけど、gistの表示がずれる(2013/09/03現在)。</p>
-
-<p><img src="http://blog.digital-bot.com/images/gistbug.png" alt="ずれる" /></p>
-
-<p>これを回避する決定的な手段てのは未だに無いっぽくて、</p>
-
-<ul>
-<li><a href="http://rcmdnk.github.io/blog/2013/05/06/blog-octopress/">OctopressのGist表示の調整</a></li>
-</ul>
-
-
-<p>にも回避策はあるんだけど、使ってるテーマのせいか手元の環境ではうまくいかなかった。そこでもうちょっとググったら、解決策っていうかまぁマシになるんじゃね的なのを見つけた。</p>
-
-<ul>
-<li><a href="http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/">Fixing Gist Embeds in Octopress</a></li>
-</ul>
-
-
-<p>ここにあるコードを参考にgistのズレを少しだけ改善してみた。具体的には<code>plugins/git_tag.rb</code>の<code>html_output_for</code>メソッドを</p>
-
-<pre><code>def html_output_for(script_url, code)
-  code = CGI.escapeHTML code
-  &lt;&lt;-HTML
-&lt;div&gt;&lt;script src='#{script_url}'&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;$("td.line-numbers").remove();&lt;/script&gt;
-&lt;noscript&gt;&lt;pre&gt;&lt;code&gt;#{code}&lt;/code&gt;&lt;/pre&gt;&lt;/noscript&gt;&lt;/div&gt;
-  HTML
-end
-</code></pre>
-
-<p>こう書き換える。ポイントは下記。JSで無理やりって感じ。</p>
-
-<pre><code>&lt;script type="text/javascript"&gt;$("td.line-numbers").remove();&lt;/script&gt;
-</code></pre>
-
-<p>元記事では他にも<code>.gist-file</code>とかいろいろとってるけど、結局<code>td.line-numbers</code>だけに落ち着いた。そんで<code>sass/custom/_style.scss</code>に下記を付け足す。</p>
-
-<pre><code>.gist-file {
-  font-size:.8em !important;
-}
-
-table.lines{
-  width: 100%;
-}
-</code></pre>
-
-<p><code>footnote</code>を導入してたらこの記述の上に<code>@import "footnote";</code>があると思う。</p>
-
-<p>これでまぁそこそこ納得できる表示になったと思う。</p>
-
-<h2>CNAMEの設定</h2>
-
-<ul>
-<li><a href="http://blog.glidenote.com/blog/2011/12/20/how-to-use-custom-domain-on-github-pages/">GitHub PagesでCustom Domainwを利用する</a></li>
-</ul>
-
-
-<p>この通りに。やはり反映にやや時間がかかるのと<a href="http://blog.digital-bot.com/blog/2013/08/30/sakura-domain/">この記事</a>の通り、油断してはいけないということ。</p>
-
-<h2>おわりに</h2>
-
-<p>基本的にハマったところを中心にOctopressのカスタマイズを振り返ってみた。詳しい設定方法は紹介したブログを見て欲しい。先人たちに感謝。</p>
-
-<p>ちなみにひとつ言えるのは、新しいプラグインなりテーマを入れるときは、後々混乱するから絶対に細かく<strong>ブランチを切る</strong>か、<strong>コミット</strong>して変更する前の状態に戻せるようにしたほうが良い。</p>
 ]]></content>
   </entry>
   
