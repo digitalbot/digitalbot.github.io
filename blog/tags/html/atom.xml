@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: html | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/html/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-12-11T02:37:17+09:00</updated>
+  <updated>2013-12-11T03:00:27+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -91,13 +91,15 @@
 
 <p>今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。</p>
 
-<p>マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
+<p>マイク入力じゃなくてmp3ファイルとかを読み込んで使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
 
-<p>※ちなみにネット上によくあるサンプルなどのsouce.noteOn()はduplicatedのもよう。</p>
+<p>※ちなみにネット上によくあるサンプルなどの<code>souce.noteOn()</code>はduplicatedのもよう。</p>
 
 <h2>まとめ</h2>
 
 <p>本格的な信号処理も可能のようだし、WebRTCをガッツリ触ってP2Pで情報のやりとりとかできればなかなかおもしろいことができそう。</p>
+
+<p>ところで、gistのスタイルが汚いのはあとでなんとかしないとな&hellip;</p>
 ]]></content>
   </entry>
   

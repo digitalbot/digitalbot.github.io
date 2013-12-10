@@ -209,13 +209,15 @@ $(document).ready( function () {
 
 <p>今回は<code>context.createMediaStreamSouce()</code>に<code>stream</code>を渡したあと、最終的に<code>context.destination</code>をフィルタなりソースに渡せばOK。</p>
 
-<p>マイク入力じゃなくてmp3ファイルとかを読み込んでWeb Audioを使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
+<p>マイク入力じゃなくてmp3ファイルとかを読み込んで使うときは<code>source.start()</code>とかするんだけど、ストリーミングのときは<code>context.destination</code>までで大丈夫。</p>
 
-<p>※ちなみにネット上によくあるサンプルなどのsouce.noteOn()はduplicatedのもよう。</p>
+<p>※ちなみにネット上によくあるサンプルなどの<code>souce.noteOn()</code>はduplicatedのもよう。</p>
 
 <h2>まとめ</h2>
 
 <p>本格的な信号処理も可能のようだし、WebRTCをガッツリ触ってP2Pで情報のやりとりとかできればなかなかおもしろいことができそう。</p>
+
+<p>ところで、gistのスタイルが汚いのはあとでなんとかしないとな&hellip;</p>
 </div>
   
   
