@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-12-11T03:00:27+09:00</updated>
+  <updated>2014-01-22T23:49:01+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MavericksのEmacs24.3がくっそ重くなる件]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/01/22/emacs-distnoted/"/>
+    <updated>2014-01-22T23:27:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/01/22/emacs-distnoted</id>
+    <content type="html"><![CDATA[<p>表題の件。</p>
+
+<blockquote class="twitter-tweet"><p>mavericksにしてからdistnotedってプロセスが暴れまわるしブラウザはカクカクだしEmacsは落ちるしツライ。昔のSnowLeopard機だったからだと思いたい</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/400209172551065600">November 12, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>マジでこれ <a href="https://t.co/3PwGiDRTih">https://t.co/3PwGiDRTih</a></p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/401254523584270337">November 15, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>Emacsが落ちた……つらい……&#10;最近コレしか言ってない気がする</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/402736969123237888">November 19, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>ていうかEmacsが落ちたらdistnotedのCPU使用率やメモリ使用量も減った</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/402737139034492928">November 19, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>emacsが落ちるの噂のAppNapのせいかと思ってウキウキしてAppNapオフにしようと思ったら、できなかった。というかもともとオフっぽい…？</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/408166401245868033">December 4, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>Emacsさんがメモリを2Gも使おうとするのは良くないのでほんとそろそろなんとかしたいところ。最近これしか言ってないな</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/413232659922305024">December 18, 2013</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet"><p>会社で使ってるMavericksのCocoaEmacs、3時間くらいつかってるとメモリ1GBとか食い始めるし、distnotedとかいうプロセスもメモリ馬鹿食いし始める。それが怖くて自分のMBAをMountain Lionから更新できない</p>&mdash; kskexit (@kskexit) <a href="https://twitter.com/kskexit/statuses/423377591299346432">January 15, 2014</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>とMavericksにしてから非常に困ってたんだけど</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/kskexit">@kskexit</a> emacsのメモリーリークみたいです。trunkでは直ってますが23.3はここにあるパッチが必要です。&#10;<a href="http://t.co/XrjAoZ2eQd">http://t.co/XrjAoZ2eQd</a></p>&mdash; さむ (@mogu) <a href="https://twitter.com/mogu/statuses/425865613811007489">January 22, 2014</a></blockquote>
+
+
+<script async src="http://blog.digital-bot.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>とのことで、なんだか解決したっぽい。</p>
+
+<hr />
+
+<p>Emacs24.4では直ってるらしいのではやく24.4がでてほしいとは思う。</p>
+
+<h4>参考</h4>
+
+<p>この記事書いてるときに、同じ悩みを持ってる人のブログも見つけた。</p>
+
+<ul>
+<li><a href="http://blog.n-z.jp/blog/2013-12-27-emacs-inline-patch.html">distnotedの暴走が止まるというCocoa Emacsのinline patch修正版を使ってみた</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Web Audio APIを使ってストリーム入出力してみた]]></title>
@@ -1897,99 +1983,6 @@ $ brew install brew-cask
     <ol>
         <li id='fn:1'><p><a href="http://dukeiizu.blogspot.jp/2011/05/emacs-tramp-sudo.html">emacs TRAMP で、リモート・サーバを sudo で接続する</a>
 <a href='#fnref:1' rev='footnote'>↩</a></p>
-</li>
-    </ol>
-</div>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mountain Lionにjuliusをhomebrewで入れる]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/04/install-julius/"/>
-    <updated>2013-09-04T00:24:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/04/install-julius</id>
-    <content type="html"><![CDATA[<p>音声認識ソフトである<a href="http://julius.sourceforge.jp/index.php">julius</a>をMBAにインストールした。バージョンとしては2013年9月4日現在最新のjulius4.2.3になる。</p>
-
-<!-- more -->
-
-
-<p>環境によってたまにハマる場合もあるみたいだけど、基本的にはMacOS 10.8でMountain Lionの場合は</p>
-
-<ul>
-<li><p>PortAudio入れる</p></li>
-<li><p>Julius入れる(<code>--with-mictype=portaudio</code>する)</p></li>
-<li><p>DictationKit入れる</p></li>
-</ul>
-
-
-<p>だけで動くはず。もちろん詳しく使うには自分で辞書データ用意したり色々いじったりする必要あるけど。なんでPortAudioなのかというと、OS X標準のCoreAudioが使えないから(これはもしかしたら解決されてるかもしれない)。そこらへんの話は前のブログ<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>で書いた。まぁともかく入れば良いし、この分野では(恐らく)枯れてるPortAudio使えばそんなに困らないからそうしてる。</p>
-
-<h2>INSTALL</h2>
-
-<p>んで、さっそくインストールしていくわけなんだけど、なんだか手順説明するのもおっくうだし、自分でも毎回同じ手順踏むの面倒なので<strong>Homebrew</strong>の<a href="https://github.com/digitalbot/homebrew-acoust/blob/master/julius.rb">Formula</a>にした。</p>
-
-<pre><code>$ brew tap digitalbot/homebrew-acoust
-$ brew install julius
-</code></pre>
-
-<p>で<code>--univarsal</code>な<code>portaudio</code>も先に入れてくれるし、肝心の<code>julius</code>コマンドがインストールされない問題も解決してくれるパッチも書いて入れた。</p>
-
-<h2>juliusコマンドがインストールされない件</h2>
-
-<pre><code>- if (j_adin_init(recog) == FALSE) return;
-+ if (j_adin_init(recog) == FALSE) return 0;
-</code></pre>
-
-<p>パッチを見てもらえればわかると思うけど、おそらくmountain lionのデフォルトコンパイラ(llvm-gccだっけ？)が<code>return;</code>で返す値をうまく解釈してくれてないんじゃないかと思う。詳しくはこれから追うけど、ともかくこのパッチを当てると<code>/usr/local/Cellar/julius/4.2.3/bin</code>以下に<code>julius</code>コマンドが入るし、homebrewがうまく<code>/usr/local/bin</code>にシンボリックリンク貼ってくれる。多分このパッチ当てなくても<code>gcc</code>を<code>homebrew-versions</code>で別途入れて使うように指定したらうまくいく気もする。</p>
-
-<h2>終わりに</h2>
-
-<p>今回はじめて<code>homebrew tap</code>を作ったし、<code>Formula</code>も書いた。簡単だったけど良い勉強になった。</p>
-
-<p>juliusは色々と情報が回っててそれぞれがそれぞれのコンパイルオプションやらパッチ当ててる感じあるけど、最低限動く感じだったら今回紹介したもので必要十分だと思う。ちなみに今回迷ったんだけど、DictationKitはhomebrewでのインストールを見送ったので自分で<a href="http://sourceforge.jp/projects/julius/downloads/59050/dictation-kit-v4.2.3.tar.gz/">ダウンロード</a>してきて使って欲しい。使用法はDictationKitのディレクトリで(というかfast.jconfを引数で指定して)juliusを実行するだけ。</p>
-
-<pre><code>$ cd dictation-kit-v4.2.3
-$ julius -C fast.jconf -charconv EUC-JP UTF-8
-</code></pre>
-
-<p>何かあったら絶賛プルリクエスト受付中なのでどうぞ。homebrew-acoustでは今後も音響関係のformulaを作っていければなぁと思っている。</p>
-
-<h2>追記</h2>
-
-<ul>
-<li>SnowLeopard
-
-<ul>
-<li>i686-apple-darwin10-gcc-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666) (dot 3)</li>
-</ul>
-</li>
-</ul>
-
-
-<p>でも今回作成したFormulaでビルド出来た。</p>
-
-<p>しかし、juliusってこれ、一応動いてるし精度悪いながらも音声認識できてるけど、完璧にインストールできてるかわかりづらいな。testが欲しい。</p>
-
-<ul>
-<li><a href="http://mac-os-forge.2317878.n4.nabble.com/MacPorts-32069-julius-4-2-1-kit-Julius-Compile-Failes-on-Lion-td61466.html">http://mac-os-forge.2317878.n4.nabble.com/MacPorts-32069-julius-4-2-1-kit-Julius-Compile-Failes-on-Lion-td61466.html</a></li>
-</ul>
-
-
-<p>↑こういう記事もあったけど、結局llmv-gccの問題っぽい。パッチもそれ系。</p>
-
-<hr />
-
-<div class="footnotes">
-    <ol>
-        <li id='fn:1'><p><a href="http://about-digital.ldblog.jp/archives/458338.html">音声認識エンジンjuliusをLionで試してみた</a>
-  <a href='#fnref:1' rev='footnote'>↩</a></p>
-</li><li id='fn:2'><p><a href="http://qiita.com/ikesato/items/ffe1eff8440a995065fe">音声認識 Julius 4.2.3 + Mac OSX Mountain Lion 10.8.4 でビルドする方法</a>
-  <a href='#fnref:2' rev='footnote'>↩</a></p>
-</li><li id='fn:3'><p><a href="http://qiita.com/o_ame/items/1236b91b15d077e03525">HomebrewでOSXに音声解析エンジンJuliusを入れる</a>
-<a href='#fnref:3' rev='footnote'>↩</a></p>
 </li>
     </ol>
 </div>

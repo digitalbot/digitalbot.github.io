@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mavericks | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/tags/mavericks/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2013-12-11T03:00:27+09:00</updated>
+  <updated>2014-01-22T23:49:01+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MavericksのEmacs24.3がくっそ重くなる件]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/01/22/emacs-distnoted/"/>
+    <updated>2014-01-22T23:27:00+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/01/22/emacs-distnoted</id>
+    <content type="html"><![CDATA[<p>表題の件。</p>
+
+<p><a href="https://twitter.com/kskexit/status/400209172551065600">https://twitter.com/kskexit/status/400209172551065600</a>">https://twitter.com/kskexit/status/400209172551065600">https://twitter.com/kskexit/status/400209172551065600</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/401254523584270337">https://twitter.com/kskexit/status/401254523584270337</a>">https://twitter.com/kskexit/status/401254523584270337">https://twitter.com/kskexit/status/401254523584270337</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/402736969123237888">https://twitter.com/kskexit/status/402736969123237888</a>">https://twitter.com/kskexit/status/402736969123237888">https://twitter.com/kskexit/status/402736969123237888</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/402737139034492928">https://twitter.com/kskexit/status/402737139034492928</a>">https://twitter.com/kskexit/status/402737139034492928">https://twitter.com/kskexit/status/402737139034492928</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/408166401245868033">https://twitter.com/kskexit/status/408166401245868033</a>">https://twitter.com/kskexit/status/408166401245868033">https://twitter.com/kskexit/status/408166401245868033</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/413232659922305024">https://twitter.com/kskexit/status/413232659922305024</a>">https://twitter.com/kskexit/status/413232659922305024">https://twitter.com/kskexit/status/413232659922305024</a></a></p>
+
+<p><a href="https://twitter.com/kskexit/status/423377591299346432">https://twitter.com/kskexit/status/423377591299346432</a>">https://twitter.com/kskexit/status/423377591299346432">https://twitter.com/kskexit/status/423377591299346432</a></a></p>
+
+<p>とMavericksにしてから非常に困ってたんだけど</p>
+
+<p><a href="https://twitter.com/mogu/status/425865613811007489">https://twitter.com/mogu/status/425865613811007489</a>">https://twitter.com/mogu/status/425865613811007489">https://twitter.com/mogu/status/425865613811007489</a></a></p>
+
+<p>とのことで、なんだか解決したっぽい。</p>
+
+<hr />
+
+<p>Emacs24.4では直ってるらしいのではやく24.4がでてほしいとは思う。</p>
+
+<h4>参考</h4>
+
+<p>この記事書いてるときに、同じ悩みを持ってる人のブログも見つけた。</p>
+
+<ul>
+<li><a href="http://blog.n-z.jp/blog/2013-12-27-emacs-inline-patch.html">distnotedの暴走が止まるというCocoa Emacsのinline patch修正版を使ってみた</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[DBD::mysqlがMySQL5.6、OS X Mavericksに入らない]]></title>
