@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-02-07T02:13:36+09:00</updated>
+  <updated>2014-02-07T02:16:44+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -22,7 +22,7 @@
 
 <p>使うとこんな感じにアイコンを変えられる。もともと、MacではFinderから<code>⌘-i</code>で詳細を表示して、そこに表示されるアイコンに適用したいアイコンをドロップしたらアイコンを変更できるけど、CandyBarを使うと一括で出来るのが良い感じ。</p>
 
-<p><img src="http://gyazo.com/0db224c12ddfb0594be83ae7767d6421" alt="こんな感じ" /></p>
+<p><img src="http://gyazo.com/0db224c12ddfb0594be83ae7767d6421.png" alt="こんな感じ" /></p>
 
 <p>なんだけど、ともかくMavericsにしたとたん使えなくて困ってたのが、なんとか使う方法を見つけたのでメモする。</p>
 
@@ -43,7 +43,7 @@
 
 <p>ってバージョンっぽい数字が書いてあるタグが二つあるから</p>
 
-<p><img src="http://gyazo.com/61481b844b2a8d7ce15cceeda0db3c2a" alt="10.9.1を" /></p>
+<p><img src="http://gyazo.com/61481b844b2a8d7ce15cceeda0db3c2a.png" alt="10.9.1を" /></p>
 
 <p>それを</p>
 
@@ -52,7 +52,7 @@
 
 <p>に変える。</p>
 
-<p><img src="http://gyazo.com/f1fdadb835b87c239ed924288de9168e" alt="10.8に" /></p>
+<p><img src="http://gyazo.com/f1fdadb835b87c239ed924288de9168e.png" alt="10.8に" /></p>
 
 <p>後は保存して、ファイルを閉じる。readonly属性ついてると思うけど、まぁそれはなんとかする(emacsだったら<code>C-x C-q</code>)。</p>
 
@@ -74,7 +74,7 @@
 <h4>参考</h4>
 
 <ul>
-<li>(howto use candybar os x mavericks)[<a href="http://idevicedailys.com/os-x/howto-use-candybar-os-x-mavericks/">http://idevicedailys.com/os-x/howto-use-candybar-os-x-mavericks/</a>]</li>
+<li><a href="http://idevicedailys.com/os-x/howto-use-candybar-os-x-mavericks/">howto use candybar os x mavericks</a></li>
 </ul>
 
 ]]></content>
