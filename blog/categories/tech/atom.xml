@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-02-06T23:03:14+09:00</updated>
+  <updated>2014-02-06T23:06:16+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -26,6 +26,9 @@
 <p>過去の記事からとくにこちらではなんもしてないけど、入ってよかった。</p>
 
 <h2>とりあえずログ</h2>
+
+<!-- more -->
+
 
 <p><div><script src='https://gist.github.com/8843600.js'></script>
 <script type="text/javascript">$("td.line-numbers").remove();</script>
