@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Etc | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/etc/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-02-07T02:16:44+09:00</updated>
+  <updated>2014-02-07T02:17:35+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -33,7 +33,7 @@
 
 <p>まず、エディタは何使っても良いけど</p>
 
-<pre><code>$ sudo emacs System/Library/CoreServices/SystemVersion.plist 
+<pre><code>$ sudo emacs /System/Library/CoreServices/SystemVersion.plist 
 </code></pre>
 
 <p>する。そしたら</p>
@@ -62,7 +62,7 @@
 
 <p>それが終わったら再起動すればアイコンが変わってるはず。変わってることが確認できたらまた</p>
 
-<pre><code>$ sudo emacs System/Library/CoreServices/SystemVersion.plist
+<pre><code>$ sudo emacs /System/Library/CoreServices/SystemVersion.plist
 </code></pre>
 
 <p>して、もとあったように<code>10.9.1</code>に戻してあげれば良い。</p>
