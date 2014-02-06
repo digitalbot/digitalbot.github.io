@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-02-06T22:59:22+09:00</updated>
+  <updated>2014-02-06T23:03:14+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -14,11 +14,304 @@
 
   
   <entry>
-    <title type="html"><![CDATA[can-install-dbd-mysql]]></title>
+    <title type="html"><![CDATA[Mavericksに入らなくて困ってたdbd-mysqlが入った]]></title>
     <link href="http://blog.digital-bot.com/blog/2014/02/06/can-install-dbd-mysql/"/>
     <updated>2014-02-06T22:54:48+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2014/02/06/can-install-dbd-mysql</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p><a href="http://blog.digital-bot.com/blog/2013/11/02/dbd-mysql-on-mavericks/">以前の記事</a>
+で入らなくて困ってたDBD::mysqlがインストールできた．</p>
+
+<p>DBD::mysqlのバージョンアップのおかげかmysqlのバージョンアップのおかげか。</p>
+
+<p>過去の記事からとくにこちらではなんもしてないけど、入ってよかった。</p>
+
+<h2>とりあえずログ</h2>
+
+<div><script src='https://gist.github.com/8843600.js'></script>
+<script type="text/javascript">$("td.line-numbers").remove();</script>
+<noscript><pre><code>[digitalbot@PC-0111:~]$ cpanm DBD::mysql -v
+cpanm (App::cpanminus) 1.7001 on perl 5.018001 built for darwin-thread-multi-2level
+Work directory is /Users/digitalbot/.cpanm/work/1391579356.37018
+You have make /usr/bin/make
+You have LWP 6.05
+You have /usr/bin/tar: bsdtar 2.8.3 - libarchive 2.8.3
+You have /usr/bin/unzip
+Searching DBD::mysql on cpanmetadb ...
+--&gt; Working on DBD::mysql
+Fetching http://www.cpan.org/authors/id/C/CA/CAPTTOFU/DBD-mysql-4.026.tar.gz ... OK
+Unpacking DBD-mysql-4.026.tar.gz
+x DBD-mysql-4.026/
+x DBD-mysql-4.026/META.yml
+x DBD-mysql-4.026/Makefile.PL
+x DBD-mysql-4.026/myld
+x DBD-mysql-4.026/Makefile.PL.embedded
+x DBD-mysql-4.026/t/
+x DBD-mysql-4.026/t/65types.t
+x DBD-mysql-4.026/t/70takeimp.t
+x DBD-mysql-4.026/t/51bind_type_guessing.t
+x DBD-mysql-4.026/t/71impdata.t
+x DBD-mysql-4.026/t/mysql.dbtest
+x DBD-mysql-4.026/t/00base.t
+x DBD-mysql-4.026/t/85init_command.t
+x DBD-mysql-4.026/t/40listfields.t
+x DBD-mysql-4.026/t/rt83494-quotes-comments.t
+x DBD-mysql-4.026/t/76multi_statement.t
+x DBD-mysql-4.026/t/87async.t
+x DBD-mysql-4.026/t/40catalog.t
+x DBD-mysql-4.026/t/52comment.t
+x DBD-mysql-4.026/t/rt86153-reconnect-fail-memory.t
+x DBD-mysql-4.026/t/31insertid.t
+x DBD-mysql-4.026/t/60leaks.t
+x DBD-mysql-4.026/t/40types.t
+x DBD-mysql-4.026/t/75supported_sql.t
+x DBD-mysql-4.026/t/65segfault.t
+x DBD-mysql-4.026/t/43count_params.t
+x DBD-mysql-4.026/t/pod.t
+x DBD-mysql-4.026/t/rt85919-fetch-lost-connection.t
+x DBD-mysql-4.026/t/53comment.t
+x DBD-mysql-4.026/t/41blobs_prepare.t
+x DBD-mysql-4.026/t/29warnings.t
+x DBD-mysql-4.026/t/81procs.t
+x DBD-mysql-4.026/t/35prepare.t
+x DBD-mysql-4.026/t/99_bug_server_prepare_blob_null.t
+x DBD-mysql-4.026/t/20createdrop.t
+x DBD-mysql-4.026/t/40server_prepare.t
+x DBD-mysql-4.026/t/40keyinfo.t
+x DBD-mysql-4.026/t/rt25389-bin-case.t
+x DBD-mysql-4.026/t/rt50304-column_info_parentheses.t
+x DBD-mysql-4.026/t/50commit.t
+x DBD-mysql-4.026/t/25lockunlock.t
+x DBD-mysql-4.026/t/manifest.t
+x DBD-mysql-4.026/t/40nulls.t
+x DBD-mysql-4.026/t/mysql.mtest
+x DBD-mysql-4.026/t/40bindparam2.t
+x DBD-mysql-4.026/t/40nulls_prepare.t
+x DBD-mysql-4.026/t/15reconnect.t
+x DBD-mysql-4.026/t/lib.pl
+x DBD-mysql-4.026/t/50chopblanks.t
+x DBD-mysql-4.026/t/89async-method-check.t
+x DBD-mysql-4.026/t/32insert_error.t
+x DBD-mysql-4.026/t/10connect.t
+x DBD-mysql-4.026/t/40blobs.t
+x DBD-mysql-4.026/t/42bindparam.t
+x DBD-mysql-4.026/t/80procs.t
+x DBD-mysql-4.026/t/41bindparam.t
+x DBD-mysql-4.026/t/rt91715.t
+x DBD-mysql-4.026/t/88async-multi-stmts.t
+x DBD-mysql-4.026/t/40bindparam.t
+x DBD-mysql-4.026/t/90no-async.t
+x DBD-mysql-4.026/t/30insertfetch.t
+x DBD-mysql-4.026/t/40numrows.t
+x DBD-mysql-4.026/t/40server_prepare_error.t
+x DBD-mysql-4.026/t/35limit.t
+x DBD-mysql-4.026/t/55utf8.t
+x DBD-mysql-4.026/t/91errcheck.t
+x DBD-mysql-4.026/t/86_bug_36972.t
+x DBD-mysql-4.026/eg/
+x DBD-mysql-4.026/eg/proc_example2.pl
+x DBD-mysql-4.026/eg/bug30033pg.pl
+x DBD-mysql-4.026/eg/bigint_quotes.pl
+x DBD-mysql-4.026/eg/bug30033.pl
+x DBD-mysql-4.026/eg/decimal_test.pl
+x DBD-mysql-4.026/eg/proc_example3.pl
+x DBD-mysql-4.026/eg/bug14979.pl
+x DBD-mysql-4.026/eg/proc_example2b.pl
+x DBD-mysql-4.026/eg/proc_example1.pl
+x DBD-mysql-4.026/eg/proc_example2a.pl
+x DBD-mysql-4.026/eg/bug21028.pl
+x DBD-mysql-4.026/eg/issue21946.pl
+x DBD-mysql-4.026/eg/proc_example4.pl
+x DBD-mysql-4.026/eg/prepare_memory_usage.pl
+x DBD-mysql-4.026/MANIFEST
+x DBD-mysql-4.026/dbdimp.c
+x DBD-mysql-4.026/README.pod
+x DBD-mysql-4.026/mysql.xs
+x DBD-mysql-4.026/TODO
+x DBD-mysql-4.026/constants.h
+x DBD-mysql-4.026/ChangeLog
+x DBD-mysql-4.026/MANIFEST.SKIP
+x DBD-mysql-4.026/lib/
+x DBD-mysql-4.026/lib/DBD/
+x DBD-mysql-4.026/lib/DBD/mysql/
+x DBD-mysql-4.026/lib/DBD/mysql/INSTALL.pod
+x DBD-mysql-4.026/lib/DBD/mysql/GetInfo.pm
+x DBD-mysql-4.026/lib/DBD/mysql.pm
+x DBD-mysql-4.026/lib/Bundle/
+x DBD-mysql-4.026/lib/Bundle/DBD/
+x DBD-mysql-4.026/lib/Bundle/DBD/mysql.pm
+x DBD-mysql-4.026/dbdimp.h
+Entering DBD-mysql-4.026
+Checking configure dependencies from META.yml
+Checking if you have DBI 1.08 ... Yes (1.631)
+Running Makefile.PL
+Configuring DBD-mysql-4.026 ... 
+
+PLEASE NOTE:
+
+For &#39;make test&#39; to run properly, you must ensure that the
+database user &#39;digitalbot&#39; can connect to your MySQL server
+and has the proper privileges that these tests require such
+as &#39;drop table&#39;, &#39;create table&#39;, &#39;drop procedure&#39;, &#39;create procedure&#39;
+as well as others.
+
+mysql&gt; grant all privileges on test.* to &#39;digitalbot&#39;@&#39;localhost&#39; identified by &#39;s3kr1t&#39;;
+
+You can also optionally set the user to run &#39;make test&#39; with:
+
+perl Makefile.PL --testuser=username
+
+I will use the following settings for compiling and testing:
+
+  cflags        (mysql_config) = -I/usr/local/Cellar/mysql/5.6.16/include/mysql  -Os -g -fno-strict-aliasing
+  embedded      (mysql_config) = 
+  ldflags       (mysql_config) = 
+  libs          (mysql_config) = -L/usr/local/Cellar/mysql/5.6.16/lib -lmysqlclient
+  mysql_config  (guessed     ) = mysql_config
+  nocatchstderr (default     ) = 0
+  nofoundrows   (default     ) = 0
+  ssl           (guessed     ) = 0
+  testdb        (default     ) = test
+  testhost      (default     ) = 
+  testpassword  (default     ) = 
+  testport      (default     ) = 
+  testsocket    (default     ) = 
+  testuser      (guessed     ) = digitalbot
+
+To change these settings, see &#39;perl Makefile.PL --help&#39; and
+&#39;perldoc DBD::mysql::INSTALL&#39;.
+
+Checking if your kit is complete...
+Warning: the following files are missing in your kit:
+    META.json
+Please inform the author.
+Using DBI 1.631 (for perl 5.018001 on darwin-thread-multi-2level) installed in /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI/
+Generating a Unix-style Makefile
+Writing Makefile for DBD::mysql
+Writing MYMETA.yml and MYMETA.json
+OK
+Checking dependencies from MYMETA.json ...
+Checking if you have Test::Deep 0 ... Yes (0.112)
+Checking if you have Data::Dumper 0 ... Yes (2.145)
+Checking if you have DBI 1.08 ... Yes (1.631)
+Checking if you have Test::More 0 ... Yes (1.001002)
+Building and testing DBD-mysql-4.026 ... cp README.pod blib/lib/DBD/README.pod
+cp lib/DBD/mysql.pm blib/lib/DBD/mysql.pm
+cp lib/Bundle/DBD/mysql.pm blib/lib/Bundle/DBD/mysql.pm
+cp lib/DBD/mysql/INSTALL.pod blib/lib/DBD/mysql/INSTALL.pod
+cp lib/DBD/mysql/GetInfo.pm blib/lib/DBD/mysql/GetInfo.pm
+Running Mkbootstrap for DBD::mysql ()
+chmod 644 mysql.bs
+cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.16/include/mysql  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.026\&quot; -DXS_VERSION=\&quot;4.026\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   dbdimp.c
+dbdimp.c:3676:22: warning: incompatible pointer types assigning to &#39;my_bool *&#39; (aka &#39;char *&#39;) from &#39;bool *&#39;
+      [-Wincompatible-pointer-types]
+      buffer-&gt;is_null= &amp;(fbh-&gt;is_null);
+                     ^ ~~~~~~~~~~~~~~~
+1 warning generated.
+/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 -p -e &quot;s/~DRIVER~/mysql/g&quot; /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI/Driver.xst &gt; mysql.xsi
+/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/ExtUtils/xsubpp  -typemap /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/ExtUtils/typemap  mysql.xs &gt; mysql.xsc &amp;&amp; mv mysql.xsc mysql.c
+Warning: duplicate function definition &#39;do&#39; detected in mysql.xs, line 242
+Warning: duplicate function definition &#39;rows&#39; detected in mysql.xs, line 754
+cc -c  -I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBI -I/usr/local/Cellar/mysql/5.6.16/include/mysql  -Os -g -fno-strict-aliasing -DDBD_MYSQL_INSERT_ID_IS_GOOD -g  -fno-common -DPERL_DARWIN -arch x86_64 -fPIC -DDEBUGGING -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -g -pipe -Os   -DVERSION=\&quot;4.026\&quot; -DXS_VERSION=\&quot;4.026\&quot;  &quot;-I/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/CORE&quot;   mysql.c
+mysql.xs:933:38: warning: format specifies type &#39;int&#39; but the argument has type &#39;SV *&#39; (aka &#39;struct sv *&#39;) [-Wformat]
+                croak(&quot;Unknown SQL Info type: %i&quot;,dbh);
+                                              ~~  ^~~
+1 warning generated.
+rm -f blib/arch/auto/DBD/mysql/mysql.bundle
+LD_RUN_PATH=&quot;/usr/local/Cellar/mysql/5.6.16/lib&quot; /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 myld env MACOSX_DEPLOYMENT_TARGET=10.3 cc -arch x86_64  -bundle -undefined dynamic_lookup -L/usr/local/lib -fstack-protector dbdimp.o mysql.o  -o blib/arch/auto/DBD/mysql/mysql.bundle    \
+       -L/usr/local/Cellar/mysql/5.6.16/lib -lmysqlclient   \
+      
+chmod 755 blib/arch/auto/DBD/mysql/mysql.bundle
+/Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 -MExtUtils::Command::MM -e &#39;cp_nonempty&#39; -- mysql.bs blib/arch/auto/DBD/mysql/mysql.bs 644
+Manifying blib/man3/DBD::README.3
+Manifying blib/man3/Bundle::DBD::mysql.3
+Manifying blib/man3/DBD::mysql.3
+Manifying blib/man3/DBD::mysql::INSTALL.3
+Running Mkbootstrap for DBD::mysql ()
+chmod 644 mysql.bs
+PERL_DL_NONLAZY=1 /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/bin/perl5.18.1 &quot;-MExtUtils::Command::MM&quot; &quot;-MTest::Harness&quot; &quot;-e&quot; &quot;undef *Test::Harness::Switches; test_harness(0, &#39;blib/lib&#39;, &#39;blib/arch&#39;)&quot; t/*.t
+t/00base.t ........................... ok   
+t/10connect.t ........................ ok   
+t/15reconnect.t ...................... ok     
+t/20createdrop.t ..................... ok   
+t/25lockunlock.t ..................... ok     
+t/29warnings.t ....................... ok     
+t/30insertfetch.t .................... ok     
+t/31insertid.t ....................... ok     
+t/32insert_error.t ................... ok   
+t/35limit.t .......................... ok       
+t/35prepare.t ........................ ok     
+t/40bindparam.t ...................... ok     
+t/40bindparam2.t ..................... ok     
+t/40blobs.t .......................... ok     
+t/40catalog.t ........................ ok     
+t/40keyinfo.t ........................ ok   
+t/40listfields.t ..................... ok     
+t/40nulls.t .......................... ok     
+t/40nulls_prepare.t .................. ok     
+t/40numrows.t ........................ ok     
+t/40server_prepare.t ................. ok     
+t/40server_prepare_error.t ........... ok   
+t/40types.t .......................... ok    
+t/41bindparam.t ...................... ok     
+t/41blobs_prepare.t .................. ok     
+t/42bindparam.t ...................... ok     
+t/43count_params.t ................... ok     
+t/50chopblanks.t ..................... ok     
+t/50commit.t ......................... ok     
+t/51bind_type_guessing.t ............. ok     
+t/52comment.t ........................ ok     
+t/53comment.t ........................ ok     
+t/55utf8.t ........................... ok     
+t/60leaks.t .......................... skipped: Skip $ENV{EXTENDED_TESTING} is not set
+t/65segfault.t ....................... ok   
+t/65types.t .......................... ok     
+t/70takeimp.t ........................ ok     
+t/71impdata.t ........................ ok     
+t/75supported_sql.t .................. ok     
+t/76multi_statement.t ................ 1/25 # Testing multicall against SQL_DBMS_VER: 5.6.16-log
+t/76multi_statement.t ................ ok     
+t/80procs.t .......................... ok     
+t/81procs.t .......................... ok     
+t/85init_command.t ................... ok   
+t/86_bug_36972.t ..................... ok     
+t/87async.t .......................... ok     
+t/88async-multi-stmts.t .............. ok   
+t/89async-method-check.t ............. ok       
+t/90no-async.t ....................... skipped: Async support was built into this version of DBD::mysql
+t/91errcheck.t ....................... ok   
+t/99_bug_server_prepare_blob_null.t .. ok     
+t/manifest.t ......................... skipped: these tests are for release testing
+t/pod.t .............................. skipped: Test::Pod 1.00 required for testing POD
+t/rt25389-bin-case.t ................. ok   
+t/rt50304-column_info_parentheses.t .. ok   
+t/rt83494-quotes-comments.t .......... ok   
+t/rt85919-fetch-lost-connection.t .... ok   
+t/rt86153-reconnect-fail-memory.t .... skipped: Skip $ENV{EXTENDED_TESTING} is not set
+t/rt91715.t .......................... ok   
+All tests successful.
+Files=58, Tests=1312, 34 wallclock secs ( 0.39 usr  0.14 sys +  4.90 cusr  0.66 csys =  6.09 CPU)
+Result: PASS
+Files found in blib/arch: installing files in blib/lib into architecture dependent library tree
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/auto/DBD/mysql/mysql.bundle
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/Bundle/DBD/mysql.pm
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/DBD/mysql.pm
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/DBD/README.pod
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/DBD/mysql/GetInfo.pm
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/DBD/mysql/INSTALL.pod
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/man/man3/Bundle::DBD::mysql.3
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/man/man3/DBD::mysql.3
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/man/man3/DBD::mysql::INSTALL.3
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/man/man3/DBD::README.3
+Appending installation info to /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/5.18.1/darwin-thread-multi-2level/perllocal.pod
+OK
+Successfully installed DBD-mysql-4.026
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/.meta/DBD-mysql-4.026/install.json
+Installing /Users/digitalbot/.anyenv/envs/plenv/versions/5.18/lib/perl5/site_perl/5.18.1/darwin-thread-multi-2level/.meta/DBD-mysql-4.026/MYMETA.json
+1 distribution installed
+</code></pre></noscript></div>
+
+
+
 ]]></content>
   </entry>
   
