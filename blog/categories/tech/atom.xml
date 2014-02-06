@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-01-30T03:42:03+09:00</updated>
+  <updated>2014-02-06T22:59:22+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -166,7 +166,15 @@
     <link href="http://blog.digital-bot.com/blog/2013/11/02/dbd-mysql-on-mavericks/"/>
     <updated>2013-11-02T04:03:00+09:00</updated>
     <id>http://blog.digital-bot.com/blog/2013/11/02/dbd-mysql-on-mavericks</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a>">https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a></a></p>
+    <content type="html"><![CDATA[<hr />
+
+<h4>※2014/02/06</h4>
+
+<p><a href="//blog.digital-bot.com/blog/2014/02/06/can-install-dbd-mysql/">入った</a></p>
+
+<hr />
+
+<p><a href="https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a>">https://twitter.com/kskexit/status/396160572351205376">https://twitter.com/kskexit/status/396160572351205376</a></a></p>
 
 <p>MacOS 10.9にしたiMacでもPerlとMySQLを使った開発がしたくなったのだが、DBD::mysqlがうまく入らなくてこまってる。あと、MySQL自体をHomebrewから入れるときに少し躓いたからそのこともメモとして残しておく。</p>
 
