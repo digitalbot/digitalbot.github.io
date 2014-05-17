@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-02-15T03:10:46+09:00</updated>
+  <updated>2014-05-18T04:39:30+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[eshell便利]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/05/18/eshell/"/>
+    <updated>2014-05-18T04:25:19+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/05/18/eshell</id>
+    <content type="html"><![CDATA[<p>Windowsをやむなく使わされることも世の中にはあるかと思うけど、このWindowのコマンドプロンプトがほんとに使いづらいもんで困ったもんである。</p>
+
+<p>しかし安心して欲しい。我々には<code>eshell</code>がある。</p>
+
+<p><a href="" title="http://sourceforge.jp/projects/gnupack/releases/?package_id=10839">ココ</a>からWindows向けのEmacsを入れて、あとは立ち上げて<code>M-x eshell</code>するだけである。簡単。</p>
+
+<p>Emacsの組み込み<code>ls</code>や<code>which</code>もあるし、当然<code>pwd</code>なんかもある。よくわからない<code>dir</code>なんぞを使う必要はもうない。Emacsに感謝してWindowsを使おう。ちなみにこの記事はMacからVimで書いた。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MavericksのEmacs24.3がくっそ重くなる件]]></title>

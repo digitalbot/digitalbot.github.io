@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>homebrew-caskが良さそうなので導入してみた - About Digital</title>
+  <title>eshell便利 - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="どうやらMacのGUIアプリケーションまでもhomebrewで管理をしようとしている人がいるらしい。確かに考えなくもなかったけど、本当に作った人がいるとは思わなかったし、うまいことhomebrewを拡張した感じで作ってると感じた。マックのアプリのパッケージ管理がこれで楽になればよいなぁと思う。 &hellip;">
-  <meta name="keywords" content="homebrew-caskhomebrew">
+  <meta name="description" content="Windowsをやむなく使わされることも世の中にはあるかと思うけど、このWindowのコマンドプロンプトがほんとに使いづらいもんで困ったもんである。 しかし安心して欲しい。我々にはeshellがある。 ココからWindows向けのEmacsを入れて、あとは立ち上げてM-x &hellip;">
+  <meta name="keywords" content="windowsemacsshell">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2014/05/18/eshell/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -97,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">homebrew-caskが良さそうなので導入してみた</h1>
+        <h1 class="entry-title">eshell便利</h1>
       
     
     
@@ -114,13 +114,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-09-08T03:11:00+09:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time> |&nbsp;
+<time datetime="2014-05-18T04:25:19+09:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -133,54 +133,13 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>どうやらMacのGUIアプリケーションまでも<code>homebrew</code>で管理をしようとしている人がいるらしい。確かに考えなくもなかったけど、本当に作った人がいるとは思わなかったし、うまいことhomebrewを拡張した感じで作ってると感じた。マックのアプリのパッケージ管理がこれで楽になればよいなぁと思う。バージョンの管理も。</p>
+<div class="entry-content"><p>Windowsをやむなく使わされることも世の中にはあるかと思うけど、このWindowのコマンドプロンプトがほんとに使いづらいもんで困ったもんである。</p>
 
-<!-- more -->
+<p>しかし安心して欲しい。我々には<code>eshell</code>がある。</p>
 
+<p><a href="" title="http://sourceforge.jp/projects/gnupack/releases/?package_id=10839">ココ</a>からWindows向けのEmacsを入れて、あとは立ち上げて<code>M-x eshell</code>するだけである。簡単。</p>
 
-<h2>Git repo</h2>
-
-<ul>
-<li><a href="https://github.com/phinze/homebrew-cask">https://github.com/phinze/homebrew-cask</a></li>
-</ul>
-
-
-<h2>導入方法</h2>
-
-<pre><code>$ brew tap phinze/homebrew-cask
-$ brew install brew-cask
-</code></pre>
-
-<p>READMEを読む感じ、これだけ。そしておもむろに</p>
-
-<pre><code>$ brew cask install google-chrome
-</code></pre>
-
-<p>とかすると<code>~/Applications/"Google Chrome.app"</code>が生まれるという寸法らしい。すごいお手軽。一々ダウンロードリンクを探すこともなければ、ドラッグアンドドロップも必要ない。しかも、<code>brew cask install</code>に複数のアプリ名を渡せば一括でインストールが可能。これは便利だと思う。良い。ここでちょっと関心したのが<code>brew cask list</code>でちゃんとhomebrew-caskで入れたアプリが一覧できること。これをなんかに書き出しとけば他の環境でもパイプで渡して再現が簡単。</p>
-
-<h2>雑感</h2>
-
-<p>homebrew本体とは微妙に違ってるところがあって、homebrewでは<code>/usr/local/Cellar</code>以下に実体をインストールしていくのに対し、homebrew-caskでインストールされたアプリケーションは、<code>Caskroom</code>というところに入る。これはデフォルトだと<code>/opt/homebrew-cask/Caskroom</code>で、最初のアプリをインストール時に<em>「ここにCaskroom作りたいんだけどパーミッションの関係で作れないからsudoパスワードを入力してくれ」</em>的なことを言われた。そして、このCaskroomから<code>~/Applications</code>にシンボリックリンクが貼られるみたい。もちろんこれもデフォルトの話で、</p>
-
-<pre><code>$ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-</code></pre>
-
-<p>とか環境変数で変えられるみたい。<strong>update</strong>もどうやら<code>brew upgrade</code>で出来るみたいでココらへんは空気のような振る舞いをしてくれる。</p>
-
-<h5>気になる点としては</h5>
-
-<ul>
-<li><p><code>~/Applications</code>に入るのはシンボリックリンクなので、ランチャー(少なくとも<code>QuickSilver</code>)で認識できない</p></li>
-<li><p><code>brew cask uninstall</code>時には<code>*.plst</code>なども一緒に掃除してくれるのか(多分してくれない)</p>
-
-<ul>
-<li>そして確かにアンインストールはされるけど、<code>/opt/homebrew-cask/Caskroom</code>以下に空のそのアプリのディレクトリが残る</li>
-</ul>
-</li>
-</ul>
-
-
-<p>くらいかなぁ。今もともと入れてるアプリを置き換えるかどうかは少し迷うかな。ちょっといろいろ試してみようかと思う。いずれにせよ、これをうまく使いこなせばマックブックを買い換えた時なんかに絶大な威力を発揮する気がする。</p>
+<p>Emacsの組み込み<code>ls</code>や<code>which</code>もあるし、当然<code>pwd</code>なんかもある。よくわからない<code>dir</code>なんぞを使う必要はもうない。Emacsに感謝してWindowsを使おう。ちなみにこの記事はMacからVimで書いた。</p>
 </div>
 
 
@@ -203,13 +162,13 @@ $ brew install brew-cask
   
 
 
-<time datetime="2013-09-08T03:11:00+09:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time>
+<time datetime="2014-05-18T04:25:19+09:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -219,7 +178,7 @@ $ brew install brew-cask
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/homebrew/'>homebrew</a>, <a class='tag' href='/blog/tags/mac/'>mac</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+    <a class='tag' href='/blog/tags/emacs/'>emacs</a>
   
 </span>
 
@@ -228,10 +187,10 @@ $ brew install brew-cask
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2014/05/18/eshell/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2014/05/18/eshell/" >Tweet</a>
   
   
-  <a href="http://b.hatena.ne.jp/entry/http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://blog.digital-bot.com/blog/2014/05/18/eshell/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
   
   
@@ -242,10 +201,8 @@ $ brew install brew-cask
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/09/07/cant-use-helm/" title="Previous Post: AnythingからHelmに移行できない">&laquo; AnythingからHelmに移行できない</a>
+        <a class="basic-alignment left articlenav" href="/blog/2014/02/07/use-candybar-with-mavericks/" title="Previous Post: Mavericksで使えなくなったCandyBarを使えるようにしてアイコンを変える">&laquo; Mavericksで使えなくなったCandyBarを使えるようにしてアイコンを変える</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/09/11/about-percol/" title="Next Post: percolが便利だけど、入れるにはpython2系のほうが良さそう">percolが便利だけど、入れるにはpython2系のほうが良さそう &raquo;</a>
       
     </p>
   
@@ -254,15 +211,15 @@ $ brew install brew-cask
 <div style="margin-left:30px;">
 <ul>
 
-<li><a href="/blog/2013/10/23/install-mavericks/">OS X MavericksにSnow Leopardからアップデートした</a></li>
+<li><a href="/blog/2014/01/22/emacs-distnoted/">MavericksのEmacs24.3がくっそ重くなる件</a></li>
+
+<li><a href="/blog/2013/10/12/improve-vim/">vimを使いやすくする</a></li>
 
 <li><a href="/blog/2013/09/30/macvim-kaoriya/">MacVim Kaoriyaをhomebrewから入れた</a></li>
 
-<li><a href="/blog/2013/09/04/install-julius/">Mountain Lionにjuliusをhomebrewで入れる</a></li>
+<li><a href="/blog/2013/09/17/emacs-and-vim/">emacsとvimの使い分け</a></li>
 
-<li><a href="/blog/2013/10/12/terminal/">Macを購入したら絶対に使いたい！超オススメアプリ10選！決定版</a></li>
-
-<li><a href="/blog/2013/09/16/ssh-add/">複数PCでsshキーを共有する</a></li>
+<li><a href="/blog/2013/09/15/how-ssh/">多段sshの方法</a></li>
 
 </ul>
 </div>
@@ -397,8 +354,8 @@ $ brew install brew-cask
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/09/08/homebrew-cask/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2014/05/18/eshell/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2014/05/18/eshell/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,7 +9,7 @@
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="CandyBarというMacのアイコンを変えるアプリがあるんだけど、これがMavericksになってから使えなくなった。もともと、MountainLionあたりから結構アイコンとかを変えることにたいして難しい感じになってたらしくて、それが原因で無料アプリになったらしいんだけど、 &hellip;">
+  <meta name="description" content="Windowsをやむなく使わされることも世の中にはあるかと思うけど、このWindowのコマンドプロンプトがほんとに使いづらいもんで困ったもんである。 しかし安心して欲しい。我々にはeshellがある。 ココからWindows向けのEmacsを入れて、あとは立ち上げてM-x &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +93,62 @@ $(document).ready( function () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/05/18/eshell/">eshell便利</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T04:25:19+09:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="/blog/2014/05/18/eshell/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Windowsをやむなく使わされることも世の中にはあるかと思うけど、このWindowのコマンドプロンプトがほんとに使いづらいもんで困ったもんである。</p>
+
+<p>しかし安心して欲しい。我々には<code>eshell</code>がある。</p>
+
+<p><a href="" title="http://sourceforge.jp/projects/gnupack/releases/?package_id=10839">ココ</a>からWindows向けのEmacsを入れて、あとは立ち上げて<code>M-x eshell</code>するだけである。簡単。</p>
+
+<p>Emacsの組み込み<code>ls</code>や<code>which</code>もあるし、当然<code>pwd</code>なんかもある。よくわからない<code>dir</code>なんぞを使う必要はもうない。Emacsに感謝してWindowsを使おう。ちなみにこの記事はMacからVimで書いた。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -875,124 +931,6 @@ int main(int argc, char *argv[]) {
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/10/23/install-mavericks/">OS X MavericksにSnow Leopardからアップデートした</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-23T22:44:00+09:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2013</time> |&nbsp;
-        
-
-<span class="categories">
-  Posted in&nbsp;
-  
-    <a class='category' href='/blog/categories/tech/'>Tech</a>
-  
-</span>
-
-
-        
-         | <a href="/blog/2013/10/23/install-mavericks/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>手元のMacBookAir Mid 2013はまだMountainLionだけど、職場で使ってるSnowLeopard機をMavericksにアップデートしてみた。</p>
-
-<blockquote><p><a href="http://news.livedoor.com/article/detail/8183029/">アップル、「OS X Mavericks」を無料公開！</a></p>
-
-<blockquote><p>アップルは22日（現地時間）、OS Xの最新バージョン「Mavericks」の公開を開始した。互換性があるMacユーザーであれば無料でアップロード可能となっている。</p></blockquote></blockquote>
-
-<p>これまでのOS X(例えばLion)は安いとはいえ無料じゃなかったので、アップデートをするには会社のシステム管理者的な人に申請をして話を通す必要があったのでこれまでアップデートを面倒臭がってしていなかった。が、しかしいい加減MacBookAirと環境が大きく違うのが地味にストレスになっていたのでこの<strong>無料アップデート</strong>に飛びついてみた。</p>
-
-<h2>環境</h2>
-
-<ul>
-<li><p>Mac OS X Snow Leopard 多分 2009年くらいの</p></li>
-<li><p>500GB HDD</p></li>
-<li><p>4GB RAM</p></li>
-</ul>
-
-
-<p>ちょっと今自宅だし詳細なデータはないけど、一応環境はこんなもんだと思う。</p>
-
-<h2>前準備</h2>
-
-<p>会社のだし、とくにタイムマシーンとかでバックアップとかもとってないので、いきなりアップデートするのは怖い。そこで大事なファイルのバックアップをとったり、<strong>homebrew</strong>で入れたもののリストを作ったりした。</p>
-
-<pre><code>$ mkdir -p ~/.brew
-$ T=`date +%Y%m%d`
-$ brew list &gt; ~/.brew/list$T.txt
-$ brew list | xargs brew info &gt; ~/.brew/info$T.txt
-</code></pre>
-
-<p>入れたものリスト(<code>brew list</code>)だけではコンパイルオプションとか残らないから、念のためそれぞれの情報(<code>brew info</code>)も残しておいた。</p>
-
-<h2>インストール</h2>
-
-<p>インストール自体はApp Storeからすんなり行く。最初に<strong>残り44分</strong>て出るけど、まぁ実際は一時間くらいかかったかな。特に躓くことはないはず。SnowLeopardでも。今回、SnowLeopard &ndash;> Lion &ndash;> MountainLion &ndash;> Mavericksとか段階を踏まずに一発でMavericksを入れられるのが地味にうれしいところ。</p>
-
-<h2>セットアップ</h2>
-
-<p>インストールが終わると後は普通にログインして使いはじめるだけなんだけど、<strong>TotalFinder</strong>が対応してないので<strong>「互換性のないフォルダ</strong>みたいなところに移動しました」とかでた。これは少し残念だけど、今回のMavericksからデフォルトでFinderにタブが付いたのでとりあえずは問題ないかな。(※最下部追記あり)</p>
-
-<p>あとは<strong>Xcode</strong>を改めて入れたり、<strong>Java</strong>を入れたりで、割と時間がかかってしまった。SnowLeopardからのアップデートだったので色々とシステム環境設定から細かい挙動をいじるのも少し大変だった(スクロールはナチュラルじゃダメ派)。</p>
-
-<p>実際のところ、ターミナルと<strong>Emacs</strong>さえ動けば良いのでそこら辺の挙動しかまだ確かめてないけど、特に問題なく使えてると思う。ただ、<code>brew upgrade</code>したら(<code>brew update</code>はできた。)、一部のhomebrewで入れたツールが<strong>「libc++で入れなおしてくれ」</strong>みたいなこと言うので、次の出社時にはそれの対応をしなきゃいけないっぽい(まだ入れなおしてない)。</p>
-
-<p>libc++といえば、</p>
-
-<ul>
-<li><a href="http://beatsync.net/main/log20131021.html">Mac OS X環境でclangを使ってC++11をboostとともに使う環境を構築するの巻</a></li>
-</ul>
-
-
-<p>ちょうど今日この記事を見たので貼っておく。なんか関係有るのかな。</p>
-
-<p>他気になる点としては、アップデートとかで色々入れてた直後だからってのもあるけど、ファンが少し前より気になるくらいに活発にうごいてることと、全体的に動きがもっさりするようになった気がすることか。まぁこれはもう少し使ってみないとわからないかな。</p>
-
-<h2>おわりに</h2>
-
-<p>手元のMacBookAir(MountainLion)はもうちょっと人柱が出て、色々アプリやらなんやらが対応してからアップデートしようと思ってる。</p>
-
-<h4>ちなみに</h4>
-
-<p>アクティビティモニタのDockでメモリ使用量表示するの地味に便利に使ってたんだけど、Mavericksで出来なくなっててちょっとショック。</p>
-
-<p><img src="/images/activitie_monitor.png" alt="ActivitieMonitor" /></p>
-
-<p>↑これね。</p>
-
-<h2>※追記(2013/10/31)</h2>
-
-<p>TotalFinderはアップデートによりMavericksに対応したので今は快適に使ってる。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1014,6 +952,10 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/18/eshell/">eshell便利</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/use-candybar-with-mavericks/">Mavericksで使えなくなったCandyBarを使えるようにしてアイコンを変える</a>
@@ -1051,19 +993,15 @@ $ brew list | xargs brew info &gt; ~/.brew/info$T.txt
         <a href="/blog/2013/10/28/install-web-query/">Web::Queryのtestがコケた話</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/10/23/install-mavericks/">OS X MavericksにSnow Leopardからアップデートした</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (3)</a></li><li><a href='/blog/categories/etc/'>Etc (8)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (7)</a></li><li><a href='/blog/categories/tech/'>Tech (28)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (4)</a></li><li><a href='/blog/categories/etc/'>Etc (8)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (7)</a></li><li><a href='/blog/categories/tech/'>Tech (29)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 106.0%'>bash(1)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/candybar' style='font-size: 106.0%'>candybar(1)</a> <a href='/blog/tags/cpanm' style='font-size: 118.0%'>cpanm(3)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 154.0%'>emacs(9)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 130.0%'>git(5)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/html' style='font-size: 106.0%'>html(1)</a> <a href='/blog/tags/javascript' style='font-size: 106.0%'>javascript(1)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 154.0%'>mac(9)</a> <a href='/blog/tags/mavericks' style='font-size: 124.0%'>mavericks(4)</a> <a href='/blog/tags/mysql' style='font-size: 112.0%'>mysql(2)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/perl' style='font-size: 142.0%'>perl(7)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(5)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/web-audio' style='font-size: 106.0%'>web_audio(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 106.0%'>bash(1)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/candybar' style='font-size: 106.0%'>candybar(1)</a> <a href='/blog/tags/cpanm' style='font-size: 118.0%'>cpanm(3)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 160.0%'>emacs(10)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 130.0%'>git(5)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/html' style='font-size: 106.0%'>html(1)</a> <a href='/blog/tags/javascript' style='font-size: 106.0%'>javascript(1)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 154.0%'>mac(9)</a> <a href='/blog/tags/mavericks' style='font-size: 124.0%'>mavericks(4)</a> <a href='/blog/tags/mysql' style='font-size: 112.0%'>mysql(2)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/perl' style='font-size: 142.0%'>perl(7)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 130.0%'>shell(5)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/web-audio' style='font-size: 106.0%'>web_audio(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
 </section>
 
 <section>
