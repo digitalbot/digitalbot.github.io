@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: percol | About Digital]]></title>
+  <link href="http://blog.digital-bot.com/blog/tags/percol/atom.xml" rel="self"/>
+  <link href="http://blog.digital-bot.com/"/>
+  <updated>2014-06-22T00:06:56+09:00</updated>
+  <id>http://blog.digital-bot.com/</id>
+  <author>
+    <name><![CDATA[digital_bot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[bashで現在のコマンドライン行をどうこうするやり方知った]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/06/21/thanks-percol-with-bash/"/>
+    <updated>2014-06-21T23:54:06+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/06/21/thanks-percol-with-bash</id>
+    <content type="html"><![CDATA[<blockquote><p><a href="http://d.hatena.ne.jp/hirose31/20140612/1402559889">bashでもpercolをイイ感じに使う方法</a></p></blockquote>
+
+<p>素晴らしい記事。「現在のコマンドライン行に挿入する」の、ずっとやり方探してたんだけど、どうにも実現できなくてこまってた。一応色々マニュアルとかも当たってたんだけど見つけられなかった情報だから感謝。</p>
+]]></content>
+  </entry>
+  
+</feed>

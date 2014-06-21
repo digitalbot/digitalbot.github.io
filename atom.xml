@@ -4,7 +4,7 @@
   <title><![CDATA[About Digital]]></title>
   <link href="http://blog.digital-bot.com/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-05-18T04:39:30+09:00</updated>
+  <updated>2014-06-22T00:06:56+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[bashで現在のコマンドライン行をどうこうするやり方知った]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/06/21/thanks-percol-with-bash/"/>
+    <updated>2014-06-21T23:54:06+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/06/21/thanks-percol-with-bash</id>
+    <content type="html"><![CDATA[<blockquote><p><a href="http://d.hatena.ne.jp/hirose31/20140612/1402559889">bashでもpercolをイイ感じに使う方法</a></p></blockquote>
+
+<p>素晴らしい記事。「現在のコマンドライン行に挿入する」の、ずっとやり方探してたんだけど、どうにも実現できなくてこまってた。一応色々マニュアルとかも当たってたんだけど見つけられなかった情報だから感謝。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[eshell便利]]></title>
@@ -2175,50 +2186,6 @@ Emacsのtrampだったら途中でsudoを挟む多段sshもできるから、で
 </div>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[percolが便利だけど、入れるにはpython2系のほうが良さそう]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/09/11/about-percol/"/>
-    <updated>2013-09-11T01:03:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/09/11/about-percol</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/mooz/percol">percol</a>というコマンドラインを大変便利にしてくれるソフトウェアがあるのだけれど、これをインストールするときに少しハマった。percolはpython製のツールで、インストール方法は素直に<code>git clone</code>してきて<code>setup.py</code>を手で叩くか、<code>pip install percol</code>するなどあるんだけど、なんだか毎回どうしようか迷う。というのも、あんまりpython製のアプリとして意識したくないから<code>/usr/local/bin</code>とかに入って欲しいんだけど、管理の簡単さなどから<code>pip</code>も捨てがたいよなぁってなるから。</p>
-
-<p>んで、先日もMBAを新調したのでpercolを入れてたんだけど、どうにもインストールが出来ない。pythonに明るくないのでなんて言えばいいかわからないし先日のことなので詳しくは忘れたけど、ヘッダというかモジュールのパスが解決出来てないっぽくてmakeが出来ない状況になってた。</p>
-
-<p>どうしようかなぁと思ってたんだけど、これ、結論からいうと<strong>pythonのバージョンが間違ってた</strong>。</p>
-
-<p>python使いの人にとっては常識なのかもしれないけど、python3系の環境ではダメで、python2系の環境にする必要があっただけみたい。自分は<strong>python3.3.2</strong>を<code>anyenv</code>で管理して入れてたので</p>
-
-<pre><code>$ pyenv install 2.7.5
-$ pyenv rehash
-$ pyenv global 2.7.5
-$ pyenv versions
-#=&gt;   system
-#=&gt; * 2.7.5 (set by /Users/kosuke/.anyenv/envs/pyenv/version)
-#=&gt;   3.3.2
-</code></pre>
-
-<p>してもともと<strong>2.7.5</strong>を入れなおしてglobalに設定すれば良かった。そんで結局pipを使うことにしたので</p>
-
-<pre><code>$ pip install percol
-</code></pre>
-
-<p>した。これでターミナル上でanythingライクな操作が可能になり、平和にまた一歩近づいた。めでたし。ついでに設定ファイルも載せておこう。</p>
-
-<div><script src='https://gist.github.com/6511590.js'></script>
-<script type="text/javascript">$("td.line-numbers").remove();</script>
-<noscript><pre><code></code></pre></noscript></div>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><p><a href="http://d.hatena.ne.jp/kbkbkbkb1/20120429/1335835500">anything 的な絞りこみコマンド percol の紹介</a></p></li>
-<li><p><a href="http://tomykaira.hatenablog.com/entry/2013/05/12/115152">git + percol(anything on terminal) が便利</a></p></li>
-</ul>
 
 ]]></content>
   </entry>
