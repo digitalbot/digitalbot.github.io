@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>git clone --recursive - About Digital</title>
+  <title>arcadiaの小説ランキング出すやつ作った - About Digital</title>
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="この前サブモジュールを含んだリポジトリをgit cloneしてきてなんかうまく動かなくて困った。
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。
-そういうときは $ git clone git://hoge/fuga.git
-$ git submodule &hellip;">
-  <meta name="keywords" content="gitusefulunixshell">
+  <meta name="description" content="ArcadiaというWeb小説界では有名なサイトがあるけど、ランキング表示とかはどうにもしてくれないので前から地味に困っていた。 最近はあんまりArcadiaはあんまり活発じゃないんだけど、今回、過去に読んでいたやつを読み返したくなったのにさがすのがだるかったのでPVや記事数/ &hellip;">
+  <meta name="keywords" content="perlgit">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -21,7 +18,7 @@ $ git submodule &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/">
+  <link rel="canonical" href="http://blog.digital-bot.com/blog/2014/07/27/arcadia/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -100,7 +97,7 @@ $(document).ready( function () {
   <header>
     
       
-        <h1 class="entry-title">git clone --recursive</h1>
+        <h1 class="entry-title">arcadiaの小説ランキング出すやつ作った</h1>
       
     
     
@@ -117,13 +114,13 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time> |&nbsp;
+<time datetime="2014-07-27T23:41:49+09:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time> |&nbsp;
         
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -136,34 +133,189 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>この前サブモジュールを含んだリポジトリを<code>git clone</code>してきてなんかうまく動かなくて困った。<br/>
-んで調べたらサブモジュールはデフォルトでは一緒にクローンしてきてくれないらしい。<br/>
-そういうときは</p>
+<div class="entry-content"><p><a href="http://www.mai-net.net/">Arcadia</a>というWeb小説界では有名なサイトがあるけど、ランキング表示とかはどうにもしてくれないので前から地味に困っていた。</p>
 
-<pre><code>$ git clone git://hoge/fuga.git
-$ git submodule init
-$ git submodule update
-</code></pre>
+<p>最近はあんまりArcadiaはあんまり活発じゃないんだけど、今回、過去に読んでいたやつを読み返したくなったのにさがすのがだるかったのでPVや記事数/乾燥数でソートして表示してくれるやつを作った。</p>
 
-<p>すれば良いらしいことがわかった。</p>
+<p>あんまり最近書いてなかったけど、こういうのは慣れ親しんだPerlでということで、使ったのはPerl。単なる<code>hoge.pl</code>としてスクリプトにしたり、<strong>gist</strong>にあげても良かったんだけど、勉強も兼ねて<a href="https://github.com/tokuhirom/Minilla">Minilla</a>でCPANに上げられるような作りのものを作った。</p>
 
-<p>まぁこれで済むならそれでいいやと思ってしばらく運用してたんだけど、どうやら<code>git clone</code>には<code>--recursive</code>なんていうオプションがあるらしいことを知った。つまり</p>
-
-<pre><code>$ git clone --recursive git://hoge/fuga.git
-</code></pre>
-
-<p>だけでさっきと同じことが一行ですませられるらしい。これは便利だ。</p>
-
-<h2>ちなみに</h2>
-
-<p>gitのサブモジュールは<code>git submodule add</code>した時点でのcommit情報しかもってないから、サブモジュール自体を最新にしたい場合また別の操作が必要みたい</p>
-
-<h4>参考</h4>
+<h2>Git Repo</h2>
 
 <ul>
-<li><p><a href="http://rochefort.hatenablog.com/entry/20110410/p1">git submoduleの更新</a></p></li>
-<li><p><a href="http://hitode909.hatenablog.com/entry/20110526/1306364973">git clone &mdash;recursive便利</a></p></li>
+<li><a href="https://github.com/digitalbot/App-ArcadiaRank">App-ArcadiaRank</a></li>
 </ul>
+
+
+<p>普通に<code>cpanm</code>したら(CPANには上げてないけど)、<code>arcadiarank</code>コマンドが使えるようになるからそれするといい感じにターミナル上で現時点でのArcadiaの小説ランキングがわかる。現時点ではオリジナルしか対応してないけど、やる気があれば色々拡張したりパフォーマンス挙げたりするかも。</p>
+
+<h2>exsample</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ arcadiarank --help
+</span><span class='line'>Usage:
+</span><span class='line'>    arcadiarank [options]
+</span><span class='line'>
+</span><span class='line'>    options:
+</span><span class='line'>        --limit,-l count   Control entries limit.
+</span><span class='line'>        --compact,-c       Show compact results.
+</span><span class='line'>        --precision,-p     Calc precision.
+</span><span class='line'>        --version,-v       Show version of this app.
+</span><span class='line'>        --help,-h          Show this help messages.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>$ arcadiarank
+</span><span class='line'>
+</span><span class='line'>  rank: 1 (pv: 3452875)
+</span><span class='line'>      title : ミルク多めのブラックコーヒー（似非中世ファンタジー・ハーレム系）
+</span><span class='line'>      author: かおらて
+</span><span class='line'>      pages : 100
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 2 (pv: 2759327)
+</span><span class='line'>      title : オーバーロード（オリジナル異世界転移最強もの）
+</span><span class='line'>      author: 丸山くがね
+</span><span class='line'>      pages : 60
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 3 (pv: 2421761)
+</span><span class='line'>      title : 幻想立志転生伝(転生モノ)　完結
+</span><span class='line'>      author: BA-2
+</span><span class='line'>      pages : 85
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 4 (pv: 1606542)
+</span><span class='line'>      title : 腕白関白(完結)
+</span><span class='line'>      author: そる
+</span><span class='line'>      pages : 41
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 5 (pv: 1352604)
+</span><span class='line'>      title : 自衛隊　彼の地にて、斯く戦えり
+</span><span class='line'>      author: とどく＝たくさん
+</span><span class='line'>      pages : 5
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 6 (pv: 1129442)
+</span><span class='line'>      title : 【異世界トリップ・建国】黄金の帝国【完結】
+</span><span class='line'>      author: 行
+</span><span class='line'>      pages : 65
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 7 (pv: 1119247)
+</span><span class='line'>      title : オリジナル転生物（題名は続きを上げてから変更予定）
+</span><span class='line'>      author: 凛
+</span><span class='line'>      pages : 50
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 8 (pv: 1117904)
+</span><span class='line'>      title : 短編更新【完結】さようなら竜生　こんにちは人生（竜→人間転生　主人公最強　......
+</span><span class='line'>      author: スペ
+</span><span class='line'>      pages : 65
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 9 (pv: 1056110)
+</span><span class='line'>      title : 異世界に来たけど至って普通に喫茶店とかやってますが何か問題でも？
+</span><span class='line'>      author: 風見鶏
+</span><span class='line'>      pages : 23
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 10 (pv: 1046588)
+</span><span class='line'>      title : 【正式採用決定】（末期戦モノ）幼女戦記Tuez-les tous, Dieu reconnaitra les siens
+</span><span class='line'>      author: カルロ・ゼン
+</span><span class='line'>      pages : 123
+</span><span class='line'>
+</span><span class='line'>----------------------------------------</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -187,13 +339,13 @@ $ git submodule update
   
 
 
-<time datetime="2013-08-31T13:06:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+<time datetime="2014-07-27T23:41:49+09:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time>
       
 
 <span class="categories">
   Posted in&nbsp;
   
-    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
   
 </span>
 
@@ -203,7 +355,7 @@ $ git submodule update
 <span class="tags">
   Tagged as&nbsp
   
-    <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/shell/'>shell</a>, <a class='tag' href='/blog/tags/unix/'>unix</a>, <a class='tag' href='/blog/tags/useful/'>useful</a>
+    <a class='tag' href='/blog/tags/git/'>git</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>
   
 </span>
 
@@ -212,10 +364,10 @@ $ git submodule update
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.digital-bot.com/blog/2014/07/27/arcadia/" data-via="kskexit" data-counturl="http://blog.digital-bot.com/blog/2014/07/27/arcadia/" >Tweet</a>
   
   
-  <a href="http://b.hatena.ne.jp/entry/http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://blog.digital-bot.com/blog/2014/07/27/arcadia/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
   
   
@@ -226,10 +378,8 @@ $ git submodule update
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/08/30/sakura-domain/" title="Previous Post: さくらインターネットのドメイン設定">&laquo; さくらインターネットのドメイン設定</a>
+        <a class="basic-alignment left articlenav" href="/blog/2014/06/21/thanks-percol-with-bash/" title="Previous Post: bashで現在のコマンドライン行をどうこうするやり方知った">&laquo; bashで現在のコマンドライン行をどうこうするやり方知った</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/08/31/gitprep-intro/" title="Next Post: GitPrep導入してみた">GitPrep導入してみた &raquo;</a>
       
     </p>
   
@@ -242,11 +392,11 @@ $ git submodule update
 
 <li><a href="/blog/2013/10/12/improve-vim/">vimを使いやすくする</a></li>
 
-<li><a href="/blog/2013/09/11/about-percol/">percolが便利だけど、入れるにはpython2系のほうが良さそう</a></li>
-
-<li><a href="/blog/2013/08/30/more-useful-inputrc/">.inputrcの便利設定</a></li>
+<li><a href="/blog/2013/09/04/install-julius/">Mountain Lionにjuliusをhomebrewで入れる</a></li>
 
 <li><a href="/blog/2013/09/02/intro-octopress/">Octopressのインストール</a></li>
+
+<li><a href="/blog/2013/08/31/git-clone-recursive/">git clone --recursive</a></li>
 
 </ul>
 </div>
@@ -381,8 +531,8 @@ $ git submodule update
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
-        var disqus_url = 'http://blog.digital-bot.com/blog/2013/08/31/git-clone-recursive/';
+        var disqus_identifier = 'http://blog.digital-bot.com/blog/2014/07/27/arcadia/';
+        var disqus_url = 'http://blog.digital-bot.com/blog/2014/07/27/arcadia/';
         var disqus_script = 'embed.js';
       
     (function () {

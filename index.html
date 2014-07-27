@@ -9,8 +9,7 @@
   <meta name="author" content="digital_bot">
 
   
-  <meta name="description" content="bashでもpercolをイイ感じに使う方法 素晴らしい記事。「現在のコマンドライン行に挿入する」の、ずっとやり方探してたんだけど、どうにも実現できなくてこまってた。一応色々マニュアルとかも当たってたんだけど見つけられなかった情報だから感謝。
-">
+  <meta name="description" content="ArcadiaというWeb小説界では有名なサイトがあるけど、ランキング表示とかはどうにもしてくれないので前から地味に困っていた。 最近はあんまりArcadiaはあんまり活発じゃないんだけど、今回、過去に読んでいたやつを読み返したくなったのにさがすのがだるかったのでPVや記事数/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +93,239 @@ $(document).ready( function () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/07/27/arcadia/">arcadiaの小説ランキング出すやつ作った</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-27T23:41:49+09:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time> |&nbsp;
+        
+
+<span class="categories">
+  Posted in&nbsp;
+  
+    <a class='category' href='/blog/categories/etc/'>Etc</a>, <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
+  
+</span>
+
+
+        
+         | <a href="/blog/2014/07/27/arcadia/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.mai-net.net/">Arcadia</a>というWeb小説界では有名なサイトがあるけど、ランキング表示とかはどうにもしてくれないので前から地味に困っていた。</p>
+
+<p>最近はあんまりArcadiaはあんまり活発じゃないんだけど、今回、過去に読んでいたやつを読み返したくなったのにさがすのがだるかったのでPVや記事数/乾燥数でソートして表示してくれるやつを作った。</p>
+
+<p>あんまり最近書いてなかったけど、こういうのは慣れ親しんだPerlでということで、使ったのはPerl。単なる<code>hoge.pl</code>としてスクリプトにしたり、<strong>gist</strong>にあげても良かったんだけど、勉強も兼ねて<a href="https://github.com/tokuhirom/Minilla">Minilla</a>でCPANに上げられるような作りのものを作った。</p>
+
+<h2>Git Repo</h2>
+
+<ul>
+<li><a href="https://github.com/digitalbot/App-ArcadiaRank">App-ArcadiaRank</a></li>
+</ul>
+
+
+<p>普通に<code>cpanm</code>したら(CPANには上げてないけど)、<code>arcadiarank</code>コマンドが使えるようになるからそれするといい感じにターミナル上で現時点でのArcadiaの小説ランキングがわかる。現時点ではオリジナルしか対応してないけど、やる気があれば色々拡張したりパフォーマンス挙げたりするかも。</p>
+
+<h2>exsample</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ arcadiarank --help
+</span><span class='line'>Usage:
+</span><span class='line'>    arcadiarank [options]
+</span><span class='line'>
+</span><span class='line'>    options:
+</span><span class='line'>        --limit,-l count   Control entries limit.
+</span><span class='line'>        --compact,-c       Show compact results.
+</span><span class='line'>        --precision,-p     Calc precision.
+</span><span class='line'>        --version,-v       Show version of this app.
+</span><span class='line'>        --help,-h          Show this help messages.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>$ arcadiarank
+</span><span class='line'>
+</span><span class='line'>  rank: 1 (pv: 3452875)
+</span><span class='line'>      title : ミルク多めのブラックコーヒー（似非中世ファンタジー・ハーレム系）
+</span><span class='line'>      author: かおらて
+</span><span class='line'>      pages : 100
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 2 (pv: 2759327)
+</span><span class='line'>      title : オーバーロード（オリジナル異世界転移最強もの）
+</span><span class='line'>      author: 丸山くがね
+</span><span class='line'>      pages : 60
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 3 (pv: 2421761)
+</span><span class='line'>      title : 幻想立志転生伝(転生モノ)　完結
+</span><span class='line'>      author: BA-2
+</span><span class='line'>      pages : 85
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 4 (pv: 1606542)
+</span><span class='line'>      title : 腕白関白(完結)
+</span><span class='line'>      author: そる
+</span><span class='line'>      pages : 41
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 5 (pv: 1352604)
+</span><span class='line'>      title : 自衛隊　彼の地にて、斯く戦えり
+</span><span class='line'>      author: とどく＝たくさん
+</span><span class='line'>      pages : 5
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 6 (pv: 1129442)
+</span><span class='line'>      title : 【異世界トリップ・建国】黄金の帝国【完結】
+</span><span class='line'>      author: 行
+</span><span class='line'>      pages : 65
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 7 (pv: 1119247)
+</span><span class='line'>      title : オリジナル転生物（題名は続きを上げてから変更予定）
+</span><span class='line'>      author: 凛
+</span><span class='line'>      pages : 50
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 8 (pv: 1117904)
+</span><span class='line'>      title : 短編更新【完結】さようなら竜生　こんにちは人生（竜→人間転生　主人公最強　......
+</span><span class='line'>      author: スペ
+</span><span class='line'>      pages : 65
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 9 (pv: 1056110)
+</span><span class='line'>      title : 異世界に来たけど至って普通に喫茶店とかやってますが何か問題でも？
+</span><span class='line'>      author: 風見鶏
+</span><span class='line'>      pages : 23
+</span><span class='line'>
+</span><span class='line'>----------------------------------------
+</span><span class='line'>
+</span><span class='line'>  rank: 10 (pv: 1046588)
+</span><span class='line'>      title : 【正式採用決定】（末期戦モノ）幼女戦記Tuez-les tous, Dieu reconnaitra les siens
+</span><span class='line'>      author: カルロ・ゼン
+</span><span class='line'>      pages : 123
+</span><span class='line'>
+</span><span class='line'>----------------------------------------</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -822,61 +1054,6 @@ int main(int argc, char *argv[]) {
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/11/01/json-cmp/">PerlでJSONを出力する。JSONとJSON::Syckの違い</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-01T22:34:00+09:00" pubdate data-updated="true">Nov 1<span>st</span>, 2013</time> |&nbsp;
-        
-
-<span class="categories">
-  Posted in&nbsp;
-  
-    <a class='category' href='/blog/categories/perl/'>Perl</a>, <a class='category' href='/blog/categories/tech/'>Tech</a>
-  
-</span>
-
-
-        
-         | <a href="/blog/2013/11/01/json-cmp/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>PerlでJSONを吐き出す方法、いくつかあるんだけど、どうすればよいか毎回忘れるし、プロジェクトによってJSON::XS使ってたりJSON::Syck使ってたりとまちまちだから、自分なりの方法をここにメモしておく。わりとゆるふわっとしてるので間違いあるかも。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/01/json-cmp/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -898,6 +1075,10 @@ int main(int argc, char *argv[]) {
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/arcadia/">arcadiaの小説ランキング出すやつ作った</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/06/21/thanks-percol-with-bash/">bashで現在のコマンドライン行をどうこうするやり方知った</a>
@@ -935,19 +1116,15 @@ int main(int argc, char *argv[]) {
         <a href="/blog/2013/11/02/dbd-mysql-on-mavericks/">DBD::mysqlがMySQL5.6、OS X Mavericksに入らない</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/11/01/json-cmp/">PerlでJSONを出力する。JSONとJSON::Syckの違い</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (4)</a></li><li><a href='/blog/categories/etc/'>Etc (8)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (7)</a></li><li><a href='/blog/categories/tech/'>Tech (30)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/emacs/'>Emacs (4)</a></li><li><a href='/blog/categories/etc/'>Etc (9)</a></li><li><a href='/blog/categories/git/'>Git (4)</a></li><li><a href='/blog/categories/perl/'>Perl (8)</a></li><li><a href='/blog/categories/tech/'>Tech (31)</a></li><li><a href='/blog/categories/test/'>test (2)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 112.0%'>bash(2)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/candybar' style='font-size: 106.0%'>candybar(1)</a> <a href='/blog/tags/cpanm' style='font-size: 118.0%'>cpanm(3)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 160.0%'>emacs(10)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 130.0%'>git(5)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/html' style='font-size: 106.0%'>html(1)</a> <a href='/blog/tags/javascript' style='font-size: 106.0%'>javascript(1)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 154.0%'>mac(9)</a> <a href='/blog/tags/mavericks' style='font-size: 124.0%'>mavericks(4)</a> <a href='/blog/tags/mysql' style='font-size: 112.0%'>mysql(2)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/percol' style='font-size: 106.0%'>percol(1)</a> <a href='/blog/tags/perl' style='font-size: 142.0%'>perl(7)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 136.0%'>shell(6)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/web-audio' style='font-size: 106.0%'>web_audio(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/tags/anything' style='font-size: 118.0%'>anything(3)</a> <a href='/blog/tags/bash' style='font-size: 112.0%'>bash(2)</a> <a href='/blog/tags/blog' style='font-size: 106.0%'>blog(1)</a> <a href='/blog/tags/candybar' style='font-size: 106.0%'>candybar(1)</a> <a href='/blog/tags/cpanm' style='font-size: 118.0%'>cpanm(3)</a> <a href='/blog/tags/daemontools' style='font-size: 106.0%'>daemontools(1)</a> <a href='/blog/tags/disqus' style='font-size: 106.0%'>disqus(1)</a> <a href='/blog/tags/dns' style='font-size: 106.0%'>dns(1)</a> <a href='/blog/tags/emacs' style='font-size: 160.0%'>emacs(10)</a> <a href='/blog/tags/gcc' style='font-size: 112.0%'>gcc(2)</a> <a href='/blog/tags/git' style='font-size: 136.0%'>git(6)</a> <a href='/blog/tags/github' style='font-size: 118.0%'>github(3)</a> <a href='/blog/tags/gitprep' style='font-size: 106.0%'>gitprep(1)</a> <a href='/blog/tags/helm' style='font-size: 112.0%'>helm(2)</a> <a href='/blog/tags/homebrew' style='font-size: 124.0%'>homebrew(4)</a> <a href='/blog/tags/html' style='font-size: 106.0%'>html(1)</a> <a href='/blog/tags/javascript' style='font-size: 106.0%'>javascript(1)</a> <a href='/blog/tags/json' style='font-size: 106.0%'>json(1)</a> <a href='/blog/tags/julius' style='font-size: 106.0%'>julius(1)</a> <a href='/blog/tags/mac' style='font-size: 154.0%'>mac(9)</a> <a href='/blog/tags/mavericks' style='font-size: 124.0%'>mavericks(4)</a> <a href='/blog/tags/mysql' style='font-size: 112.0%'>mysql(2)</a> <a href='/blog/tags/nginx' style='font-size: 106.0%'>nginx(1)</a> <a href='/blog/tags/octopress' style='font-size: 130.0%'>octopress(5)</a> <a href='/blog/tags/oembed' style='font-size: 106.0%'>oembed(1)</a> <a href='/blog/tags/percol' style='font-size: 106.0%'>percol(1)</a> <a href='/blog/tags/perl' style='font-size: 148.0%'>perl(8)</a> <a href='/blog/tags/portaudio' style='font-size: 106.0%'>portaudio(1)</a> <a href='/blog/tags/python' style='font-size: 106.0%'>python(1)</a> <a href='/blog/tags/rbenv' style='font-size: 106.0%'>rbenv(1)</a> <a href='/blog/tags/ruby' style='font-size: 118.0%'>ruby(3)</a> <a href='/blog/tags/shell' style='font-size: 136.0%'>shell(6)</a> <a href='/blog/tags/ssh' style='font-size: 124.0%'>ssh(4)</a> <a href='/blog/tags/test' style='font-size: 112.0%'>test(2)</a> <a href='/blog/tags/trackback' style='font-size: 106.0%'>trackback(1)</a> <a href='/blog/tags/tramp' style='font-size: 112.0%'>tramp(2)</a> <a href='/blog/tags/twitter' style='font-size: 112.0%'>twitter(2)</a> <a href='/blog/tags/unix' style='font-size: 160.0%'>unix(10)</a> <a href='/blog/tags/useful' style='font-size: 148.0%'>useful(8)</a> <a href='/blog/tags/vim' style='font-size: 124.0%'>vim(4)</a> <a href='/blog/tags/vps' style='font-size: 106.0%'>vps(1)</a> <a href='/blog/tags/web-audio' style='font-size: 106.0%'>web_audio(1)</a> <a href='/blog/tags/yin' style='font-size: 106.0%'>音(1)</a> </span>
 </section>
 
 <section>
