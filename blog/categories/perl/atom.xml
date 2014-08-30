@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perl | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-07-28T00:01:21+09:00</updated>
+  <updated>2014-08-31T02:35:58+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[YAPC::Asia Tokyo 2014にギターヒーローを見た]]></title>
+    <link href="http://blog.digital-bot.com/blog/2014/08/31/yapcasia2014/"/>
+    <updated>2014-08-31T00:51:15+09:00</updated>
+    <id>http://blog.digital-bot.com/blog/2014/08/31/yapcasia2014</id>
+    <content type="html"><![CDATA[<p>今年も<a href="http://yapcasia.org/2014/">YAPC::Asia Tokyo 2014</a>に8/29,30と参加し、色々と面白い話を聞いてきた。</p>
+
+<p>酒と深夜のノリで推敲するのは良くないと思いつつも眠いので上げようと思う。</p>
+
+<p><img src="/images/yapc.jpg" alt="ノベルティ" /></p>
+
+<!-- more -->
+
+
+<h2>いきなりまとめっぽいの</h2>
+
+<p>今年のYAPC::Asia Tokyoは多くの人が指摘しているようにPerl以外の話が多かった(或いは目についた)ように思う。</p>
+
+<p>もちろんPerlの話も多くあり、例えばSawyerさんの話はPlack/PSGIのcoolさを全力で肯定しながらも、ビジネス的な価値やレガシーの存在意義・なんでも新しければ良いってものではないという話からの、最後にはやはりPlack/PSGIがその問題をも乗り越える力を持つことを示していてとても聞き応えがあったと思う(そして同時通訳素晴らしい)。</p>
+
+<p>表面的に見ると、このPerlトーク割合については「やはりPerlはオワコン」などということに考えが行ってもおかしくはないかもしれない。</p>
+
+<p>(実際、Perlやってる人がPerlから逃げ出すためにはどの言語を学べば良いか見本市にならないか最初は少し不安にはなったが)</p>
+
+<p>しかし結局、他の言語から学び取ろうとか、違うやり方を知ろうとか、或いはPerlってのは<code>TMTOWTDI</code>をやはり地で行っていて、もはや言語にこだわるとかじゃなくて<code>TMTOWTDI</code>の思想のもとプログラムを書けばそれがPerlだよねみたいな部分があるのじゃないかと思った(がまぁそれは言い過ぎか)。</p>
+
+<p>個人的にはPerlの話も聞けて、Perl Mongerに向けたという角度で捉えられた他の言語の話も聞けて大満足であった。</p>
+
+<hr />
+
+<h2>記憶に残ったトーク</h2>
+
+<ul>
+<li><p><a href="http://www.slideshare.net/tsuyoshitorii5/yapcasia2014-2-public?ref=http://sssslide.com/www.slideshare.net/tsuyoshitorii5/yapcasia2014-2-public">作られては消えていく、泡のように儚いクラスタの運用話</a></p>
+
+<ul>
+<li><p>放送時間帯にガツンと負荷がかかるTV案件を運用する上でのインフラなどの運用の話。</p></li>
+<li><p>24時間365時間リソースを稼働させるWebサービスなどとは違い、こういったTV案件というのはAWSをとてもうまい使い方の事例だと感心した。最近AWSを触ってるけど、デプロイではAMIを作ってそれをCoudFormationで〜といところらへんの話はその手があったかととても参考になった。</p></li>
+</ul>
+</li>
+<li><p><a href="https://speakerdeck.com/tcnksm/komandorainturunituiteyu-rutokinipu-falseyu-rukoto-number-yapcasia">コマンドラインツールについて語るときに僕の語ること</a></p>
+
+<ul>
+<li><p>最近Goを少し触っているので<code>cli-init</code>、<code>gox</code>、<code>ghr</code>を活用したくなった。</p></li>
+<li><p>後からスライド見直して改めて思ったけど、すごく丁寧にスライドが作られているように思う。helpやmanの位置付けやRDDの話がとてもわかりやすい。そこまで特別新しいことを言っているわけではないし、どこかで聞いたことあるような話ではあるんだけど、改めて明確に言語化して発表してもらったことにはとても価値が有ったと思う。</p></li>
+</ul>
+</li>
+<li><p>DeNAが歩んだdeploy自動化への道</p>
+
+<ul>
+<li>「全ては出荷プロセスに現れる」「反復されたプロセスは信頼に足る」という部分が強く記憶に残った。</li>
+</ul>
+</li>
+<li><p>Plack for Fun and Profit (But Mostly Profit)</p>
+
+<ul>
+<li><p><a href="http://www.booking.com/index.ja.html">Booking.com</a>の中の人の話。というかBooking.com今日知ったけど最高にクールだ&hellip;。次旅行するとき使ってみたい。</p></li>
+<li><p>よくSIerを揶揄するけど、「利益を生み出すコードは消すことが出来ない」の一言はまさにそれだと感じた。その利益を生み出すコード・ビジネスモデルが10年どころか40年とか前のものでもそれは同じだろうと。</p></li>
+<li><p>ビジネスでやる以上、自身が今いくら利益を生んでいるかというのは避けられないし(避けたい&hellip;)、常に考える必要が有る(考えたくない&hellip;)ことを忘れてはならないと思った。</p></li>
+</ul>
+</li>
+<li><p>そんなにビッグでもないデータ処理手法の話</p>
+
+<ul>
+<li><p>最近HadoopやらStormやらを少しだけ触っていたが、とてもわかりやすかった。</p></li>
+<li><p>メッセージや思考がとても明確で、トークのターゲットが何かということや、データ分析をする上で何が大切でどう考えれば良いかという部分がすごくしっくりきた。もっと突っ込んだ話も今後是非伺ってみたい。</p></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<h2>ギターヒーローって言いたかっただけ</h2>
+
+<p>個人的なことを言うと、最近はがっつりPerlを書くことっていうのは前より減っているんだけど、それでもやはりあんだけ数々の素晴らしい発表を目の当たりにすると、やはりPerlを書きたくなるしOSSに貢献したくなる。</p>
+
+<p>音楽をやっていた身からすると、なんだかこれってギターヒーローの演奏を見て憧れるギターキッズのようだなとふと感じた。</p>
+
+<p>最後のキーノート、typesterさんの話を聞いていて、自分は今後どうしたいのだろうというのも考えさせられた。</p>
+
+<p>単純に面白いだけでなく、技術的な知見を得られ、そして自身を省みることができるYAPC::Asia Tokyo、来年も是非開催をよろしくお願いしたいところ。</p>
+
+<p>運営の方々はじめ、皆様ありがとうございました。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[arcadiaの小説ランキング出すやつ作った]]></title>
@@ -923,65 +1010,6 @@ Encode::encode('euc-jp', Encode::decode_utf8(Encode::decode('JavaScript-UCS', $s
 <li><p><a href="http://blog.64p.org/entry/20111125/1322185155">Amon2とJSONとセキュリティ</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Web::Queryのtestがコケた話]]></title>
-    <link href="http://blog.digital-bot.com/blog/2013/10/28/install-web-query/"/>
-    <updated>2013-10-28T15:09:00+09:00</updated>
-    <id>http://blog.digital-bot.com/blog/2013/10/28/install-web-query</id>
-    <content type="html"><![CDATA[<p>先日、CentoOSにWeb::Queryを入れようとしたらこけてハマってた。レガシーなシステムでの使用だったので当然<code>Carton</code>なんか使ってないし、モジュールはそれぞれのサーバに入って直接<code>cpanm</code>する形だったが、やはりこういったレガシーな開発手順というのは早めに駆逐されたほうが世の(開発者)のためだと感じた。</p>
-
-<p>開発環境では一発で入ってたし、試しにと手元のMBAに<code>cpanm Web::Query</code>しても問題なく入ったのに、肝心の本番サーバでWeb::Queryが入らない。テストでこけてる。その他perl5.8.8を新規に入れたまっさら状態のサーバを用意して試しても見たけど再現しない。なんなんだ。</p>
-
-<p>ためしに最新版ではない、0.16とかいくつか古いバージョンのWeb::Queryも試したけれど、特に違いはうまれなかったので、最近の変更が原因ではなさそう。</p>
-
-<p>サマリーだけ抜き出すとこんな感じ</p>
-
-<p>```</p>
-
-<h2>Failed Test        Stat Wstat Total Fail  Failed  List of Failed</h2>
-
-<p>t/07_remove.t         2   512    10    2  20.00%  2-3
-t/08_indent.t         1   256     2    1  50.00%  1
-t/09_as_html.t        8  2048     8    8 100.00%  1-8
-t/add.t               4  1024     8    4  50.00%  1-4
-t/add_class.t         2   512     4    2  50.00%  1-2
-t/after.t             1   256     2    1  50.00%  1
-t/append.t            1   256     2    1  50.00%  1
-t/before.t            1   256     2    1  50.00%  1
-t/clone.t             1   256     2    1  50.00%  1
-t/contents.t          2   512     4    2  50.00%  1-2
-t/detach.t            2   512     6    2  33.33%  1-2
-t/insert_after.t      1   256     2    1  50.00%  1
-t/insert_before.t     1   256     2    1  50.00%  1
-t/prepend.t           1   256     2    1  50.00%  1
-t/remove_class.t      2   512     6    2  33.33%  2-3
-t/replace_with.t      4  1024     8    4  50.00%  1-4
-t/store_comments.t    2   512     4    2  50.00%  1-2
-Failed 17/28 test scripts, 39.29% okay. 36/135 subtests failed, 73.33% okay.
-FAIL
-```</p>
-
-<!-- more -->
-
-
-<h2>HTML::Element</h2>
-
-<p>結論からいうと<strong>HTML::Element</strong>が入ってなかった。</p>
-
-<p>Web::Queryの依存モジュールに入ってないから必ずしもHTML::Elementが必要なわけではないのだろうけど(というか依存モジュール入れる時点で入りそうなもんだけど)、これがないと何故か'\n'が<code>wq-&gt;as_html</code>だかの結果に入り込んでテスト結果が誤判定？されてしまっていた。<code>cpanm --look Web::Query</code>してテストを自分で書き換えたりもしてみたら、どうにもやはりこの"\n"が問題のようなんだけど、これはなんでだろう。</p>
-
-<p>「これは何かおかしい」と思って、適当に関係しそうっぽいモジュールを入れてから再度<code>cpanm</code>すると、今度は何事もなかったかのようにインストールされた。それが<strong>HTML::Element</strong>だった。他にもHTML::ParserとかXML::LibXMLとか色々入れなおしたけど、やっかいなのはこれな気がする。</p>
-
-<p>何が面倒かって、特にモジュールが足りてない(Can&rsquo;t locate~)とか言われずに、淡々とテストの文字列比較で落ちてるのが面倒だった。</p>
-
-<h2>おわりに</h2>
-
-<p><a href="https://gist.github.com/digitalbot/7200263">一応エラーのログを貼っておこうかと思う</a>。結局技術的に踏み込んで解決策を見出したわけでもないゆるふわな記事だけど、まぁそういう風にハマってた人もいたってことで。</p>
-
-<p>ちなみに、このWeb::Query、とても便利。</p>
 ]]></content>
   </entry>
   
