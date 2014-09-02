@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perl | About Digital]]></title>
   <link href="http://blog.digital-bot.com/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://blog.digital-bot.com/"/>
-  <updated>2014-08-31T02:43:43+09:00</updated>
+  <updated>2014-09-03T00:02:39+09:00</updated>
   <id>http://blog.digital-bot.com/</id>
   <author>
     <name><![CDATA[digital_bot]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.digital-bot.com/blog/2014/08/31/yapcasia2014</id>
     <content type="html"><![CDATA[<p>今年も<a href="http://yapcasia.org/2014/">YAPC::Asia Tokyo 2014</a>に8/29,30と参加し、色々と面白い話を聞いてきた。</p>
 
-<p>酒と深夜のノリで推敲するのは良くないと思いつつも眠いので上げようと思う。</p>
+<p>酒と深夜のノリで、推敲しないのは良くないと思いつつも眠いので上げようと思う。</p>
 
 <p><img src="/images/yapc.jpg" alt="ノベルティ" /></p>
 
@@ -50,7 +50,7 @@
 
 <ul>
 <li><p>放送時間帯にガツンと負荷がかかるTV案件を運用する上でのインフラなどの運用の話。</p></li>
-<li><p>24時間365時間リソースを稼働させるWebサービスなどとは違い、こういったTV案件というのはAWSをとてもうまい使い方の事例だと感心した。最近AWSを触ってるけど、デプロイではAMIを作ってそれをCoudFormationで〜といところらへんの話はその手があったかととても参考になった。</p></li>
+<li><p>24時間365時間リソースを稼働させるWebサービスなどとは違い、こういったTV案件というのはAWSを使う上でとてもうまい使い方の事例だと感心した。最近AWSを触ってるけど、デプロイではAMIを作ってそれをCoudFormationで〜といところらへんの話はその手があったかととても参考になった。</p></li>
 </ul>
 </li>
 <li><p><a href="https://speakerdeck.com/tcnksm/komandorainturunituiteyu-rutokinipu-falseyu-rukoto-number-yapcasia">コマンドラインツールについて語るときに僕の語ること</a></p>
